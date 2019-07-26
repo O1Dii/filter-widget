@@ -1,13 +1,14 @@
 import React from 'react';
+import SeparatedContainer from './separatedcontainer';
 
 class Search extends React.Component {
   render() {
     return (
-      <div>
+      <SeparatedContainer>
         <SearchInput />
         <hr />
         <ElementsList />
-      </div>
+      </SeparatedContainer>
     );
   }
 }
