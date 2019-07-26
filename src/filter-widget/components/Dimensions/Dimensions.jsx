@@ -1,12 +1,12 @@
 import React from 'react';
-import SeparatedContainer from '../Separatedcontainer/Separatedcontainer.jsx';
-import DropdownMenuContainer from '../Dropdownmenucontainer/Dropdownmenucontainer.jsx';
+import SeparatedContainer from '../SeparatedContainer/SeparatedContainer.jsx';
+import DropdownMenu from '../DropdownMenu/DropdownMenu.jsx';
 
 class Dimensions extends React.Component {
   render() {
     return (
       <SeparatedContainer>
-        <DropdownMenuContainer />
+        <DropdownMenu />
       </SeparatedContainer>
     );
   }

@@ -1,5 +1,5 @@
 import React from 'react';
-import SeparatedContainer from '../Separatedcontainer/Separatedcontainer.jsx';
+import SeparatedContainer from '../SeparatedContainer/SeparatedContainer.jsx';
 
 class Footer extends React.Component {
   render() {

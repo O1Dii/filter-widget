@@ -4,10 +4,10 @@ import './Header.scss';
 class Header extends React.Component {
   render() {
     return (
-      <div>
-        <i className="fas fa-bars" />
-        <h2>Filters</h2>
-        <i className="fas fa-times" />
+      <div className="header">
+        <i className="header__bars fas fa-bars" />
+        <h2 className="header__title">Filters</h2>
+        <i className="header__exit fas fa-times" />
       </div>
     );
   }

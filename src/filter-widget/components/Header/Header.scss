@@ -1,0 +1,15 @@
+.header {
+    display: flex;
+
+    &__bars {
+        transform: rotate(90deg);
+
+        flex-shrink: 0;
+    }
+
+    &__title {
+        margin: 0;
+
+        flex-grow: 1;
+    }
+}
