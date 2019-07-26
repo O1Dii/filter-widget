@@ -1,0 +1,21 @@
+@import "../../variables.scss";
+
+.dropdown-menu {
+    display: flex;
+
+    align-items: center;
+
+    &__arrow {
+        margin: 5px;
+    }
+
+    &__subtitle {
+        margin: 0;
+
+        vertical-align: middle;
+
+        color: $accent-color;
+
+        font-size: 12px;
+    }
+}

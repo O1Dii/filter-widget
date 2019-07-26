@@ -1,14 +1,15 @@
 import React from 'react';
 import HintContainer from '../HintContainer/HintContainer.jsx';
+import './SearchInput.scss';
 
-class SearchInput extends React.Component {
+class SearchInput extends React.PureComponent {
   render() {
     return (
-      <div>
+      <div className="search-input">
         <label>
-          <i className="fas fa-search" />
+          <i className="search-input__icon fas fa-search" />
 
-          <input id="input" />
+          <input className="search-input__input" />
         </label>
         <HintContainer />
       </div>

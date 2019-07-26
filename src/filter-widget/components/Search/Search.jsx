@@ -1,16 +1,19 @@
 import React from 'react';
 import SeparatedContainer from '../SeparatedContainer/SeparatedContainer.jsx';
 import SearchInput from '../SearchInput/SearchInput.jsx';
-import ElementsList from '../List/List.jsx';
+import List from '../List/List.jsx';
+import './Search.scss';
 
-class Search extends React.Component {
+class Search extends React.PureComponent {
   render() {
     return (
-      <SeparatedContainer>
-        <SearchInput />
-        <hr />
-        <ElementsList />
-      </SeparatedContainer>
+      <div className="search">
+        <SeparatedContainer>
+          <SearchInput />
+          <hr className="search__hr" />
+          <List />
+        </SeparatedContainer>
+      </div>
     );
   }
 }

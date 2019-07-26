@@ -1,0 +1,9 @@
+@import "../../variables.scss";
+
+.search {
+    &__hr {
+        margin: 15px 0;
+
+        color: $light-background-color;
+    }
+}

@@ -1,12 +1,15 @@
 import React from 'react';
+import './CheckboxText.scss';
 
-class CheckboxText extends React.Component {
+class CheckboxText extends React.PureComponent {
   render() {
+    const { text } = this.props;
+
     return (
-      <div>
-        <input type="checkbox" />
-        <p>{this.props.text}</p>
-      </div>
+      <label className="checkbox-text">
+        <input type="checkbox" className="checkbox-text__checkbox" />
+        <p className="checkbox-text__text">{text}</p>
+      </label>
     );
   }
 }

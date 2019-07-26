@@ -1,0 +1,13 @@
+@import "../../variables.scss";
+
+.hint {
+    margin-right: 5px;
+
+    border: 1px solid $main-text-color;
+    border-radius: 20%;
+    background-color: $background-color;
+
+    &__text {
+        margin: 0;
+    }
+}

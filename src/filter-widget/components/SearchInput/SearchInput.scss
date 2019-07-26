@@ -1,0 +1,20 @@
+@import "../../variables.scss";
+
+.search-input {
+    display: flex;
+    flex-direction: column;
+
+    &__input {
+        margin: 5px 0;
+
+        color: $main-text-color;
+        border: 1px solid $main-text-color;
+        background-color: $light-background-color;
+    }
+
+    &__icon {
+        margin: 5px;
+
+        font-size: 10px;
+    }
+}

@@ -1,0 +1,48 @@
+@import "../../variables.scss";
+
+.dropdown {
+    text-align: center;
+    text-align-last: center;
+
+    color: $main-text-color;
+    border-color: transparent;
+    background-color: transparent;
+
+    appearance: none;
+
+    &__option {
+        display: block;
+
+        margin: 0;
+
+        text-decoration: none;
+
+        color: $main-text-color;
+    }
+
+    &__button {
+        color: $main-text-color;
+        border: none;
+        background-color: transparent;
+    }
+
+    &__content {
+        position: absolute;
+        z-index: 1;
+
+        display: none;
+
+        width: 257px;
+
+        border-top: 5px solid $accent-color;
+        background-color: $primary-color;
+    }
+}
+
+.dropdown:hover .dropdown__content {
+    display: block;
+}
+
+.dropdown::-ms-expand {
+    display: none;
+}

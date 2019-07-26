@@ -1,14 +1,18 @@
 import React from 'react';
+import './Dropdown.scss';
 
-class Dropdown extends React.Component {
+class Dropdown extends React.PureComponent {
   render() {
+    const { title, children } = this.props;
+
     return (
-      <select>
-        {this.props.children
-          && this.props.children.map((child) => {
-            <option>child</option>;
-          })}
-      </select>
+      <div className="dropdown">
+        <i className="dropdown-menu__arrow fas fa-angle-down" />
+        <button type="button" className="dropdown__button">
+          {title}
+        </button>
+        <div className="dropdown__content">{children}</div>
+      </div>
     );
   }
 }

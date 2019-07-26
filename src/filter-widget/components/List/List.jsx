@@ -1,14 +1,13 @@
 import React from 'react';
 import CheckboxText from '../CheckboxText/CheckboxText.jsx';
 
-class List extends React.Component {
+class List extends React.PureComponent {
   render() {
-    if (this.props.children) {
-      return this.props.children.map((child) => {
-        <CheckboxText text={chlid} />;
-      });
-    }
-    return null;
+    const mas = ['abc', 'afa', 'hello', 'here'];
+
+    const res = mas.map(item => <CheckboxText key={item} text={item} />);
+
+    return <div>{res}</div>;
   }
 }
 

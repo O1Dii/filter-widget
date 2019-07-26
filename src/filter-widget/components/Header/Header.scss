@@ -1,15 +1,41 @@
+@import "../../variables.scss";
+
 .header {
     display: flex;
 
+    padding: 10px 0;
+
+    border-top: 5px solid $accent-color;
+    border-bottom: 1px solid $accent-color;
+
     &__bars {
+        display: flex;
+
+        width: 30px;
+        height: 30px;
+
         transform: rotate(90deg);
 
+        align-items: center;
         flex-shrink: 0;
+        justify-content: center;
     }
 
     &__title {
         margin: 0;
 
         flex-grow: 1;
+    }
+
+    &__exit {
+        display: flex;
+
+        width: 30px;
+        height: 30px;
+
+        align-items: center;
+        flex-shrink: 0;
+        flex-shrink: 0;
+        justify-content: center;
     }
 }

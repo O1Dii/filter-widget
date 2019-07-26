@@ -1,9 +1,14 @@
 import React from 'react';
 import SeparatedContainer from '../SeparatedContainer/SeparatedContainer.jsx';
+import './Footer.scss';
 
-class Footer extends React.Component {
+class Footer extends React.PureComponent {
   render() {
-    return <SeparatedContainer />;
+    return (
+      <div className="footer">
+        <SeparatedContainer />
+      </div>
+    );
   }
 }
 
