@@ -1,5 +1,7 @@
 import React from 'react';
-import SeparatedContainer from './separatedcontainer';
+import SeparatedContainer from '../Separatedcontainer/Separatedcontainer.jsx';
+import SearchInput from '../Searchinput/Searchinput.jsx';
+import ElementsList from '../Elementslist/Elementslist.jsx';
 
 class Search extends React.Component {
   render() {

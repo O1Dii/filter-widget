@@ -1,5 +1,5 @@
 import React from 'react';
-import Hint from './hint';
+import Hint from '../Hint/Hint.jsx';
 
 class HintContainer extends React.Component {
   render() {

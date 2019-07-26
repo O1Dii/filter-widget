@@ -1,14 +1,14 @@
 import React from 'react';
-import HintContainer from './hintcontainer';
+import HintContainer from '../Hintcontainer/Hintcontainer.jsx';
 
 class SearchInput extends React.Component {
   render() {
     return (
       <div>
         <label>
-          <img />
+          <i className="fas fa-search" />
         </label>
-        <input />
+        <input className="green" />
         <HintContainer />
       </div>
     );

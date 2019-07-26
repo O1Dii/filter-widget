@@ -1,11 +1,11 @@
 import React from 'react';
-import DropdownMenu from './dropdownmenu';
+import DropdownMenu from '../Dropdownmenu/Dropdownmenu.jsx';
 
 class DropdownMenuContainer extends React.Component {
   render() {
     return (
       <div>
-        <img />
+        <i className="fas fa-angle-down" />
         <DropdownMenu />
         <p>{this.props.subtitle}</p>
       </div>

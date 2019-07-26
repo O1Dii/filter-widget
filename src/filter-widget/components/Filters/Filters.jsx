@@ -1,9 +1,9 @@
 import React from 'react';
-import Header from './header';
-import Contexts from './contexts';
-import Dimensions from './dimensions';
-import Search from './search';
-import Footer from './footer';
+import Header from '../Header/Header.jsx';
+import Contexts from '../Contexts/Contexts.jsx';
+import Dimensions from '../Dimensions/Dimensions.jsx';
+import Search from '../Search/Search.jsx';
+import Footer from '../Footer/Footer.jsx';
 
 class Filters extends React.Component {
   render() {
