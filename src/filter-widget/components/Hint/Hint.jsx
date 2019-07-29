@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import './Hint.scss';
 
@@ -17,5 +18,14 @@ class Hint extends React.PureComponent {
     );
   }
 }
+
+Hint.propTypes = {
+  values: PropTypes.arrayOf(PropTypes.string).isRequired,
+  className: PropTypes.string,
+};
+
+Hint.defaultProps = {
+  className: '',
+};
 
 export default Hint;

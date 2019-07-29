@@ -16,7 +16,11 @@ class Footer extends React.PureComponent {
 }
 
 Footer.propTypes = {
-  className: PropTypes.string.isRequired,
+  className: PropTypes.string,
+};
+
+Footer.defaultProps = {
+  className: '',
 };
 
 export default Footer;

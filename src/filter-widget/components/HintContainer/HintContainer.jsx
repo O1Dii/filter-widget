@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Hint from '../Hint/Hint.jsx';
 import './HintContainer.scss';
@@ -14,5 +15,13 @@ class HintContainer extends React.PureComponent {
     );
   }
 }
+
+HintContainer.propTypes = {
+  className: PropTypes.string,
+};
+
+HintContainer.defaultProps = {
+  className: '',
+};
 
 export default HintContainer;

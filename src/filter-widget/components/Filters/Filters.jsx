@@ -25,7 +25,11 @@ class Filters extends React.PureComponent {
 }
 
 Filters.propTypes = {
-  className: PropTypes.string.isRequired,
+  className: PropTypes.string,
+};
+
+Filters.defaultProps = {
+  className: '',
 };
 
 export default Filters;
