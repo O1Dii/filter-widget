@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import SeparatedContainer from '../SeparatedContainer/SeparatedContainer.jsx';
 import DropdownMenu from '../DropdownMenu/DropdownMenu.jsx';
@@ -8,6 +9,7 @@ class Contexts extends React.PureComponent {
   render() {
     const { onContextChecked } = this.props;
     const arr = ['Editor', 'Innovid_Test', 'TestStory', 'Cross'];
+
     return (
       <SeparatedContainer>
         <DropdownMenu title="Contexts" subtitle="Test Story">
@@ -19,5 +21,9 @@ class Contexts extends React.PureComponent {
     );
   }
 }
+
+Contexts.propTypes = {
+  onContextChecked: PropTypes.func.isRequired,
+};
 
 export default Contexts;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Dropdown from '../Dropdown/Dropdown.jsx';
 import './DropdownMenu.scss';
@@ -17,5 +18,11 @@ class DropdownMenu extends React.PureComponent {
     );
   }
 }
+
+DropdownMenu.propTypes = {
+  title: PropTypes.string.isRequired,
+  subtitle: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
+};
 
 export default DropdownMenu;

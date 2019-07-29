@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import './CheckboxText.scss';
 
@@ -20,5 +21,11 @@ class CheckboxText extends React.PureComponent {
     );
   }
 }
+
+CheckboxText.propTypes = {
+  text: PropTypes.string.isRequired,
+  check: PropTypes.func.isRequired,
+  id: PropTypes.number.isRequired,
+};
 
 export default CheckboxText;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import './SeparatedContainer.scss';
 
@@ -13,5 +14,13 @@ class SeparatedContainer extends React.PureComponent {
     );
   }
 }
+
+SeparatedContainer.propTypes = {
+  children: PropTypes.node,
+};
+
+SeparatedContainer.defaultProps = {
+  children: '',
+};
 
 export default SeparatedContainer;

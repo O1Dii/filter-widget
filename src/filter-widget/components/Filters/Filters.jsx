@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Header from '../Header/Header.jsx';
 import Search from '../Search/Search.jsx';
@@ -22,5 +23,9 @@ class Filters extends React.PureComponent {
     );
   }
 }
+
+Filters.propTypes = {
+  className: PropTypes.string.isRequired,
+};
 
 export default Filters;
