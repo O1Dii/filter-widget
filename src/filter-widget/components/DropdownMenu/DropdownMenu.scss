@@ -3,16 +3,21 @@
 .dropdown-menu {
     display: flex;
 
-    align-items: center;
+    align-items: baseline;
 
     &__arrow {
+        position: relative;
+        bottom: -2px;
+
         margin: 5px;
+
+        color: $light-transparent-color;
+
+        font-size: 12px;
     }
 
     &__subtitle {
         margin: 0;
-
-        vertical-align: middle;
 
         color: $accent-color;
 

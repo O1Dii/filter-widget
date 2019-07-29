@@ -6,7 +6,7 @@ class Header extends React.PureComponent {
     return (
       <div className="header">
         <i className="header__bars fas fa-bars" />
-        <h2 className="header__title">Filters</h2>
+        <h2 className="header__title">FILTERS</h2>
         <i className="header__exit fas fa-times" />
       </div>
     );

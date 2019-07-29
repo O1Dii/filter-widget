@@ -6,8 +6,8 @@ class HintContainer extends React.PureComponent {
   render() {
     return (
       <div className="hint-container">
-        <Hint />
-        <Hint />
+        <Hint values={['**', '*_', '""']} />
+        <Hint values={['A-Z']} />
       </div>
     );
   }

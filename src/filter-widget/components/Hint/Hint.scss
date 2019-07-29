@@ -1,13 +1,28 @@
 @import "../../variables.scss";
 
 .hint {
+    height: fit-content;
     margin-right: 5px;
 
     border: 1px solid $main-text-color;
-    border-radius: 20%;
+    border-radius: 2px;
     background-color: $background-color;
 
     &__text {
-        margin: 0;
+        display: none;
+
+        margin: 3px;
+
+        cursor: pointer;
+
+        font-size: 12px;
     }
+}
+
+.hint__text:first-child {
+    display: block;
+}
+
+.hint:hover .hint__text {
+    display: block;
 }

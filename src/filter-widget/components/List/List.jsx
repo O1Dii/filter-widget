@@ -1,5 +1,6 @@
 import React from 'react';
 import CheckboxText from '../CheckboxText/CheckboxText.jsx';
+import './List.scss';
 
 class List extends React.PureComponent {
   render() {
@@ -7,7 +8,7 @@ class List extends React.PureComponent {
 
     const res = mas.map(item => <CheckboxText key={item} text={item} />);
 
-    return <div>{res}</div>;
+    return <div className="list">{res}</div>;
   }
 }
 

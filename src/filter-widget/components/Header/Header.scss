@@ -16,6 +16,8 @@
 
         transform: rotate(90deg);
 
+        color: $light-transparent-color;
+
         align-items: center;
         flex-shrink: 0;
         justify-content: center;
@@ -24,6 +26,9 @@
     &__title {
         margin: 0;
 
+        font-size: 15px;
+
+        align-self: center;
         flex-grow: 1;
     }
 
@@ -32,6 +37,8 @@
 
         width: 30px;
         height: 30px;
+
+        color: $light-transparent-color;
 
         align-items: center;
         flex-shrink: 0;
