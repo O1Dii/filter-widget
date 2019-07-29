@@ -1,16 +1,7 @@
-import { TOGGLE_CONTEXT, TOGGLE_DIMENSION, CHANGE_SEARCH } from '../types';
+import { createActions } from 'redux-actions';
 
-export const toggleContext = text => ({
-  type: TOGGLE_CONTEXT,
-  text,
-});
-
-export const toggleDimension = id => ({
-  type: TOGGLE_DIMENSION,
-  id,
-});
-
-export const changeSearch = text => ({
-  type: CHANGE_SEARCH,
-  text,
-});
+export const { toggleContext, toggleDimension, changeSearch } = createActions(
+  'TOGGLE_CONTEXT',
+  'TOGGLE_DIMENSION',
+  'CHANGE_SEARCH',
+);

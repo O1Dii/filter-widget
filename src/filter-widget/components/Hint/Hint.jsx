@@ -9,7 +9,9 @@ class Hint extends React.PureComponent {
     return (
       <div className={`hint ${className}`}>
         {values.map(value => (
-          <p className="hint__text">{value}</p>
+          <p key={value} className="hint__text">
+            {value}
+          </p>
         ))}
       </div>
     );

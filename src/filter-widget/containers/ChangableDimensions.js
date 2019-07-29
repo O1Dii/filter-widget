@@ -1,19 +1,19 @@
 import { connect } from 'react-redux';
 
-import { toggleContext } from '../actions/index.js';
-import Contexts from '../components/Contexts/Contexts';
+import { toggleDimension } from '../actions/index.js';
+import Dimensions from '../components/Dimensions/Dimensions';
 
 const mapStateToProps = state => ({});
 
 const mapDispatchToProps = dispatch => ({
-  onContextChecked: (id) => {
-    dispatch(toggleContext(id));
+  onDimensionChecked: (id) => {
+    dispatch(toggleDimension(id));
   },
 });
 
 const ChangableContext = connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Contexts);
+)(Dimensions);
 
 export default ChangableContext;

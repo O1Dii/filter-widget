@@ -1,16 +1,7 @@
-import { CHANGE_SEARCH } from '../types';
+import { handleAction } from 'redux-actions';
 
-const contexts = (state, action) => {
-  if (!state) {
-    return {};
-  }
+import { changeSearch } from '../actions/index';
 
-  switch (action.type) {
-    case CHANGE_SEARCH:
-      return [...state];
-    default:
-      return state;
-  }
-};
+const search = handleAction(changeSearch, (state, action) => [...state], {});
 
-export default contexts;
+export default search;

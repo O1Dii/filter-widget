@@ -6,13 +6,14 @@ import CheckboxText from '../CheckboxText/CheckboxText.jsx';
 
 class Contexts extends React.PureComponent {
   render() {
+    const { onContextChecked } = this.props;
+    const arr = ['Editor', 'Innovid_Test', 'TestStory', 'Cross'];
     return (
       <SeparatedContainer>
         <DropdownMenu title="Contexts" subtitle="Test Story">
-          <CheckboxText text="Editor" check={this.check} />
-          <CheckboxText text="Innovid_Test" check={this.check} />
-          <CheckboxText text="TestStory" check={this.check} />
-          <CheckboxText text="Cross" check={this.check} />
+          {arr.map((val, index) => (
+            <CheckboxText key={index} id={index} text={val} check={onContextChecked} />
+          ))}
         </DropdownMenu>
       </SeparatedContainer>
     );

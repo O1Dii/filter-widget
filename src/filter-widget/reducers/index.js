@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
 
-import contexts from './contexts';
-import dimensions from './dimensions';
+import toggle from './toggle';
+import search from './search';
 
 const filterWidget = combineReducers({
-  contexts,
-  dimensions,
+  toggle,
+  search,
 });
 
 export default filterWidget;

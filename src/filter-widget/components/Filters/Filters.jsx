@@ -1,11 +1,11 @@
 import React from 'react';
 
 import Header from '../Header/Header.jsx';
-import Contexts from '../Contexts/Contexts.jsx';
-import Dimensions from '../Dimensions/Dimensions.jsx';
 import Search from '../Search/Search.jsx';
 import Footer from '../Footer/Footer.jsx';
 import './Filters.scss';
+import ChangableContext from '../../containers/ChangableContext';
+import ChangableDimensions from '../../containers/ChangableDimensions';
 
 class Filters extends React.PureComponent {
   render() {
@@ -14,8 +14,8 @@ class Filters extends React.PureComponent {
     return (
       <div className={`filters ${className}`}>
         <Header />
-        <Contexts />
-        <Dimensions />
+        <ChangableContext />
+        <ChangableDimensions />
         <Search />
         <Footer className="filters__footer" />
       </div>
