@@ -1,4 +1,5 @@
 import React from 'react';
+
 import './Dropdown.scss';
 
 class Dropdown extends React.PureComponent {
@@ -7,7 +8,7 @@ class Dropdown extends React.PureComponent {
 
     return (
       <div className="dropdown">
-        <i className="dropdown-menu__arrow fas fa-angle-down" />
+        <i className="dropdown__arrow fas fa-angle-down" />
         <button type="button" className="dropdown__button">
           {title}
         </button>

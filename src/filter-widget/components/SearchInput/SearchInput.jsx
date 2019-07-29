@@ -1,4 +1,5 @@
 import React from 'react';
+
 import HintContainer from '../HintContainer/HintContainer.jsx';
 import './SearchInput.scss';
 
@@ -11,7 +12,7 @@ class SearchInput extends React.PureComponent {
 
           <input className="search-input__input" />
         </label>
-        <HintContainer />
+        <HintContainer className="search-input__hint-container" />
       </div>
     );
   }

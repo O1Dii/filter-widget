@@ -1,48 +1,50 @@
 @import "../../variables.scss";
 
 .header {
+  display: flex;
+
+  padding: 10px 0;
+
+  border-top: 5px solid $accent-color;
+  border-bottom: 1px solid $accent-color;
+
+  &__bars {
     display: flex;
 
-    padding: 10px 0;
+    width: 30px;
+    height: 30px;
 
-    border-top: 5px solid $accent-color;
-    border-bottom: 1px solid $accent-color;
+    transform: rotate(90deg);
 
-    &__bars {
-        display: flex;
+    color: $light-transparent-color;
 
-        width: 30px;
-        height: 30px;
+    align-items: center;
+    flex-shrink: 0;
+    justify-content: center;
+  }
 
-        transform: rotate(90deg);
+  &__title {
+    margin: 0;
 
-        color: $light-transparent-color;
+    text-transform: uppercase;
 
-        align-items: center;
-        flex-shrink: 0;
-        justify-content: center;
-    }
+    font-size: 15px;
 
-    &__title {
-        margin: 0;
+    align-self: center;
+    flex-grow: 1;
+  }
 
-        font-size: 15px;
+  &__exit {
+    display: flex;
 
-        align-self: center;
-        flex-grow: 1;
-    }
+    width: 30px;
+    height: 30px;
 
-    &__exit {
-        display: flex;
+    color: $light-transparent-color;
 
-        width: 30px;
-        height: 30px;
-
-        color: $light-transparent-color;
-
-        align-items: center;
-        flex-shrink: 0;
-        flex-shrink: 0;
-        justify-content: center;
-    }
+    align-items: center;
+    flex-shrink: 0;
+    flex-shrink: 0;
+    justify-content: center;
+  }
 }

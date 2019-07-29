@@ -1,4 +1,5 @@
 import React from 'react';
+
 import CheckboxText from '../CheckboxText/CheckboxText.jsx';
 import './List.scss';
 

@@ -1,4 +1,5 @@
 import React from 'react';
+
 import './SeparatedContainer.scss';
 
 class SeparatedContainer extends React.PureComponent {

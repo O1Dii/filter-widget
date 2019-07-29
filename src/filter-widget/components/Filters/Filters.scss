@@ -1,10 +1,12 @@
 @import "../../variables.scss";
 
 .filters {
-    width: 300px;
+  color: $main-text-color;
+  background-color: $background-color;
 
-    color: $main-text-color;
-    background-color: $background-color;
+  font-family: "Lato", sans-serif;
 
-    font-family: "Lato", sans-serif;
+  &__footer {
+    height: 10px;
+  }
 }

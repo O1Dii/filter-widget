@@ -1,8 +1,16 @@
+@import "../../variables.scss";
+
 .hint-container {
-    position: relative;
+  position: relative;
 
-    display: flex;
+  display: flex;
 
-    height: 20px;
-    padding-left: 20px;
+  padding-left: 20px;
+
+  &__hint {
+    height: fit-content;
+    margin-right: 5px;
+
+    border: 1px solid $main-text-color;
+  }
 }

@@ -1,10 +1,16 @@
-export const addTodo = text => ({
-  type: 'TYPE',
-  id: 0,
+import { TOGGLE_CONTEXT, TOGGLE_DIMENSION, CHANGE_SEARCH } from '../types';
+
+export const toggleContext = text => ({
+  type: TOGGLE_CONTEXT,
   text,
 });
 
-export const setVisibilityFilter = filter => ({
-  type: 'SET_VISIBILITY_FILTER',
-  filter,
+export const toggleDimension = id => ({
+  type: TOGGLE_DIMENSION,
+  id,
+});
+
+export const changeSearch = text => ({
+  type: CHANGE_SEARCH,
+  text,
 });

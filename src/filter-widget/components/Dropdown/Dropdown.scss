@@ -1,48 +1,51 @@
 @import "../../variables.scss";
 
 .dropdown {
-    text-align: center;
-    text-align-last: center;
+  text-align: center;
+  text-align-last: center;
+
+  color: $main-text-color;
+  border-color: transparent;
+  background-color: transparent;
+
+  appearance: none;
+
+  &__arrow {
+    position: relative;
+    bottom: -2px;
+
+    margin: 5px;
+
+    color: $light-transparent-color;
+
+    font-size: 12px;
+  }
+
+  &__button {
+    text-transform: uppercase;
 
     color: $main-text-color;
-    border-color: transparent;
+    border: none;
     background-color: transparent;
+  }
 
-    appearance: none;
+  &__content {
+    position: absolute;
+    z-index: 1;
 
-    &__option {
-        display: block;
+    display: none;
 
-        margin: 0;
+    width: 257px;
 
-        text-decoration: none;
+    border-top: 5px solid $accent-color;
+    background-color: $primary-color;
+  }
 
-        color: $main-text-color;
-    }
+  &:hover &__content {
+    display: block;
+  }
 
-    &__button {
-        color: $main-text-color;
-        border: none;
-        background-color: transparent;
-    }
-
-    &__content {
-        position: absolute;
-        z-index: 1;
-
-        display: none;
-
-        width: 257px;
-
-        border-top: 5px solid $accent-color;
-        background-color: $primary-color;
-    }
-
-    &:hover &__content {
-        display: block;
-    }
-
-    &::-ms-expand {
-        display: none;
-    }
+  &::-ms-expand {
+    display: none;
+  }
 }

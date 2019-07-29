@@ -1,2 +1,3 @@
-export const TYPE = 'TYPE';
-export const TYPE_TWO = 'TYPE_TWO';
+export const TOGGLE_CONTEXT = 'TOGGLE_CONTEXT';
+export const TOGGLE_DIMENSION = 'TOGGLE_DIMENSION';
+export const CHANGE_SEARCH = 'CHANGE_SEARCH';

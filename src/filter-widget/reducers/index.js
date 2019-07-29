@@ -1,13 +1,11 @@
 import { combineReducers } from 'redux';
-import { TYPE } from '../types';
 
-const red = (state, action) => {
-  switch (action.type) {
-    case TYPE:
-      return [...state];
-    default:
-      return state;
-  }
-};
+import contexts from './contexts';
+import dimensions from './dimensions';
 
-export default red;
+const filterWidget = combineReducers({
+  contexts,
+  dimensions,
+});
+
+export default filterWidget;

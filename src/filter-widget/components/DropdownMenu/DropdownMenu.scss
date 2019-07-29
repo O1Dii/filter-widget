@@ -1,26 +1,15 @@
 @import "../../variables.scss";
 
 .dropdown-menu {
-    display: flex;
+  display: flex;
 
-    align-items: baseline;
+  align-items: baseline;
 
-    &__arrow {
-        position: relative;
-        bottom: -2px;
+  &__subtitle {
+    margin: 0;
 
-        margin: 5px;
+    color: $accent-color;
 
-        color: $light-transparent-color;
-
-        font-size: 12px;
-    }
-
-    &__subtitle {
-        margin: 0;
-
-        color: $accent-color;
-
-        font-size: 12px;
-    }
+    font-size: 12px;
+  }
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+
 import SeparatedContainer from '../SeparatedContainer/SeparatedContainer.jsx';
 import SearchInput from '../SearchInput/SearchInput.jsx';
 import List from '../List/List.jsx';
