@@ -4,7 +4,7 @@ import { toggleContext } from '../actions/index.js';
 import Contexts from '../components/Contexts/Contexts';
 
 const mapStateToProps = (state) => {
-  const currentObj = state.toggle.context;
+  const currentObj = state.data.contexts;
   const res = { values: currentObj };
 
   if (currentObj) {

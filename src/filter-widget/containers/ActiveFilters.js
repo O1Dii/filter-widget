@@ -5,11 +5,17 @@ import Filters from '../components/Filters/Filters';
 
 const mapStateToProps = () => ({});
 
-const mapDispatchToProps = dispatch => ({ componentMount: () => dispatch(getContextsData()) });
+const mapDispatchToProps = dispatch => ({
+  componentMount: () => {
+    dispatch(getContextsData());
+    dispatch(getDimensionsData());
+    dispatch(getFiltersData());
+  },
+});
 
-const ChangableContext = connect(
+const ActiveFilters = connect(
   mapStateToProps,
   mapDispatchToProps,
 )(Filters);
 
-export default ChangableContext;
+export default ActiveFilters;

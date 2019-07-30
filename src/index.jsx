@@ -7,7 +7,11 @@ import thunk from 'redux-thunk';
 import App from './filter-widget/components/App/App.jsx';
 import filterWidget from './filter-widget/reducers/index';
 
-const store = createStore(filterWidget, applyMiddleware(thunk));
+const store = createStore(
+  filterWidget,
+  { data: {}, toggle: {}, search: {} },
+  applyMiddleware(thunk),
+);
 
 ReactDOM.render(
   <Provider store={store}>

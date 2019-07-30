@@ -4,7 +4,10 @@ import { toggleDimension } from '../actions/index.js';
 import Dimensions from '../components/Dimensions/Dimensions';
 
 const mapStateToProps = (state) => {
-  const currentObj = state.toggle.dimension;
+  console.log(Object.keys(state));
+  console.log(state.data);
+  console.log(state.data.dimensions);
+  const currentObj = state.data.dimensions;
   const res = { values: currentObj };
 
   if (currentObj) {

@@ -2,12 +2,12 @@ import { combineReducers } from 'redux';
 
 import toggle from './toggle';
 import search from './search';
-import getData from './getData';
+import data from './data';
 
 const filterWidget = combineReducers({
   toggle,
   search,
-  getData,
+  data,
 });
 
 export default filterWidget;
