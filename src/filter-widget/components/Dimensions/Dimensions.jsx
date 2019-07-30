@@ -24,11 +24,12 @@ class Dimensions extends React.PureComponent {
 Dimensions.propTypes = {
   onDimensionChecked: PropTypes.func.isRequired,
   subtitle: PropTypes.string,
-  values: PropTypes.objectOf(PropTypes.bool).isRequired,
+  values: PropTypes.objectOf(PropTypes.bool),
 };
 
 Dimensions.defaultProps = {
   subtitle: '',
+  values: {},
 };
 
 export default Dimensions;

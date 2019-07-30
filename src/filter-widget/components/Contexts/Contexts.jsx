@@ -24,11 +24,12 @@ class Contexts extends React.Component {
 Contexts.propTypes = {
   onContextChecked: PropTypes.func.isRequired,
   subtitle: PropTypes.string,
-  values: PropTypes.objectOf(PropTypes.bool).isRequired,
+  values: PropTypes.objectOf(PropTypes.bool),
 };
 
 Contexts.defaultProps = {
   subtitle: '',
+  values: {},
 };
 
 export default Contexts;

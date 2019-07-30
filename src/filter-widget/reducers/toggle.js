@@ -3,9 +3,7 @@ import { handleActions } from 'redux-actions';
 import { toggleContext, toggleDimension } from '../actions/index';
 
 function toggleCurrent(state, payload, name) {
-  let payloadState = state[name] && state[name][payload] !== undefined ? state[name][payload] : false;
-
-  payloadState = !payloadState;
+  const payloadState = false; //! state[name][payload];
   return { ...state, [name]: { ...state[name], [payload]: payloadState } };
 }
 

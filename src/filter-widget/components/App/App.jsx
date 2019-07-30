@@ -1,13 +1,13 @@
 import React from 'react';
 
-import Filters from '../Filters/Filters.jsx';
+import ActiveFilters from '../../containers/ActiveFilters';
 import './App.scss';
 
 class App extends React.PureComponent {
   render() {
     return (
       <div className="app">
-        <Filters className="app__filters" />
+        <ActiveFilters className="app__filters" />
       </div>
     );
   }

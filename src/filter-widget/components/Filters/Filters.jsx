@@ -9,6 +9,11 @@ import ChangableContext from '../../containers/ChangableContext';
 import ChangableDimensions from '../../containers/ChangableDimensions';
 
 class Filters extends React.PureComponent {
+  componentDidMount() {
+    const { componentMount } = this.props;
+    componentMount();
+  }
+
   render() {
     const { className } = this.props;
 
@@ -26,6 +31,7 @@ class Filters extends React.PureComponent {
 
 Filters.propTypes = {
   className: PropTypes.string,
+  componentMount: PropTypes.func.isRequired,
 };
 
 Filters.defaultProps = {
