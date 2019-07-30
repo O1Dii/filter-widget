@@ -5,16 +5,15 @@ import SeparatedContainer from '../SeparatedContainer/SeparatedContainer.jsx';
 import DropdownMenu from '../DropdownMenu/DropdownMenu.jsx';
 import CheckboxText from '../CheckboxText/CheckboxText.jsx';
 
-class Contexts extends React.PureComponent {
+class Contexts extends React.Component {
   render() {
-    const { onContextChecked } = this.props;
-    const arr = ['Editor', 'Innovid_Test', 'TestStory', 'Cross'];
+    const { onContextChecked, subtitle, values } = this.props;
 
     return (
       <SeparatedContainer>
-        <DropdownMenu title="Contexts" subtitle="Test Story">
-          {arr.map((val, index) => (
-            <CheckboxText key={index} id={index} text={val} check={onContextChecked} />
+        <DropdownMenu title="Contexts" subtitle={subtitle}>
+          {Object.entries(values).map(([key, val]) => (
+            <CheckboxText key={key} text={key} checked={val} check={onContextChecked} />
           ))}
         </DropdownMenu>
       </SeparatedContainer>
@@ -24,6 +23,12 @@ class Contexts extends React.PureComponent {
 
 Contexts.propTypes = {
   onContextChecked: PropTypes.func.isRequired,
+  subtitle: PropTypes.string,
+  values: PropTypes.objectOf(PropTypes.bool).isRequired,
+};
+
+Contexts.defaultProps = {
+  subtitle: '',
 };
 
 export default Contexts;

@@ -5,14 +5,15 @@ import './CheckboxText.scss';
 
 class CheckboxText extends React.PureComponent {
   render() {
-    const { text, check, id } = this.props;
+    const { text, checked, check } = this.props;
 
     return (
       <label className="checkbox-text">
         <input
+          value={checked}
           type="checkbox"
           onChange={() => {
-            check(id);
+            check(text);
           }}
           className="checkbox-text__checkbox"
         />
@@ -24,8 +25,8 @@ class CheckboxText extends React.PureComponent {
 
 CheckboxText.propTypes = {
   text: PropTypes.string.isRequired,
+  checked: PropTypes.bool.isRequired,
   check: PropTypes.func.isRequired,
-  id: PropTypes.number.isRequired,
 };
 
 export default CheckboxText;

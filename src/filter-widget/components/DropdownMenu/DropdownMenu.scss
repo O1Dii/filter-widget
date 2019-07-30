@@ -6,7 +6,13 @@
   align-items: baseline;
 
   &__subtitle {
+    overflow: hidden;
+
+    width: 120px;
     margin: 0;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
 
     color: $accent-color;
 
