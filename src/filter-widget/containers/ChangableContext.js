@@ -5,15 +5,15 @@ import Contexts from '../components/Contexts/Contexts';
 
 const mapStateToProps = (state) => {
   const currentObj = state.data.contexts;
-  const res = { values: currentObj };
 
   if (currentObj) {
-    res.subtitle = Object.keys(currentObj)
-      .filter(key => currentObj[key])
-      .join(', ');
+    return {
+      values: Object.fromEntries(currentObj.map(item => [[item.name], true])),
+      subtitle: currentObj.map(item => item.name).join(', '),
+    };
   }
 
-  return res;
+  return {};
 };
 
 const mapDispatchToProps = dispatch => ({

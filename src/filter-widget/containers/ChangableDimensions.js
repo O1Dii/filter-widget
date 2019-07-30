@@ -4,19 +4,16 @@ import { toggleDimension } from '../actions/index.js';
 import Dimensions from '../components/Dimensions/Dimensions';
 
 const mapStateToProps = (state) => {
-  console.log(Object.keys(state));
-  console.log(state.data);
-  console.log(state.data.dimensions);
   const currentObj = state.data.dimensions;
-  const res = { values: currentObj };
 
   if (currentObj) {
-    res.subtitle = Object.keys(currentObj)
-      .filter(key => currentObj[key])
-      .join(', ');
+    return {
+      values: Object.fromEntries(currentObj.map(item => [[item.name], true])),
+      subtitle: currentObj.map(item => item.name).join(', '),
+    };
   }
 
-  return res;
+  return {};
 };
 
 const mapDispatchToProps = dispatch => ({

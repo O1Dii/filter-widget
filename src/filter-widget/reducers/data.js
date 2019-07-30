@@ -4,7 +4,7 @@ import { recieveContexts, recieveDimensions, recieveFilters } from '../actions/i
 
 const data = handleAction(
   combineActions(recieveContexts, recieveDimensions, recieveFilters),
-  (state, { payload }) => Object.assign(state, payload),
+  (state, { payload }) => Object.assign({}, state, payload),
   {},
 );
 
