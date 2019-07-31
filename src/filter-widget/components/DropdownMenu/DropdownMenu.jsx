@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import ActiveDropdown from '../../containers/ActiveDropdown';
+import OpeningDropdown from '../../containers/OpeningDropdown';
 
 import './DropdownMenu.scss';
 
@@ -13,9 +13,9 @@ class DropdownMenu extends React.PureComponent {
 
     return (
       <div className="dropdown-menu">
-        <ActiveDropdown className="dropdown-menu__dropdown" dropdownId={dropdownId} title={title}>
+        <OpeningDropdown dropdownId={dropdownId} title={title}>
           {children}
-        </ActiveDropdown>
+        </OpeningDropdown>
         <p className="dropdown-menu__subtitle">{subtitle}</p>
       </div>
     );

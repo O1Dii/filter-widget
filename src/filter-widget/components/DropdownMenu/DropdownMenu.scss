@@ -3,12 +3,14 @@
 .dropdown-menu {
   display: flex;
 
+  width: 100%;
+
   align-items: center;
 
   &__subtitle {
     overflow: hidden;
 
-    width: 120px;
+    width: 100%;
     margin: 0;
 
     white-space: nowrap;

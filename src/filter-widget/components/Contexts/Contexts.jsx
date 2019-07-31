@@ -12,8 +12,8 @@ class Contexts extends React.PureComponent {
     return (
       <SeparatedContainer>
         <DropdownMenu title="Contexts" subtitle={subtitle} dropdownId="1">
-          {Object.entries(values).map(([key, val]) => (
-            <CheckboxText key={key} text={key} checked={val} check={onContextChecked} />
+          {values.map(({ id, name, val }) => (
+            <CheckboxText key={id} text={name} id={id} checked={val} check={onContextChecked} />
           ))}
         </DropdownMenu>
       </SeparatedContainer>
@@ -24,7 +24,9 @@ class Contexts extends React.PureComponent {
 Contexts.propTypes = {
   onContextChecked: PropTypes.func.isRequired,
   subtitle: PropTypes.string,
-  values: PropTypes.objectOf(PropTypes.bool),
+  values: PropTypes.arrayOf(
+    PropTypes.shape({ id: PropTypes.number, name: PropTypes.string, val: PropTypes.bool }),
+  ),
 };
 
 Contexts.defaultProps = {

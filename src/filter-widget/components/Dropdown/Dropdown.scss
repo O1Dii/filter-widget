@@ -10,25 +10,6 @@
 
   appearance: none;
 
-  &__arrow {
-    position: relative;
-    bottom: -1px;
-
-    margin: 5px;
-
-    color: $light-transparent-color;
-
-    font-size: 12px;
-  }
-
-  &__button {
-    text-transform: uppercase;
-
-    color: $main-text-color;
-    border: none;
-    background-color: transparent;
-  }
-
   &__content {
     position: absolute;
     z-index: 1;

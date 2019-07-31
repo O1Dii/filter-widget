@@ -12,8 +12,8 @@ class Dimensions extends React.PureComponent {
     return (
       <SeparatedContainer>
         <DropdownMenu title="Dimensions" subtitle={subtitle} dropdownId="2">
-          {Object.entries(values).map(([key, val]) => (
-            <CheckboxText key={key} text={key} checked={val} check={onDimensionChecked} />
+          {values.map(({ id, name, val }) => (
+            <CheckboxText key={id} text={name} id={id} checked={val} check={onDimensionChecked} />
           ))}
         </DropdownMenu>
       </SeparatedContainer>
@@ -24,7 +24,9 @@ class Dimensions extends React.PureComponent {
 Dimensions.propTypes = {
   onDimensionChecked: PropTypes.func.isRequired,
   subtitle: PropTypes.string,
-  values: PropTypes.objectOf(PropTypes.bool),
+  values: PropTypes.arrayOf(
+    PropTypes.shape({ id: PropTypes.number, name: PropTypes.string, val: PropTypes.bool }),
+  ),
 };
 
 Dimensions.defaultProps = {

@@ -4,12 +4,19 @@ import { toggleDimension } from '../actions';
 import Dimensions from '../components/Dimensions/Dimensions';
 
 const mapStateToProps = (state) => {
-  const currentObj = state.get('data').dimensions;
+  const currentData = state.get('data').dimensions;
+  const currentSelectedData = state.get('selectedData').dimensions || [];
 
-  if (currentObj instanceof Array) {
+  if (currentData) {
+    const values = Object.values(currentData).map(item => ({
+      id: item.id,
+      name: item.name,
+      val: Object.values(currentSelectedData).includes(item.id),
+    }));
+
     return {
-      values: Object.fromEntries(currentObj.map(item => [[item.name], true])),
-      subtitle: currentObj.map(item => item.name).join(', '),
+      values,
+      subtitle: currentSelectedData.map(item => currentData[item].name).join(', '),
     };
   }
 

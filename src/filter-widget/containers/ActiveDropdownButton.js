@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
 
 import { openCloseDropdown } from '../actions';
-import Dropdown from '../components/Dropdown/Dropdown';
+import DropdownButton from '../components/DropdownButton/DropdownButton';
 
-const mapStateToProps = state => ({ open: state.get('open') });
+const mapStateToProps = () => ({});
 
 const mapDispatchToProps = dispatch => ({
   openClose: (section) => {
@@ -11,9 +11,9 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-const ActiveFilters = connect(
+const ActiveDropdownButton = connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Dropdown);
+)(DropdownButton);
 
-export default ActiveFilters;
+export default ActiveDropdownButton;

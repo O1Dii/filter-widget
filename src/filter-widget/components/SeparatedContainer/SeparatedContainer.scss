@@ -8,7 +8,7 @@
   border-bottom: 2px solid $light-background-color;
 
   &__empty {
-    width: 30px;
+    width: 10%;
 
     border-right: 2px solid $light-background-color;
 
@@ -16,6 +16,7 @@
   }
 
   &__content {
+    width: 80%;
     padding: 5px;
 
     background-color: $cover-background-color;

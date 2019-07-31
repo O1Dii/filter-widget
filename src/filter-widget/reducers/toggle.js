@@ -1,16 +1,27 @@
 import { handleActions } from 'redux-actions';
 
-import { toggleContext, toggleDimension } from '../actions';
+import { toggleContext, toggleDimension, toggleFilter } from '../actions';
 
 function toggleCurrent(state, payload, name) {
-  const payloadState = false; //! state[name][payload];
-  return { ...state, [name]: { ...state[name], [payload]: payloadState } };
+  if (state[name]) {
+    const arr = state[name];
+    if (arr.includes(payload)) {
+      arr.splice(arr.indexOf(payload), 1);
+    } else {
+      arr.push(payload);
+    }
+
+    return { ...state, [name]: arr };
+  }
+
+  return { ...state, [name]: [payload] };
 }
 
 const toggle = handleActions(
   {
-    [toggleContext]: (state, { payload }) => toggleCurrent(state, payload, 'context'),
-    [toggleDimension]: (state, { payload }) => toggleCurrent(state, payload, 'dimension'),
+    [toggleContext]: (state, { payload }) => toggleCurrent(state, payload, 'contexts'),
+    [toggleDimension]: (state, { payload }) => toggleCurrent(state, payload, 'dimensions'),
+    [toggleFilter]: (state, { payload }) => toggleCurrent(state, payload, 'filters'),
   },
   {},
 );

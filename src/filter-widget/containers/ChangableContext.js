@@ -4,12 +4,19 @@ import { toggleContext } from '../actions';
 import Contexts from '../components/Contexts/Contexts';
 
 const mapStateToProps = (state) => {
-  const currentObj = state.get('data').contexts;
+  const currentData = state.get('data').contexts;
+  const currentSelectedData = state.get('selectedData').contexts || [];
 
-  if (currentObj instanceof Array) {
+  if (currentData) {
+    const values = Object.values(currentData).map(item => ({
+      id: item.id,
+      name: item.name,
+      val: Object.values(currentSelectedData).includes(item.id),
+    }));
+
     return {
-      values: Object.fromEntries(currentObj.map(item => [[item.name], true])),
-      subtitle: currentObj.map(item => item.name).join(', '),
+      values,
+      subtitle: currentSelectedData.map(item => currentData[item].name).join(', '),
     };
   }
 

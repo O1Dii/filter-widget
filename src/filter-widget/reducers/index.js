@@ -6,7 +6,7 @@ import data from './data';
 import open from './open';
 
 const filterWidget = combineReducers({
-  toggle,
+  selectedData: toggle,
   search,
   data,
   open,

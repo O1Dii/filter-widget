@@ -1,0 +1,23 @@
+@import "../../variables.scss";
+
+.dropdown-button {
+  display: flex;
+
+  text-transform: uppercase;
+
+  color: $main-text-color;
+  border: none;
+  outline: none;
+  background-color: transparent;
+
+  &__arrow {
+    position: relative;
+    bottom: -2px;
+
+    margin: 0 5px 0 0;
+
+    color: $light-transparent-color;
+
+    font-size: 12px;
+  }
+}

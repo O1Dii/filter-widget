@@ -9,7 +9,7 @@ class List extends React.PureComponent {
     const mas = ['abc', 'afa', 'hello', 'here'];
 
     const res = mas.map((item, index) => (
-      <CheckboxText key={item} id={index} checked={false} text={item} check={() => {}} />
+      <CheckboxText key={index} id={index} checked={false} text={item} check={() => {}} />
     ));
 
     return <div className="list">{res}</div>;

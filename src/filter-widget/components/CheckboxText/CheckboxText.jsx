@@ -4,17 +4,25 @@ import PropTypes from 'prop-types';
 import './CheckboxText.scss';
 
 class CheckboxText extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.onChange = this.onChange.bind(this);
+  }
+
+  onChange() {
+    const { check, id } = this.props;
+    check(id);
+  }
+
   render() {
-    const { text, checked, check } = this.props;
+    const { text, checked } = this.props;
 
     return (
       <label className="checkbox-text">
         <input
           value={checked}
           type="checkbox"
-          onChange={() => {
-            check(text);
-          }}
+          onChange={this.onChange}
           className="checkbox-text__checkbox"
         />
         <p className="checkbox-text__text">{text}</p>
@@ -27,6 +35,7 @@ CheckboxText.propTypes = {
   text: PropTypes.string.isRequired,
   checked: PropTypes.bool.isRequired,
   check: PropTypes.func.isRequired,
+  id: PropTypes.number.isRequired,
 };
 
 export default CheckboxText;

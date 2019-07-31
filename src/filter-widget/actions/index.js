@@ -47,6 +47,8 @@ export const toggleContext = createAction('TOGGLE_CONTEXT');
 
 export const toggleDimension = createAction('TOGGLE_DIMENSION');
 
+export const toggleFilter = createAction('TOGGLE_FILTER');
+
 export const changeSearch = createAction('CHANGE_SEARCH');
 
 export const openCloseDropdown = createAction('OPEN_CLOSE_DROPDOWN', section => ({
