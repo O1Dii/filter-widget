@@ -11,7 +11,7 @@ class Dimensions extends React.PureComponent {
 
     return (
       <SeparatedContainer>
-        <DropdownMenu title="Dimensions" subtitle={subtitle}>
+        <DropdownMenu title="Dimensions" subtitle={subtitle} dropdownId="2">
           {Object.entries(values).map(([key, val]) => (
             <CheckboxText key={key} text={key} checked={val} check={onDimensionChecked} />
           ))}

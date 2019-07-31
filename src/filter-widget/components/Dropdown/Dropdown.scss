@@ -12,7 +12,7 @@
 
   &__arrow {
     position: relative;
-    bottom: -2px;
+    bottom: -1px;
 
     margin: 5px;
 
@@ -40,12 +40,8 @@
     border-top: 5px solid $accent-color;
     background-color: $primary-color;
   }
+}
 
-  &:hover &__content {
-    display: block;
-  }
-
-  &::-ms-expand {
-    display: none;
-  }
+.open {
+  display: block;
 }

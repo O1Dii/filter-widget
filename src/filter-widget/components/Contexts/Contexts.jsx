@@ -11,7 +11,7 @@ class Contexts extends React.PureComponent {
 
     return (
       <SeparatedContainer>
-        <DropdownMenu title="Contexts" subtitle={subtitle}>
+        <DropdownMenu title="Contexts" subtitle={subtitle} dropdownId="1">
           {Object.entries(values).map(([key, val]) => (
             <CheckboxText key={key} text={key} checked={val} check={onContextChecked} />
           ))}
