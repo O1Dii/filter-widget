@@ -1,7 +1,11 @@
 import { handleAction } from 'redux-actions';
 
-import { changeSearch } from '../actions';
+import { changeSearchInput } from '../actions';
 
-const search = handleAction(changeSearch, state => state, {});
+const search = handleAction(
+  changeSearchInput,
+  (state, { payload }) => payload.data,
+  '',
+);
 
 export default search;

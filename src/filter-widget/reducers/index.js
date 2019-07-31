@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux-immutable';
 
-import toggle from './toggle';
+import selectedData from './selectedData';
 import search from './search';
 import data from './data';
 import open from './open';
 
 const filterWidget = combineReducers({
-  selectedData: toggle,
+  selectedData,
   search,
   data,
   open,

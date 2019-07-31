@@ -5,7 +5,7 @@ import Header from '../Header/Header';
 import Search from '../Search/Search';
 import Footer from '../Footer/Footer';
 
-import ChangableContext from '../../containers/ChangableContext';
+import ChangableContext from '../../containers/ChangableContexts';
 import ChangableDimensions from '../../containers/ChangableDimensions';
 
 import './Filters.scss';

@@ -49,7 +49,18 @@ export const toggleDimension = createAction('TOGGLE_DIMENSION');
 
 export const toggleFilter = createAction('TOGGLE_FILTER');
 
-export const changeSearch = createAction('CHANGE_SEARCH');
+export const changeSearchInput = createAction('CHANGE_SEARCH', data => ({
+  data,
+}));
+
+export const changeFilters = createAction('CHANGE_FILTERS', search => ({
+  search,
+}));
+
+export const changeSearch = data => (dispatch) => {
+  dispatch(changeSearchInput(data));
+  dispatch(changeFilters(data));
+};
 
 export const openCloseDropdown = createAction('OPEN_CLOSE_DROPDOWN', (section, prop) => ({
   section,

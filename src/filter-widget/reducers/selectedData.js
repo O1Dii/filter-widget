@@ -17,7 +17,7 @@ function toggleCurrent(state, payload, name) {
   return { ...state, [name]: [payload] };
 }
 
-const toggle = handleActions(
+const main = handleActions(
   {
     [toggleContext]: (state, { payload }) => toggleCurrent(state, payload, 'contexts'),
     [toggleDimension]: (state, { payload }) => toggleCurrent(state, payload, 'dimensions'),
@@ -26,4 +26,4 @@ const toggle = handleActions(
   {},
 );
 
-export default toggle;
+export default main;

@@ -31,9 +31,9 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-const ChangableContext = connect(
+const ChangableContexts = connect(
   mapStateToProps,
   mapDispatchToProps,
 )(Contexts);
 
-export default ChangableContext;
+export default ChangableContexts;

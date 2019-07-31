@@ -1,21 +1,39 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import HintContainer from '../HintContainer/HintContainer';
 import './SearchInput.scss';
 
 class SearchInput extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.onChange = this.onChange.bind(this);
+  }
+
+  onChange(e) {
+    const { searchChange } = this.props;
+    searchChange(e.target.value);
+  }
+
   render() {
+    const { search } = this.props;
+
     return (
       <div className="search-input">
         <label>
           <i className="search-input__icon fas fa-search" />
 
-          <input className="search-input__input" />
+          <input value={search} className="search-input__input" onChange={this.onChange} />
         </label>
         <HintContainer className="search-input__hint-container" />
       </div>
     );
   }
 }
+
+SearchInput.propTypes = {
+  search: PropTypes.string.isRequired,
+  searchChange: PropTypes.func.isRequired,
+};
 
 export default SearchInput;
