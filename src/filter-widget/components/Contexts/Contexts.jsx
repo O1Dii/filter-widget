@@ -7,11 +7,18 @@ import CheckboxText from '../CheckboxText/CheckboxText';
 
 class Contexts extends React.PureComponent {
   render() {
-    const { onContextChecked, subtitle, values } = this.props;
+    const {
+      onContextChecked, subtitle, values, dropdownClass,
+    } = this.props;
 
     return (
       <SeparatedContainer>
-        <DropdownMenu title="Contexts" subtitle={subtitle} dropdownId="1">
+        <DropdownMenu
+          title="Contexts"
+          subtitle={subtitle}
+          dropdownId="1"
+          dropdownClass={dropdownClass}
+        >
           {values.map(({ id, name, val }) => (
             <CheckboxText key={id} text={name} id={id} checked={val} check={onContextChecked} />
           ))}
@@ -27,6 +34,7 @@ Contexts.propTypes = {
   values: PropTypes.arrayOf(
     PropTypes.shape({ id: PropTypes.number, name: PropTypes.string, val: PropTypes.bool }),
   ),
+  dropdownClass: PropTypes.string.isRequired,
 };
 
 Contexts.defaultProps = {

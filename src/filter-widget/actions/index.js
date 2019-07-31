@@ -51,6 +51,7 @@ export const toggleFilter = createAction('TOGGLE_FILTER');
 
 export const changeSearch = createAction('CHANGE_SEARCH');
 
-export const openCloseDropdown = createAction('OPEN_CLOSE_DROPDOWN', section => ({
+export const openCloseDropdown = createAction('OPEN_CLOSE_DROPDOWN', (section, prop) => ({
   section,
+  state: prop,
 }));

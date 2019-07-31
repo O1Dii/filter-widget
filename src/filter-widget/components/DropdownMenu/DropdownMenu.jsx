@@ -1,21 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import OpeningDropdown from '../../containers/OpeningDropdown';
+import SwitchableDropdown from '../../containers/SwitchableDropdown';
 
 import './DropdownMenu.scss';
 
 class DropdownMenu extends React.PureComponent {
   render() {
     const {
-      title, subtitle, children, dropdownId,
+      title, subtitle, children, dropdownId, dropdownClass,
     } = this.props;
 
     return (
       <div className="dropdown-menu">
-        <OpeningDropdown dropdownId={dropdownId} title={title}>
+        <SwitchableDropdown dropdownId={dropdownId} title={title} dropdownClass={dropdownClass}>
           {children}
-        </OpeningDropdown>
+        </SwitchableDropdown>
         <p className="dropdown-menu__subtitle">{subtitle}</p>
       </div>
     );
@@ -27,6 +27,7 @@ DropdownMenu.propTypes = {
   subtitle: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
   dropdownId: PropTypes.string.isRequired,
+  dropdownClass: PropTypes.string.isRequired,
 };
 
 export default DropdownMenu;

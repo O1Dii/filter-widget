@@ -4,21 +4,11 @@ import PropTypes from 'prop-types';
 import './DropdownButton.scss';
 
 class DropdownButton extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.openCloseDropdown = this.openCloseDropdown.bind(this);
-  }
-
-  openCloseDropdown() {
-    const { dropdownId, openClose } = this.props;
-    openClose(dropdownId);
-  }
-
   render() {
-    const { title } = this.props;
+    const { title, openClose } = this.props;
 
     return (
-      <button type="button" className="dropdown-button" onClick={this.openCloseDropdown}>
+      <button type="button" className="dropdown-button" onClick={openClose}>
         <i className="dropdown-button__arrow fas fa-angle-down" />
         {title}
       </button>
@@ -28,7 +18,6 @@ class DropdownButton extends React.PureComponent {
 
 DropdownButton.propTypes = {
   title: PropTypes.string.isRequired,
-  dropdownId: PropTypes.string.isRequired,
   openClose: PropTypes.func.isRequired,
 };
 

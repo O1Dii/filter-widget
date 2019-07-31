@@ -6,6 +6,7 @@ import Dimensions from '../components/Dimensions/Dimensions';
 const mapStateToProps = (state) => {
   const currentData = state.get('data').dimensions;
   const currentSelectedData = state.get('selectedData').dimensions || [];
+  const open = state.get('open');
 
   if (currentData) {
     const values = Object.values(currentData).map(item => ({
@@ -17,10 +18,11 @@ const mapStateToProps = (state) => {
     return {
       values,
       subtitle: currentSelectedData.map(item => currentData[item].name).join(', '),
+      dropdownClass: open && open[2] ? 'open' : '',
     };
   }
 
-  return {};
+  return { dropdownClass: open && open[2] ? 'open' : '' };
 };
 
 const mapDispatchToProps = dispatch => ({

@@ -7,11 +7,18 @@ import CheckboxText from '../CheckboxText/CheckboxText';
 
 class Dimensions extends React.PureComponent {
   render() {
-    const { onDimensionChecked, subtitle, values } = this.props;
+    const {
+      onDimensionChecked, subtitle, values, dropdownClass,
+    } = this.props;
 
     return (
       <SeparatedContainer>
-        <DropdownMenu title="Dimensions" subtitle={subtitle} dropdownId="2">
+        <DropdownMenu
+          title="Dimensions"
+          subtitle={subtitle}
+          dropdownId="2"
+          dropdownClass={dropdownClass}
+        >
           {values.map(({ id, name, val }) => (
             <CheckboxText key={id} text={name} id={id} checked={val} check={onDimensionChecked} />
           ))}
@@ -27,6 +34,7 @@ Dimensions.propTypes = {
   values: PropTypes.arrayOf(
     PropTypes.shape({ id: PropTypes.number, name: PropTypes.string, val: PropTypes.bool }),
   ),
+  dropdownClass: PropTypes.string.isRequired,
 };
 
 Dimensions.defaultProps = {
