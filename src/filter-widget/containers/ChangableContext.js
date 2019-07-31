@@ -1,12 +1,12 @@
 import { connect } from 'react-redux';
 
-import { toggleContext } from '../actions/index.js';
+import { toggleContext } from '../actions';
 import Contexts from '../components/Contexts/Contexts';
 
 const mapStateToProps = (state) => {
-  const currentObj = state.data.contexts;
+  const currentObj = state.get('data').contexts;
 
-  if (currentObj) {
+  if (currentObj instanceof Array) {
     return {
       values: Object.fromEntries(currentObj.map(item => [[item.name], true])),
       subtitle: currentObj.map(item => item.name).join(', '),

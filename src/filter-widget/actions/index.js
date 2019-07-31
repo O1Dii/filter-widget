@@ -37,6 +37,12 @@ export const getFiltersData = () => (dispatch) => {
   dispatch(recieveFilters(data));
 };
 
+export const getAllData = () => (dispatch) => {
+  dispatch(getContextsData());
+  dispatch(getDimensionsData());
+  dispatch(getFiltersData());
+};
+
 export const toggleContext = createAction('TOGGLE_CONTEXT');
 
 export const toggleDimension = createAction('TOGGLE_DIMENSION');

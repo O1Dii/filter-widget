@@ -1,15 +1,13 @@
 import { connect } from 'react-redux';
 
-import { getContextsData, getDimensionsData, getFiltersData } from '../actions/index.js';
+import { getAllData } from '../actions';
 import Filters from '../components/Filters/Filters';
 
 const mapStateToProps = () => ({});
 
 const mapDispatchToProps = dispatch => ({
   componentMount: () => {
-    dispatch(getContextsData());
-    dispatch(getDimensionsData());
-    dispatch(getFiltersData());
+    dispatch(getAllData());
   },
 });
 

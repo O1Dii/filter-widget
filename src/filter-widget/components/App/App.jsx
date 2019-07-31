@@ -1,6 +1,7 @@
 import React from 'react';
 
 import ActiveFilters from '../../containers/ActiveFilters';
+
 import './App.scss';
 
 class App extends React.PureComponent {

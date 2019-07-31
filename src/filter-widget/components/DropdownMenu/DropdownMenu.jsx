@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Dropdown from '../Dropdown/Dropdown.jsx';
+import Dropdown from '../Dropdown/Dropdown';
+
 import './DropdownMenu.scss';
 
 class DropdownMenu extends React.PureComponent {

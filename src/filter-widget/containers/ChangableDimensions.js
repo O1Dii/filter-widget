@@ -1,12 +1,12 @@
 import { connect } from 'react-redux';
 
-import { toggleDimension } from '../actions/index.js';
+import { toggleDimension } from '../actions';
 import Dimensions from '../components/Dimensions/Dimensions';
 
 const mapStateToProps = (state) => {
-  const currentObj = state.data.dimensions;
+  const currentObj = state.get('data').dimensions;
 
-  if (currentObj) {
+  if (currentObj instanceof Array) {
     return {
       values: Object.fromEntries(currentObj.map(item => [[item.name], true])),
       subtitle: currentObj.map(item => item.name).join(', '),

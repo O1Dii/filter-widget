@@ -1,12 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Header from '../Header/Header.jsx';
-import Search from '../Search/Search.jsx';
-import Footer from '../Footer/Footer.jsx';
-import './Filters.scss';
+import Header from '../Header/Header';
+import Search from '../Search/Search';
+import Footer from '../Footer/Footer';
+
 import ChangableContext from '../../containers/ChangableContext';
 import ChangableDimensions from '../../containers/ChangableDimensions';
+
+import './Filters.scss';
 
 class Filters extends React.PureComponent {
   componentDidMount() {

@@ -1,6 +1,6 @@
 import { handleActions } from 'redux-actions';
 
-import { toggleContext, toggleDimension } from '../actions/index';
+import { toggleContext, toggleDimension } from '../actions';
 
 function toggleCurrent(state, payload, name) {
   const payloadState = false; //! state[name][payload];

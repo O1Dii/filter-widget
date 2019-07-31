@@ -1,11 +1,18 @@
-import { handleAction, combineActions } from 'redux-actions';
+import { handleAction } from 'redux-actions';
+import { combineReducers } from 'redux';
 
-import { recieveContexts, recieveDimensions, recieveFilters } from '../actions/index';
+import { recieveContexts, recieveDimensions, recieveFilters } from '../actions';
 
-const data = handleAction(
-  combineActions(recieveContexts, recieveDimensions, recieveFilters),
-  (state, { payload }) => Object.assign({}, state, payload),
+const contexts = handleAction(recieveContexts, (state, { payload }) => [...payload.contexts], {});
+
+const dimensions = handleAction(
+  recieveDimensions,
+  (state, { payload }) => [...payload.dimensions],
   {},
 );
+
+const filters = handleAction(recieveFilters, (state, { payload }) => [...payload.filters], {});
+
+const data = combineReducers({ contexts, dimensions, filters });
 
 export default data;

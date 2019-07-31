@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import SeparatedContainer from '../SeparatedContainer/SeparatedContainer.jsx';
+import SeparatedContainer from '../SeparatedContainer/SeparatedContainer';
+
 import './Footer.scss';
 
 class Footer extends React.PureComponent {

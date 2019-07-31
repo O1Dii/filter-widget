@@ -1,6 +1,7 @@
 import React from 'react';
 
-import CheckboxText from '../CheckboxText/CheckboxText.jsx';
+import CheckboxText from '../CheckboxText/CheckboxText';
+
 import './List.scss';
 
 class List extends React.PureComponent {

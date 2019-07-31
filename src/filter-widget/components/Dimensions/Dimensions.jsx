@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import SeparatedContainer from '../SeparatedContainer/SeparatedContainer.jsx';
-import DropdownMenu from '../DropdownMenu/DropdownMenu.jsx';
-import CheckboxText from '../CheckboxText/CheckboxText.jsx';
+import SeparatedContainer from '../SeparatedContainer/SeparatedContainer';
+import DropdownMenu from '../DropdownMenu/DropdownMenu';
+import CheckboxText from '../CheckboxText/CheckboxText';
 
 class Dimensions extends React.PureComponent {
   render() {
