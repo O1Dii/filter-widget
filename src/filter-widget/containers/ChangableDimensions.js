@@ -29,7 +29,7 @@ const mapStateToProps = (state) => {
     disabled: !currentSelectedContexts.length,
     values,
     subtitle: currentSelectedData
-      .map(item => Object.values(filteredData).filter(({ id }) => id === item)[0].name)
+      .map(item => Object.values(currentData).filter(({ id }) => id === item)[0].name)
       .join(', '),
     dropdownClass: open && open[2] ? 'open' : '',
   };

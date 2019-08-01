@@ -12,12 +12,16 @@
 
   &__arrow {
     position: relative;
-    bottom: -2px;
+    bottom: -3px;
 
     margin: 0 5px 0 0;
 
     color: $light-transparent-color;
 
     font-size: 12px;
+  }
+
+  &:hover &__arrow {
+    color: $main-text-color;
   }
 }

@@ -23,4 +23,8 @@
   &__hint-container {
     height: 20px;
   }
+
+  &:hover &__icon {
+    color: $main-text-color;
+  }
 }

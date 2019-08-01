@@ -12,10 +12,12 @@ const mapStateToProps = (state) => {
     return state;
   }
 
-  let filteredData = Object.values(currentData).filter(item => currentSelectedDimensions.includes(item.dimensionId));
+  let filteredData = Object.values(currentData)
+    .filter(item => currentSelectedDimensions.includes(item.dimensionId));
 
   if (search.match === '**') {
-    filteredData = Object.values(filteredData).filter(item => item.name.toLowerCase().includes(search.text.toLowerCase()));
+    filteredData = Object.values(filteredData)
+      .filter(item => item.name.toLowerCase().includes(search.text.toLowerCase()));
   }
   if (search.match === '*_') {
     filteredData = Object.values(filteredData).filter(item => item.name.startsWith(search.text));

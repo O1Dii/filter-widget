@@ -23,6 +23,10 @@
     justify-content: center;
   }
 
+  &__bars:hover {
+    color: $main-text-color;
+  }
+
   &__title {
     margin: 0;
 
@@ -45,5 +49,9 @@
     align-items: center;
     flex-shrink: 0;
     justify-content: center;
+  }
+
+  &__exit:hover {
+    color: $main-text-color;
   }
 }

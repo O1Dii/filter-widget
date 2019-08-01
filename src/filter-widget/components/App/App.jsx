@@ -1,4 +1,5 @@
 import React from 'react';
+import Draggable from 'react-draggable';
 
 import ActiveFilters from '../../containers/ActiveFilters';
 
@@ -7,9 +8,11 @@ import './App.scss';
 class App extends React.PureComponent {
   render() {
     return (
-      <div className="app">
-        <ActiveFilters className="app__filters" />
-      </div>
+      <Draggable handle=".header__bars">
+        <div className="app">
+          <ActiveFilters className="app__filters" />
+        </div>
+      </Draggable>
     );
   }
 }
