@@ -4,6 +4,7 @@ import List from '../components/List/List';
 
 const mapStateToProps = (state) => {
   const currentData = state.get('data').filters;
+  const currentSelectedDimensions = state.get('selectedData').dimensions || [];
   const currentSelectedData = state.get('selectedData').filters || [];
   const search = state.get('search');
 
@@ -11,16 +12,18 @@ const mapStateToProps = (state) => {
     return state;
   }
 
-  let filteredData;
+  let filteredData = Object.values(currentData)
+    .filter(item => currentSelectedDimensions.includes(item.dimensionId));
 
   if (search.match === '**') {
-    filteredData = Object.values(currentData).filter(item => item.name.toLowerCase().includes(search.text.toLowerCase()));
+    filteredData = Object.values(filteredData)
+      .filter(item => item.name.toLowerCase().includes(search.text.toLowerCase()));
   }
   if (search.match === '*_') {
-    filteredData = Object.values(currentData).filter(item => item.name.startsWith(search.text));
+    filteredData = Object.values(filteredData).filter(item => item.name.startsWith(search.text));
   }
   if (search.match === '""') {
-    filteredData = Object.values(currentData).filter(item => item.name === search.text);
+    filteredData = Object.values(filteredData).filter(item => item.name === search.text);
   }
 
   filteredData.sort();

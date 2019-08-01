@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Header from '../Header/Header';
-import Search from '../Search/Search';
 import Footer from '../Footer/Footer';
 
 import ChangableContext from '../../containers/ChangableContexts';
 import ChangableDimensions from '../../containers/ChangableDimensions';
+import ActiveSearch from '../../containers/ActiveSearch';
 
 import './Filters.scss';
 
@@ -24,7 +24,7 @@ class Filters extends React.PureComponent {
         <Header />
         <ChangableContext />
         <ChangableDimensions />
-        <Search />
+        <ActiveSearch />
         <Footer className="filters__footer" />
       </div>
     );

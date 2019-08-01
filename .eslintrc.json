@@ -18,6 +18,8 @@
   "plugins": ["react"],
   "rules": {
     "import/extensions": "off",
-    "react/prefer-stateless-function": "off"
+    "react/prefer-stateless-function": "off",
+    "jsx-a11y/label-has-associated-control": "off",
+    "jsx-a11y/label-has-for": "off"
   }
 }

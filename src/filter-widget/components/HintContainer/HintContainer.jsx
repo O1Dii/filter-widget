@@ -24,7 +24,7 @@ class HintContainer extends React.PureComponent {
   }
 
   render() {
-    const { className, reverse, chosenMatch } = this.props;
+    const { className, reverse } = this.props;
     const firstHintValues = ['**', '*_', '""'];
 
     return (
@@ -48,6 +48,8 @@ HintContainer.propTypes = {
   className: PropTypes.string,
   matchChange: PropTypes.func.isRequired,
   sortingChange: PropTypes.func.isRequired,
+  // chosenMatch: PropTypes.string.isRequired,
+  reverse: PropTypes.bool.isRequired,
 };
 
 HintContainer.defaultProps = {

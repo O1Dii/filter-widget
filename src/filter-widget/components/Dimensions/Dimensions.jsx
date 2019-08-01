@@ -8,11 +8,11 @@ import CheckboxText from '../CheckboxText/CheckboxText';
 class Dimensions extends React.PureComponent {
   render() {
     const {
-      onDimensionChecked, subtitle, values, dropdownClass,
+      onDimensionChecked, subtitle, values, dropdownClass, disabled,
     } = this.props;
 
     return (
-      <SeparatedContainer>
+      <SeparatedContainer disabled={disabled}>
         <DropdownMenu
           title="Dimensions"
           subtitle={subtitle}
@@ -35,10 +35,12 @@ Dimensions.propTypes = {
     PropTypes.shape({ id: PropTypes.number, name: PropTypes.string, val: PropTypes.bool }),
   ),
   dropdownClass: PropTypes.string.isRequired,
+  disabled: PropTypes.bool,
 };
 
 Dimensions.defaultProps = {
   subtitle: '',
+  disabled: false,
   values: [],
 };
 

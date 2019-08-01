@@ -10,9 +10,9 @@ const mapDispatchToProps = dispatch => ({
     dispatch(openCloseDropdown(section, prop));
   },
 });
-const OpeningDropdown = connect(
+const SwitchableDropdown = connect(
   mapStateToProps,
   mapDispatchToProps,
 )(Dropdown);
 
-export default OpeningDropdown;
+export default SwitchableDropdown;

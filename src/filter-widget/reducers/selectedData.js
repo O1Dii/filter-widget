@@ -23,7 +23,7 @@ const main = handleActions(
     [toggleDimension]: (state, { payload }) => toggleCurrent(state, payload, 'dimensions'),
     [toggleFilter]: (state, { payload }) => toggleCurrent(state, payload, 'filters'),
   },
-  {},
+  { contexts: [], dimensions: [], filter: [] },
 );
 
 export default main;

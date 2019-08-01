@@ -10,10 +10,14 @@ const mapStateToProps = (state) => {
   const open = state.get('open');
 
   if (!currentData) {
-    return { dropdownClass: open && open[2] ? 'open' : '' };
+    return {
+      disabled: !currentSelectedContexts.length,
+      dropdownClass: open && open[2] ? 'open' : '',
+    };
   }
 
-  const filteredData = Object.values(currentData).filter(item => currentSelectedContexts.includes(item.contextId));
+  const filteredData = Object.values(currentData)
+    .filter(item => currentSelectedContexts.includes(item.contextId));
 
   const values = Object.values(filteredData).map(item => ({
     id: item.id,
@@ -22,6 +26,7 @@ const mapStateToProps = (state) => {
   }));
 
   return {
+    disabled: !currentSelectedContexts.length,
     values,
     subtitle: currentSelectedData
       .map(item => Object.values(filteredData).filter(({ id }) => id === item)[0].name)
