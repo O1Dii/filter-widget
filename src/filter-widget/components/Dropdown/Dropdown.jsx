@@ -39,7 +39,7 @@ class Dropdown extends React.PureComponent {
 
 Dropdown.propTypes = {
   title: PropTypes.string.isRequired,
-  children: PropTypes.node.isRequired,
+  children: PropTypes.oneOfType([PropTypes.element, PropTypes.node, PropTypes.array]).isRequired,
   dropdownId: PropTypes.string.isRequired,
   dropdownClass: PropTypes.string.isRequired,
   openClose: PropTypes.func.isRequired,

@@ -25,7 +25,7 @@ class DropdownMenu extends React.PureComponent {
 DropdownMenu.propTypes = {
   title: PropTypes.string.isRequired,
   subtitle: PropTypes.string.isRequired,
-  children: PropTypes.node.isRequired,
+  children: PropTypes.oneOfType([PropTypes.element, PropTypes.node, PropTypes.array]).isRequired,
   dropdownId: PropTypes.string.isRequired,
   dropdownClass: PropTypes.string.isRequired,
 };

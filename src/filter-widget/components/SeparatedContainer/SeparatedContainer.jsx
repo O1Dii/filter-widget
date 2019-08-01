@@ -18,12 +18,12 @@ class SeparatedContainer extends React.PureComponent {
 }
 
 SeparatedContainer.propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.oneOfType([PropTypes.element, PropTypes.node, PropTypes.array]),
   disabled: PropTypes.bool,
 };
 
 SeparatedContainer.defaultProps = {
-  children: '',
+  children: [],
   disabled: false,
 };
 
