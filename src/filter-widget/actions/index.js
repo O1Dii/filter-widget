@@ -50,7 +50,7 @@ export const toggleDimension = createAction('TOGGLE_DIMENSION');
 export const toggleFilter = createAction('TOGGLE_FILTER');
 
 export const changeSearchInput = createAction('CHANGE_SEARCH', data => ({
-  data,
+  text: data,
 }));
 
 export const changeFilters = createAction('CHANGE_FILTERS', search => ({
@@ -66,3 +66,7 @@ export const openCloseDropdown = createAction('OPEN_CLOSE_DROPDOWN', (section, p
   section,
   state: prop,
 }));
+
+export const matchChange = createAction('MATCH_CHANGE', data => ({ match: data }));
+
+export const sortingChange = createAction('SORTINGS_CHANGE', data => ({ sortingReverse: data }));

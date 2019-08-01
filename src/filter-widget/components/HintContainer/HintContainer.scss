@@ -7,13 +7,21 @@
 
   padding-left: 20px;
 
-  &__hint {
+  &__first-hint {
+    width: 15px;
     height: 20px;
     margin-right: 5px;
 
     border: 1px solid $main-text-color;
   }
-  &__hint:first-child:hover {
-    height: 60px;
+
+  &__second-hint {
+    height: 20px;
+
+    border: 1px solid $main-text-color;
+  }
+
+  &__first-hint:hover {
+    height: 54px;
   }
 }

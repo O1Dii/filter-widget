@@ -39,7 +39,7 @@ Dimensions.propTypes = {
 
 Dimensions.defaultProps = {
   subtitle: '',
-  values: {},
+  values: [],
 };
 
 export default Dimensions;

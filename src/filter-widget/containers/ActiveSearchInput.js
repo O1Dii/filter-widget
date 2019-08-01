@@ -4,7 +4,7 @@ import { changeSearch } from '../actions';
 import SearchInput from '../components/SearchInput/SearchInput';
 
 const mapStateToProps = state => ({
-  search: state.get('search'),
+  search: state.get('search').text,
 });
 
 const mapDispatchToProps = dispatch => ({

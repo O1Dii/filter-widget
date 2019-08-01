@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import HintContainer from '../HintContainer/HintContainer';
+import ActiveSearchFilters from '../../containers/ActiveSearchFilters';
 import './SearchInput.scss';
 
 class SearchInput extends React.PureComponent {
@@ -25,7 +25,7 @@ class SearchInput extends React.PureComponent {
 
           <input value={search} className="search-input__input" onChange={this.onChange} />
         </label>
-        <HintContainer className="search-input__hint-container" />
+        <ActiveSearchFilters className="search-input__hint-container" />
       </div>
     );
   }

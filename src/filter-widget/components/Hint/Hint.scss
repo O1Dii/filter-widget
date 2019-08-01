@@ -8,8 +8,14 @@
     display: none;
 
     margin: 3px;
+    padding: 0;
 
     cursor: pointer;
+
+    color: $main-text-color;
+    border: none;
+    outline: none;
+    background-color: transparent;
 
     font-size: 12px;
   }

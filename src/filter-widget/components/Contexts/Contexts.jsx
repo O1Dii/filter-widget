@@ -39,7 +39,7 @@ Contexts.propTypes = {
 
 Contexts.defaultProps = {
   subtitle: '',
-  values: {},
+  values: [],
 };
 
 export default Contexts;
