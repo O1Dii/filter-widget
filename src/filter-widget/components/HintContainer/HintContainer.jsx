@@ -35,7 +35,7 @@ class HintContainer extends React.PureComponent {
           className="hint-container__first-hint"
         />
         <Hint
-          values={reverse ? ['Z-A'] : ['A-Z']}
+          values={[reverse]}
           click={this.onSortingChange}
           className="hint-container__second-hint"
         />

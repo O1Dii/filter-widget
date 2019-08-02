@@ -5,11 +5,11 @@ import './SeparatedContainer.scss';
 
 class SeparatedContainer extends React.PureComponent {
   render() {
-    const { children, disabled } = this.props;
-    const className = disabled ? 'disabled' : '';
+    const { children } = this.props;
+    // const className = disabled ? 'disabled' : '';
 
     return (
-      <div className={`separated-container ${className}`}>
+      <div className="separated-container">
         <div className="separated-container__empty" />
         <div className="separated-container__content">{children}</div>
       </div>

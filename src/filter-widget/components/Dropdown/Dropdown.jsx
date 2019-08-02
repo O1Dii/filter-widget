@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import OutsideClickHandler from 'react-outside-click-handler';
+import classNames from 'classnames';
 
 import DropdownButton from '../DropdownButton/DropdownButton';
 
@@ -9,18 +10,24 @@ import './Dropdown.scss';
 class Dropdown extends React.PureComponent {
   constructor(props) {
     super(props);
+
+    this.state = {
+      opened: false,
+    };
+
     this.openCloseDropdown = this.openCloseDropdown.bind(this);
   }
 
   openCloseDropdown(prop) {
-    const { dropdownId, openClose } = this.props;
-    openClose(dropdownId, prop);
+    const { opened } = this.state;
+    this.setState({ opened: prop !== undefined ? prop : !opened });
   }
 
   render() {
-    const {
-      dropdownClass, title, children, dropdownId,
-    } = this.props;
+    const { opened } = this.state;
+    const { title, children, dropdownId } = this.props;
+
+    const menuClassName = classNames({ dropdown__content: true, open: opened });
 
     return (
       <div className="dropdown">
@@ -30,7 +37,7 @@ class Dropdown extends React.PureComponent {
             dropdownId={dropdownId}
             openClose={() => this.openCloseDropdown()}
           />
-          <div className={`dropdown__content ${dropdownClass}`}>{children}</div>
+          <div className={menuClassName}>{children}</div>
         </OutsideClickHandler>
       </div>
     );

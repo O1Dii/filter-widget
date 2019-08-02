@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import SwitchableDropdown from '../../containers/SwitchableDropdown';
+import Dropdown from '../Dropdown/Dropdown';
 
 import './DropdownMenu.scss';
 
@@ -13,9 +13,9 @@ class DropdownMenu extends React.PureComponent {
 
     return (
       <div className="dropdown-menu">
-        <SwitchableDropdown dropdownId={dropdownId} title={title} dropdownClass={dropdownClass}>
+        <Dropdown dropdownId={dropdownId} title={title} dropdownClass={dropdownClass}>
           {children}
-        </SwitchableDropdown>
+        </Dropdown>
         <p className="dropdown-menu__subtitle">{subtitle}</p>
       </div>
     );

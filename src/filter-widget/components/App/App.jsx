@@ -8,7 +8,7 @@ class App extends React.PureComponent {
   render() {
     return (
       <div className="app">
-        <ActiveOpenButton id="1" />
+        <ActiveOpenButton />
       </div>
     );
   }

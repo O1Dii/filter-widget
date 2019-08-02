@@ -4,8 +4,8 @@ import { matchChange, sortingChange } from '../actions';
 import HintContainer from '../components/HintContainer/HintContainer';
 
 const mapStateToProps = state => ({
-  chosenMatch: state.get('search').match,
-  reverse: state.get('search').sortingReverse,
+  chosenMatch: state.get('searchMatch'),
+  reverse: state.get('sortType'),
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -13,11 +13,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch(matchChange(data));
   },
   sortingChange: (data) => {
-    if (data === 'A-Z') {
-      dispatch(sortingChange(true));
-    } else {
-      dispatch(sortingChange(false));
-    }
+    dispatch(sortingChange(data));
   },
 });
 

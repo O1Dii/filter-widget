@@ -2,44 +2,33 @@ import { connect } from 'react-redux';
 
 import List from '../components/List/List';
 
+import { filters } from '../utils';
+
 const mapStateToProps = (state) => {
-  const currentData = state.get('data').filters;
-  const currentSelectedDimensions = state.get('selectedData').dimensions || [];
-  const currentSelectedData = state.get('selectedData').filters || [];
-  const search = state.get('search');
+  const currentData = state.get('filters');
+  const currentSelectedDimensions = state.get('selectedDimensions');
+  const currentSelectedData = state.get('selectedFilters');
+  const searchText = state.get('searchText');
+  const searchMatch = state.get('searchMatch');
+  const sortType = state.get('sortType');
 
   if (!currentData) {
     return state;
   }
 
-  let filteredData = Object.values(currentData)
-    .filter(item => currentSelectedDimensions.includes(item.dimensionId));
+  let filteredData = currentData.filter(([index, item]) => currentSelectedDimensions.includes(item.dimensionId));
 
-  if (search.match === '**') {
-    filteredData = Object.values(filteredData)
-      .filter(item => item.name.toLowerCase().includes(search.text.toLowerCase()));
-  }
-  if (search.match === '*_') {
-    filteredData = Object.values(filteredData).filter(item => item.name.startsWith(search.text));
-  }
-  if (search.match === '""') {
-    filteredData = Object.values(filteredData).filter(item => item.name === search.text);
-  }
+  filteredData = filters[searchMatch](filteredData, searchText);
 
   filteredData.sort();
 
-  if (search.sortingReverse) {
-    filteredData.reverse();
+  if (sortType === 'Z-A') {
+    filteredData = filteredData.reverse();
   }
 
-  const values = Object.values(filteredData).map(item => ({
-    id: item.id,
-    name: item.name,
-    val: Object.values(currentSelectedData).includes(item.id),
-  }));
-
   return {
-    values,
+    data: filteredData,
+    selectedData: currentSelectedData,
   };
 };
 

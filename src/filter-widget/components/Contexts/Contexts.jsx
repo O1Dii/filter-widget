@@ -8,20 +8,20 @@ import CheckboxText from '../CheckboxText/CheckboxText';
 class Contexts extends React.PureComponent {
   render() {
     const {
-      onContextChecked, subtitle, values, dropdownClass,
+      title, onChecked, data, selectedData, dropdownClass,
     } = this.props;
+
+    const subtitle = selectedData
+      .map(item => data.filter(([index, { id }]) => id === item).get(0)[1].name)
+      .join(', ');
 
     return (
       <SeparatedContainer>
-        <DropdownMenu
-          title="Contexts"
-          subtitle={subtitle}
-          dropdownId="1"
-          dropdownClass={dropdownClass}
-        >
-          {values.map(({ id, name, val }) => (
-            <CheckboxText key={id} text={name} id={id} checked={val} check={onContextChecked} />
-          ))}
+        <DropdownMenu title={title} subtitle={subtitle} dropdownClass={dropdownClass}>
+          {data.map(([index, { id, name }]) => {
+            const val = selectedData.includes(id);
+            return <CheckboxText key={id} text={name} id={id} checked={val} check={onChecked} />;
+          })}
         </DropdownMenu>
       </SeparatedContainer>
     );

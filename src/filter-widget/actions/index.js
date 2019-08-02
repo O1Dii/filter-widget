@@ -3,9 +3,7 @@ import { getContexts, getDimensions, getFilters } from '../data/index';
 
 export const requestContexts = createAction('REQUEST_CONTEXTS');
 
-export const recieveContexts = createAction('RECIEVE_CONTEXTS', contexts => ({
-  contexts,
-}));
+export const recieveContexts = createAction('RECIEVE_CONTEXTS');
 
 export const getContextsData = () => (dispatch) => {
   dispatch(requestContexts());
@@ -15,9 +13,7 @@ export const getContextsData = () => (dispatch) => {
 
 export const requestDimensions = createAction('REQUEST_DIMENSIONS');
 
-export const recieveDimensions = createAction('RECIEVE_DIMENSIONS', dimensions => ({
-  dimensions,
-}));
+export const recieveDimensions = createAction('RECIEVE_DIMENSIONS');
 
 export const getDimensionsData = () => (dispatch) => {
   dispatch(requestDimensions());
@@ -27,9 +23,7 @@ export const getDimensionsData = () => (dispatch) => {
 
 export const requestFilters = createAction('REQUEST_FILTERS');
 
-export const recieveFilters = createAction('RECIEVE_FILTERS', filters => ({
-  filters,
-}));
+export const recieveFilters = createAction('RECIEVE_FILTERS');
 
 export const getFiltersData = () => (dispatch) => {
   dispatch(requestFilters());
@@ -49,26 +43,17 @@ export const toggleDimension = createAction('TOGGLE_DIMENSION');
 
 export const toggleFilter = createAction('TOGGLE_FILTER');
 
-export const changeSearchInput = createAction('CHANGE_SEARCH', data => ({
-  text: data,
-}));
+export const changeSearchInput = createAction('CHANGE_SEARCH');
 
-export const changeFilters = createAction('CHANGE_FILTERS', search => ({
-  search,
-}));
+export const changeFilters = createAction('CHANGE_FILTERS');
 
 export const changeSearch = data => (dispatch) => {
   dispatch(changeSearchInput(data));
   dispatch(changeFilters(data));
 };
 
-export const openCloseDropdown = createAction('OPEN_CLOSE_DROPDOWN', (section, prop) => ({
-  section,
-  state: prop,
-}));
+export const matchChange = createAction('MATCH_CHANGE');
 
-export const matchChange = createAction('MATCH_CHANGE', data => ({ match: data }));
-
-export const sortingChange = createAction('SORTINGS_CHANGE', data => ({ sortingReverse: data }));
+export const sortingChange = createAction('SORTINGS_CHANGE', data => (data === 'A-Z' ? 'Z-A' : 'A-Z'));
 
 export const openCloseAll = createAction('OPEN_CLOSE_ALL');

@@ -7,7 +7,6 @@ const mapStateToProps = () => ({});
 
 const mapDispatchToProps = dispatch => ({
   openClose: () => {
-    console.log('here');
     dispatch(openCloseAll());
   },
 });

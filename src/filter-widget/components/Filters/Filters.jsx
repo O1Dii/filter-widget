@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 import Footer from '../Footer/Footer';
 
@@ -19,10 +20,10 @@ class Filters extends React.PureComponent {
   render() {
     const { className, hidden } = this.props;
 
-    const additionalClassName = hidden ? 'hidden' : '';
+    const mainClassName = classNames('filters', className, { hidden });
 
     return (
-      <div className={`filters ${className} ${additionalClassName}`}>
+      <div className={mainClassName}>
         <ActiveHeader />
         <ChangableContext />
         <ChangableDimensions />

@@ -4,31 +4,18 @@ import { toggleContext } from '../actions';
 import Contexts from '../components/Contexts/Contexts';
 
 const mapStateToProps = (state) => {
-  const currentData = state.get('data').contexts;
-  const currentSelectedData = state.get('selectedData').contexts || [];
-  const open = state.get('openMenus');
-
-  if (!currentData) {
-    return { dropdownClass: open && open[1] ? 'open' : '' };
-  }
-
-  const values = Object.values(currentData).map(item => ({
-    id: item.id,
-    name: item.name,
-    val: Object.values(currentSelectedData).includes(item.id),
-  }));
+  const currentData = state.get('contexts');
+  const currentSelectedData = state.get('selectedContexts');
 
   return {
-    values,
-    subtitle: currentSelectedData
-      .map(item => Object.values(currentData).filter(({ id }) => id === item)[0].name)
-      .join(', '),
-    dropdownClass: open && open[1] ? 'open' : '',
+    title: 'contexts',
+    data: currentData,
+    selectedData: currentSelectedData,
   };
 };
 
 const mapDispatchToProps = dispatch => ({
-  onContextChecked: (id) => {
+  onChecked: (id) => {
     dispatch(toggleContext(id));
   },
 });
