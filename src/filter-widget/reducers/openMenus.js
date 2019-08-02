@@ -2,9 +2,9 @@ import { handleAction } from 'redux-actions';
 
 import { openCloseDropdown } from '../actions';
 
-const open = handleAction(
+const openMenus = handleAction(
   openCloseDropdown,
-  (state = { contexts: false, dimensions: false }, { payload }) => {
+  (state, { payload }) => {
     if (payload.section) {
       return {
         ...state,
@@ -14,7 +14,7 @@ const open = handleAction(
 
     return state;
   },
-  {},
+  { contexts: false, dimensions: false },
 );
 
-export default open;
+export default openMenus;

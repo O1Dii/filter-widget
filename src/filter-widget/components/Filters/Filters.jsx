@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 
 import ChangableContext from '../../containers/ChangableContexts';
 import ChangableDimensions from '../../containers/ChangableDimensions';
 import ActiveSearch from '../../containers/ActiveSearch';
+import ActiveHeader from '../../containers/ActiveHeader';
 
 import './Filters.scss';
 
@@ -17,11 +17,13 @@ class Filters extends React.PureComponent {
   }
 
   render() {
-    const { className } = this.props;
+    const { className, hidden } = this.props;
+
+    const additionalClassName = hidden ? 'hidden' : '';
 
     return (
-      <div className={`filters ${className}`}>
-        <Header />
+      <div className={`filters ${className} ${additionalClassName}`}>
+        <ActiveHeader />
         <ChangableContext />
         <ChangableDimensions />
         <ActiveSearch />

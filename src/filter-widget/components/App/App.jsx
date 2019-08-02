@@ -1,18 +1,15 @@
 import React from 'react';
-import Draggable from 'react-draggable';
 
-import ActiveFilters from '../../containers/ActiveFilters';
+import ActiveOpenButton from '../../containers/ActiveOpenButton';
 
 import './App.scss';
 
 class App extends React.PureComponent {
   render() {
     return (
-      <Draggable handle=".header__bars">
-        <div className="app">
-          <ActiveFilters className="app__filters" />
-        </div>
-      </Draggable>
+      <div className="app">
+        <ActiveOpenButton id="1" />
+      </div>
     );
   }
 }

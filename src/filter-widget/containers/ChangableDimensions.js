@@ -7,7 +7,7 @@ const mapStateToProps = (state) => {
   const currentData = state.get('data').dimensions;
   const currentSelectedContexts = state.get('selectedData').contexts || [];
   const currentSelectedData = state.get('selectedData').dimensions || [];
-  const open = state.get('open');
+  const open = state.get('openMenus');
 
   if (!currentData) {
     return {
@@ -16,8 +16,7 @@ const mapStateToProps = (state) => {
     };
   }
 
-  const filteredData = Object.values(currentData)
-    .filter(item => currentSelectedContexts.includes(item.contextId));
+  const filteredData = Object.values(currentData).filter(item => currentSelectedContexts.includes(item.contextId));
 
   const values = Object.values(filteredData).map(item => ({
     id: item.id,

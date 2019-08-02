@@ -6,7 +6,7 @@ import Contexts from '../components/Contexts/Contexts';
 const mapStateToProps = (state) => {
   const currentData = state.get('data').contexts;
   const currentSelectedData = state.get('selectedData').contexts || [];
-  const open = state.get('open');
+  const open = state.get('openMenus');
 
   if (!currentData) {
     return { dropdownClass: open && open[1] ? 'open' : '' };

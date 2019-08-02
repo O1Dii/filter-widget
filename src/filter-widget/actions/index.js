@@ -70,3 +70,5 @@ export const openCloseDropdown = createAction('OPEN_CLOSE_DROPDOWN', (section, p
 export const matchChange = createAction('MATCH_CHANGE', data => ({ match: data }));
 
 export const sortingChange = createAction('SORTINGS_CHANGE', data => ({ sortingReverse: data }));
+
+export const openCloseAll = createAction('OPEN_CLOSE_ALL');
