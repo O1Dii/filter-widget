@@ -17,7 +17,9 @@ class List extends React.PureComponent {
 
     return (
       <div className="list">
-        <Scrollbars className="list__scrollbar">{res}</Scrollbars>
+        <Scrollbars autoHeight autoHeightMax={100} className="list__scrollbar">
+          {res}
+        </Scrollbars>
       </div>
     );
   }
