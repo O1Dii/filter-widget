@@ -17,15 +17,18 @@ class Hint extends React.PureComponent {
 
   openCloseDropdown(prop) {
     const { opened } = this.state;
+
     this.setState({ opened: prop !== undefined ? prop : !opened });
   }
 
   render() {
+    const { opened } = this.state;
+
     const {
       values, chosenMatch, className, click,
     } = this.props;
 
-    const button = this.state.opened ? (
+    const button = opened ? (
       values.map(value => (
         <button type="button" key={value} onClick={() => click(value)} className="hint__text">
           {value}

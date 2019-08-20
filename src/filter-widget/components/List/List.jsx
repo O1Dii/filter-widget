@@ -30,6 +30,7 @@ List.propTypes = {
     PropTypes.shape({ id: PropTypes.number, name: PropTypes.string, val: PropTypes.bool }),
   ),
   selectedData: PropTypes.arrayOf(PropTypes.string),
+  onChecked: PropTypes.func.isRequired,
 };
 
 List.defaultProps = {

@@ -1,5 +1,6 @@
 import React from 'react';
 import Draggable from 'react-draggable';
+import PropTypes from 'prop-types';
 
 import ActiveFilters from '../../containers/ActiveFilters';
 
@@ -30,5 +31,9 @@ class OpenButton extends React.PureComponent {
     );
   }
 }
+
+OpenButton.propTypes = {
+  openClose: PropTypes.func.isRequired,
+};
 
 export default OpenButton;

@@ -52,6 +52,7 @@ class HintContainer extends React.PureComponent {
 HintContainer.propTypes = {
   className: PropTypes.string,
   matchChange: PropTypes.func.isRequired,
+  chosenMatch: PropTypes.string.isRequired,
   sortingChange: PropTypes.func.isRequired,
   sortType: PropTypes.string.isRequired,
 };

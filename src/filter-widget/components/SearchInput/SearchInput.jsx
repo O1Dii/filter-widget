@@ -25,6 +25,7 @@ class SearchInput extends React.PureComponent {
 
           <input value={search} className="search-input__input" onChange={this.onChange} />
         </label>
+
         <ActiveSearchFilters className="search-input__hint-container" />
       </div>
     );

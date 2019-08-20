@@ -7,6 +7,7 @@ import './SeparatedContainer.scss';
 class SeparatedContainer extends React.PureComponent {
   render() {
     const { children, disabled } = this.props;
+
     const className = classNames('separated-container', { disabled });
 
     return (

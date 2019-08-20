@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import './Header.scss';
 
@@ -23,5 +24,9 @@ class Header extends React.PureComponent {
     );
   }
 }
+
+Header.propTypes = {
+  close: PropTypes.func.isRequired,
+};
 
 export default Header;
