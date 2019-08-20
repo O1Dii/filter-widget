@@ -23,11 +23,9 @@ class OpenButton extends React.PureComponent {
           Open/Close
         </button>
 
-        <Draggable handle=".header__bars">
-          <div>
-            <ActiveFilters className="open-button__filters" />
-          </div>
-        </Draggable>
+        <div>
+          <ActiveFilters className="open-button__filters" />
+        </div>
       </div>
     );
   }

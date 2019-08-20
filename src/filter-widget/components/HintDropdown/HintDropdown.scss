@@ -5,9 +5,7 @@
   background-color: $background-color;
 
   &__text {
-    display: none;
-
-    margin: 3px;
+    margin: 0 3px;
     padding: 0;
 
     cursor: pointer;
@@ -18,13 +16,5 @@
     background-color: transparent;
 
     font-size: 12px;
-  }
-
-  &__text:first-child {
-    display: block;
-  }
-
-  &:hover &__text {
-    display: block;
   }
 }

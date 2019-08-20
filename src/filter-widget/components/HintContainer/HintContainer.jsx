@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 import Hint from '../Hint/Hint';
 import HintDropdown from '../HintDropdown/HintDropdown';
@@ -25,18 +26,22 @@ class HintContainer extends React.PureComponent {
   }
 
   render() {
-    const { className, sortType } = this.props;
+    const { className, chosenMatch, sortType } = this.props;
+    console.log(chosenMatch);
     const firstHintValues = ['**', '*_', '""'];
 
+    const mainClassName = classNames('hint-container', className);
+
     return (
-      <div className={`hint-container ${className}`}>
+      <div className={mainClassName}>
         <HintDropdown
+          chosenMatch={chosenMatch}
           values={firstHintValues}
           click={this.onMatchChange}
           className="hint-container__first-hint"
         />
         <Hint
-          values={[sortType]}
+          sortType={sortType}
           click={this.onSortingChange}
           className="hint-container__second-hint"
         />

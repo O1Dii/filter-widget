@@ -2,8 +2,8 @@ import { connect } from 'react-redux';
 
 import List from '../components/List/List';
 
-import { SORTING_DESC } from '../constants';
-import { filters } from '../utils';
+import { SORTING_ASC } from '../constants';
+import { filters, reverseSort } from '../utils';
 
 const mapStateToProps = (state) => {
   const currentData = state.get('filters');
@@ -21,10 +21,10 @@ const mapStateToProps = (state) => {
 
   filteredData = filters[searchMatch](filteredData, searchText);
 
-  filteredData.sort();
-
-  if (sortType === SORTING_DESC) {
-    filteredData = filteredData.reverse();
+  if (sortType === SORTING_ASC) {
+    filteredData = filteredData.sort();
+  } else {
+    filteredData = filteredData.sort(reverseSort);
   }
 
   return {
@@ -33,11 +33,6 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = () => ({});
-
-const ActiveList = connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(List);
+const ActiveList = connect(mapStateToProps)(List);
 
 export default ActiveList;

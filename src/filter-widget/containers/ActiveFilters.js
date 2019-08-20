@@ -7,11 +7,9 @@ const mapStateToProps = state => ({
   hidden: state.get('hidden'),
 });
 
-const mapDispatchToProps = dispatch => ({
-  onMount: () => {
-    dispatch(getAllData());
-  },
-});
+const mapDispatchToProps = {
+  onMount: getAllData,
+};
 
 const ActiveFilters = connect(
   mapStateToProps,

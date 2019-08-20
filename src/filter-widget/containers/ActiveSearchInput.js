@@ -7,11 +7,9 @@ const mapStateToProps = state => ({
   search: state.get('searchText'),
 });
 
-const mapDispatchToProps = dispatch => ({
-  searchChange: (data) => {
-    dispatch(changeSearch(data));
-  },
-});
+const mapDispatchToProps = {
+  searchChange: changeSearch,
+};
 
 const ActiveSearchInput = connect(
   mapStateToProps,

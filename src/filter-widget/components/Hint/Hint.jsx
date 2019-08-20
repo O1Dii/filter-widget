@@ -6,22 +6,20 @@ import './Hint.scss';
 
 class Hint extends React.PureComponent {
   render() {
-    const { values, className, click } = this.props;
+    const { sortType, className, click } = this.props;
 
     return (
       <div className={classNames('hint', className)}>
-        {values.map(value => (
-          <button type="button" key={value} onClick={() => click(value)} className="hint__text">
-            {value}
-          </button>
-        ))}
+        <button type="button" onClick={() => click(sortType)} className="hint__text">
+          {sortType}
+        </button>
       </div>
     );
   }
 }
 
 Hint.propTypes = {
-  values: PropTypes.arrayOf(PropTypes.string).isRequired,
+  value: PropTypes.string.isRequired,
   className: PropTypes.string,
   click: PropTypes.func.isRequired,
 };

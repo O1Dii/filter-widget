@@ -8,7 +8,7 @@ import CheckboxText from '../CheckboxText/CheckboxText';
 class Contexts extends React.PureComponent {
   render() {
     const {
-      title, onChecked, data, selectedData, dropdownClass,
+      title, onChecked, data, selectedData, dropdownClass, disabled,
     } = this.props;
 
     const subtitle = selectedData
@@ -16,7 +16,7 @@ class Contexts extends React.PureComponent {
       .join(', ');
 
     return (
-      <SeparatedContainer>
+      <SeparatedContainer disabled={disabled}>
         <DropdownMenu title={title} subtitle={subtitle} dropdownClass={dropdownClass}>
           {data.map(([index, { id, name }]) => {
             const val = selectedData.includes(id);
@@ -36,11 +36,13 @@ Contexts.propTypes = {
   ),
   selectedData: PropTypes.arrayOf(PropTypes.string),
   dropdownClass: PropTypes.string.isRequired,
+  disabled: PropTypes.bool,
 };
 
 Contexts.defaultProps = {
   data: [],
   selectedData: [],
+  disabled: false,
 };
 
 export default Contexts;

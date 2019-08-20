@@ -8,14 +8,10 @@ const mapStateToProps = state => ({
   sortType: state.get('sortType'),
 });
 
-const mapDispatchToProps = dispatch => ({
-  matchChange: (data) => {
-    dispatch(matchChange(data));
-  },
-  sortingChange: (data) => {
-    dispatch(sortingChange(data));
-  },
-});
+const mapDispatchToProps = {
+  matchChange,
+  sortingChange,
+};
 
 const ActiveSearchFilters = connect(
   mapStateToProps,
