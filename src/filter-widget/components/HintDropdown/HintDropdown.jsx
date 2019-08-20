@@ -17,7 +17,6 @@ class Hint extends React.PureComponent {
 
   openCloseDropdown(prop) {
     const { opened } = this.state;
-    console.log(prop);
     this.setState({ opened: prop !== undefined ? prop : !opened });
   }
 

@@ -5,7 +5,6 @@ import {
   toggleContext,
   toggleDimension,
   toggleFilter,
-  openCloseAll,
   recieveContexts,
   recieveDimensions,
   recieveFilters,
@@ -13,6 +12,29 @@ import {
   matchChange,
   sortingChange,
 } from '../actions';
+
+function uncheckFilters(state, dimensionId) {
+  const arr = state.get('selectedFilters');
+  const newArr = arr.filter(item => state.get('filters').get(item)[1].dimensionId !== dimensionId);
+  return state.set('selectedFilters', newArr);
+}
+
+function uncheckDimensions(state, contextId) {
+  let currentState = state;
+  const arr = state.get('selectedDimensions');
+
+  const toExcludeValues = arr.filter(
+    item => state.get('dimensions').get(item)[1].contextId === contextId,
+  );
+
+  toExcludeValues.forEach((item) => {
+    currentState = uncheckFilters(currentState, item);
+  });
+
+  const newArr = arr.filterNot(item => toExcludeValues.includes(item));
+
+  return currentState.set('selectedDimensions', newArr);
+}
 
 function toggleCurrent(state, payload, name) {
   let arr = state.get(name);
@@ -33,8 +55,14 @@ function recieveData(state, payload, name) {
 
 const main = handleActions(
   {
-    [toggleContext]: (state, { payload }) => toggleCurrent(state, payload, 'selectedContexts'),
-    [toggleDimension]: (state, { payload }) => toggleCurrent(state, payload, 'selectedDimensions'),
+    [toggleContext]: (state, { payload }) => {
+      const newState = uncheckDimensions(state, payload);
+      return toggleCurrent(newState, payload, 'selectedContexts');
+    },
+    [toggleDimension]: (state, { payload }) => {
+      const newState = uncheckFilters(state, payload);
+      return toggleCurrent(newState, payload, 'selectedDimensions');
+    },
     [toggleFilter]: (state, { payload }) => toggleCurrent(state, payload, 'selectedFilters'),
     [recieveContexts]: (state, { payload }) => recieveData(state, payload, 'contexts'),
     [recieveDimensions]: (state, { payload }) => recieveData(state, payload, 'dimensions'),

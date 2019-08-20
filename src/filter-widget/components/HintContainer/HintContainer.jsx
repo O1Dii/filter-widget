@@ -27,7 +27,6 @@ class HintContainer extends React.PureComponent {
 
   render() {
     const { className, chosenMatch, sortType } = this.props;
-    console.log(chosenMatch);
     const firstHintValues = ['**', '*_', '""'];
 
     const mainClassName = classNames('hint-container', className);

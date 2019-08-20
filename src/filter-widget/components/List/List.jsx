@@ -8,16 +8,16 @@ import './List.scss';
 
 class List extends React.PureComponent {
   render() {
-    const { data, selectedData } = this.props;
+    const { data, selectedData, onChecked } = this.props;
 
     const res = data.map(([index, { id, name }]) => {
       const val = selectedData.includes(id);
-      return <CheckboxText key={id} id={id} checked={val} text={name} check={() => {}} />;
+      return <CheckboxText key={id} id={id} checked={val} text={name} check={onChecked} />;
     });
 
     return (
       <div className="list">
-        <Scrollbars style={{ height: data.size * 20, maxHeight: 150 }}>{res}</Scrollbars>
+        <Scrollbars className="list__scrollbar">{res}</Scrollbars>
       </div>
     );
   }

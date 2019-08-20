@@ -4,6 +4,7 @@ import List from '../components/List/List';
 
 import { SORTING_ASC } from '../constants';
 import { filters, reverseSort } from '../utils';
+import { toggleFilter } from '../actions';
 
 const mapStateToProps = (state) => {
   const currentData = state.get('filters');
@@ -33,6 +34,13 @@ const mapStateToProps = (state) => {
   };
 };
 
-const ActiveList = connect(mapStateToProps)(List);
+const mapDispatchToProps = {
+  onChecked: toggleFilter,
+};
+
+const ActiveList = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(List);
 
 export default ActiveList;
