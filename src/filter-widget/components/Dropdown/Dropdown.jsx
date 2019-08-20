@@ -48,8 +48,6 @@ Dropdown.propTypes = {
   title: PropTypes.string.isRequired,
   children: PropTypes.oneOfType([PropTypes.element, PropTypes.node, PropTypes.array]).isRequired,
   dropdownId: PropTypes.string.isRequired,
-  dropdownClass: PropTypes.string.isRequired,
-  openClose: PropTypes.func.isRequired,
 };
 
 export default Dropdown;

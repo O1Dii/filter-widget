@@ -29,17 +29,18 @@ class Contexts extends React.PureComponent {
 }
 
 Contexts.propTypes = {
-  onContextChecked: PropTypes.func.isRequired,
-  subtitle: PropTypes.string,
-  values: PropTypes.arrayOf(
+  onChecked: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
+  data: PropTypes.arrayOf(
     PropTypes.shape({ id: PropTypes.number, name: PropTypes.string, val: PropTypes.bool }),
   ),
+  selectedData: PropTypes.arrayOf(PropTypes.string),
   dropdownClass: PropTypes.string.isRequired,
 };
 
 Contexts.defaultProps = {
-  subtitle: '',
-  values: [],
+  data: [],
+  selectedData: [],
 };
 
 export default Contexts;

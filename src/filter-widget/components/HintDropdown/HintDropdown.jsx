@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
-import './Hint.scss';
+import './HintDropdown.scss';
 
 class Hint extends React.PureComponent {
   render() {

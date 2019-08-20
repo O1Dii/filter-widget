@@ -5,6 +5,8 @@
   background-color: $background-color;
 
   &__text {
+    display: none;
+
     margin: 3px;
     padding: 0;
 
@@ -16,5 +18,13 @@
     background-color: transparent;
 
     font-size: 12px;
+  }
+
+  &__text:first-child {
+    display: block;
+  }
+
+  &:hover &__text {
+    display: block;
   }
 }

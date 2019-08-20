@@ -24,13 +24,15 @@ class List extends React.PureComponent {
 }
 
 List.propTypes = {
-  values: PropTypes.arrayOf(
+  data: PropTypes.arrayOf(
     PropTypes.shape({ id: PropTypes.number, name: PropTypes.string, val: PropTypes.bool }),
   ),
+  selectedData: PropTypes.arrayOf(PropTypes.string),
 };
 
 List.defaultProps = {
-  values: [],
+  data: [],
+  selectedData: [],
 };
 
 export default List;

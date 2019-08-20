@@ -1,5 +1,7 @@
 import { createAction } from 'redux-actions';
-import { getContexts, getDimensions, getFilters } from '../data/index';
+import { getContexts, getDimensions, getFilters } from '../data';
+
+import { SORTING_ASC, SORTING_DESC } from '../constants';
 
 export const requestContexts = createAction('REQUEST_CONTEXTS');
 
@@ -54,6 +56,6 @@ export const changeSearch = data => (dispatch) => {
 
 export const matchChange = createAction('MATCH_CHANGE');
 
-export const sortingChange = createAction('SORTINGS_CHANGE', data => (data === 'A-Z' ? 'Z-A' : 'A-Z'));
+export const sortingChange = createAction('SORTINGS_CHANGE', data => (data === SORTING_ASC ? SORTING_DESC : SORTING_ASC));
 
 export const openCloseAll = createAction('OPEN_CLOSE_ALL');

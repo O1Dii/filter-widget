@@ -11,7 +11,7 @@ const mapStateToProps = (state) => {
   const filteredData = currentData.filter(([index, item]) => currentSelectedContexts.includes(item.contextId));
 
   return {
-    title: 'Dimensions',
+    title: 'dimensions',
     data: filteredData,
     selectedData: currentSelectedData,
   };

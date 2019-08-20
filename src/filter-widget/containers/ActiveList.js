@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 
 import List from '../components/List/List';
 
+import { SORTING_DESC } from '../constants';
 import { filters } from '../utils';
 
 const mapStateToProps = (state) => {
@@ -22,7 +23,7 @@ const mapStateToProps = (state) => {
 
   filteredData.sort();
 
-  if (sortType === 'Z-A') {
+  if (sortType === SORTING_DESC) {
     filteredData = filteredData.reverse();
   }
 

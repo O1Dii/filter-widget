@@ -13,8 +13,8 @@ import './Filters.scss';
 
 class Filters extends React.PureComponent {
   componentDidMount() {
-    const { componentMount } = this.props;
-    componentMount();
+    const { onMount } = this.props;
+    onMount();
   }
 
   render() {
@@ -36,7 +36,7 @@ class Filters extends React.PureComponent {
 
 Filters.propTypes = {
   className: PropTypes.string,
-  componentMount: PropTypes.func.isRequired,
+  onMount: PropTypes.func.isRequired,
 };
 
 Filters.defaultProps = {
