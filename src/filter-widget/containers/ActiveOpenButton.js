@@ -5,11 +5,9 @@ import OpenButton from '../components/OpenButton/OpenButton';
 
 const mapStateToProps = () => ({});
 
-const mapDispatchToProps = dispatch => ({
-  openClose: () => {
-    dispatch(openCloseAll());
-  },
-});
+const mapDispatchToProps = {
+  openClose: openCloseAll,
+};
 
 const ActiveOpenButton = connect(
   mapStateToProps,

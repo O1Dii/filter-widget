@@ -12,10 +12,12 @@ import {
   matchChange,
   sortingChange,
 } from '../actions';
+import { PARTIAL_MATCH, SORTING_ASC } from '../constants';
 
 function uncheckFilters(state, dimensionId) {
   const arr = state.get('selectedFilters');
   const newArr = arr.filter(item => state.get('filters').get(item)[1].dimensionId !== dimensionId);
+
   return state.set('selectedFilters', newArr);
 }
 
@@ -50,6 +52,7 @@ function toggleCurrent(state, payload, name) {
 
 function recieveData(state, payload, name) {
   const arr = Immutable.List(payload.map(item => [item.id, item]));
+
   return state.set(name, arr);
 }
 
@@ -57,10 +60,12 @@ const main = handleActions(
   {
     [toggleContext]: (state, { payload }) => {
       const newState = uncheckDimensions(state, payload);
+
       return toggleCurrent(newState, payload, 'selectedContexts');
     },
     [toggleDimension]: (state, { payload }) => {
       const newState = uncheckFilters(state, payload);
+
       return toggleCurrent(newState, payload, 'selectedDimensions');
     },
     [toggleFilter]: (state, { payload }) => toggleCurrent(state, payload, 'selectedFilters'),
@@ -79,8 +84,8 @@ const main = handleActions(
     selectedDimensions: Immutable.List(),
     selectedFilters: Immutable.List(),
     searchText: '',
-    searchMatch: '**',
-    sortType: 'A-Z',
+    searchMatch: PARTIAL_MATCH,
+    sortType: SORTING_ASC,
   }),
 );
 
