@@ -7,6 +7,10 @@
 
   border-bottom: 2px solid $light-background-color;
 
+  &_disabled {
+    pointer-events: none;
+  }
+
   &__empty {
     width: 10%;
 
@@ -23,8 +27,4 @@
 
     flex-grow: 1;
   }
-}
-
-.disabled {
-  pointer-events: none;
 }

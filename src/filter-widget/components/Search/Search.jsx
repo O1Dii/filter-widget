@@ -9,11 +9,11 @@ import './Search.scss';
 
 class Search extends React.PureComponent {
   render() {
-    const { disabled } = this.props;
+    const { isDisabled } = this.props;
 
     return (
       <div className="search">
-        <SeparatedContainer disabled={disabled}>
+        <SeparatedContainer isDisabled={isDisabled}>
           <ActiveSearchInput />
           <hr className="search__hr" />
           <ActiveList />
@@ -24,11 +24,11 @@ class Search extends React.PureComponent {
 }
 
 Search.propTypes = {
-  disabled: PropTypes.bool,
+  isDisabled: PropTypes.bool,
 };
 
 Search.defaultProps = {
-  disabled: false,
+  isDisabled: false,
 };
 
 export default Search;

@@ -6,6 +6,14 @@ import { SORTING_ASC } from '../constants';
 import { filters, reverseSort } from '../utils';
 import { toggleFilter } from '../actions';
 
+function sort(items, sortType) {
+  if (sortType === SORTING_ASC) {
+    return items.sort();
+  }
+
+  return items.sort(reverseSort);
+}
+
 const mapStateToProps = (state) => {
   const currentFilters = state.get('filters');
   const currentSelectedDimensions = state.get('selectedDimensions');
@@ -18,11 +26,7 @@ const mapStateToProps = (state) => {
 
   filteredItems = filteredItems.filter(({ name }) => filters[searchMatch](name, searchText));
 
-  if (sortType === SORTING_ASC) {
-    filteredItems = filteredItems.sort();
-  } else {
-    filteredItems = filteredItems.sort(reverseSort);
-  }
+  filteredItems = sort(filteredItems, sortType);
 
   return {
     items: filteredItems,

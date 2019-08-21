@@ -11,17 +11,19 @@ import {
   changeSearchInput,
   matchChange,
   sortingChange,
+  uncheckDimensions,
+  uncheckFilters,
 } from '../actions';
 import { PARTIAL_MATCH, SORTING_ASC } from '../constants';
 
-function uncheckFilters(state, dimensionId) {
+function uncheckCurrentFilters(state, dimensionId) {
   const arr = state.get('selectedFilters');
   const newArr = arr.filter(item => state.get('filters').get(item).dimensionId !== dimensionId);
 
   return state.set('selectedFilters', newArr);
 }
 
-function uncheckDimensions(state, contextId) {
+function uncheckCurrentDimensions(state, contextId) {
   let currentState = state;
   const arr = state.get('selectedDimensions');
 
@@ -30,7 +32,7 @@ function uncheckDimensions(state, contextId) {
   );
 
   toExcludeValues.forEach((item) => {
-    currentState = uncheckFilters(currentState, item);
+    currentState = uncheckCurrentFilters(currentState, item);
   });
 
   const newArr = arr.filterNot(item => toExcludeValues.includes(item));
@@ -50,6 +52,16 @@ function toggleCurrent(state, payload, name) {
   return state.set(name, arr);
 }
 
+function toggleContexts(state, payload) {
+  return toggleCurrent(state, payload, 'selectedContexts');
+}
+function toggleDimensions(state, payload) {
+  return toggleCurrent(state, payload, 'selectedDimensions');
+}
+function toggleFilters(state, payload) {
+  return toggleCurrent(state, payload, 'selectedFilters');
+}
+
 function recieveData(state, payload, name) {
   const arr = Immutable.Map(payload.map(item => [item.id, item]));
 
@@ -61,14 +73,16 @@ const main = handleActions(
     [toggleContext]: (state, { payload }) => {
       const newState = uncheckDimensions(state, payload);
 
-      return toggleCurrent(newState, payload, 'selectedContexts');
+      return toggleContexts(newState, payload);
     },
     [toggleDimension]: (state, { payload }) => {
       const newState = uncheckFilters(state, payload);
 
-      return toggleCurrent(newState, payload, 'selectedDimensions');
+      return toggleDimensions(newState, payload);
     },
-    [toggleFilter]: (state, { payload }) => toggleCurrent(state, payload, 'selectedFilters'),
+    [toggleFilter]: (state, { payload }) => toggleFilters(state, payload),
+    [uncheckDimensions]: (state, { payload }) => uncheckCurrentDimensions(state, payload),
+    [uncheckFilters]: (state, { payload }) => uncheckCurrentFilters(state, payload),
     [recieveContexts]: (state, { payload }) => recieveData(state, payload, 'contexts'),
     [recieveDimensions]: (state, { payload }) => recieveData(state, payload, 'dimensions'),
     [recieveFilters]: (state, { payload }) => recieveData(state, payload, 'filters'),

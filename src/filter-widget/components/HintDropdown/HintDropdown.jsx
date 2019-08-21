@@ -9,42 +9,49 @@ class Hint extends React.PureComponent {
     super(props);
 
     this.state = {
-      opened: false,
+      isOpen: false,
     };
 
-    this.openCloseDropdown = this.openCloseDropdown.bind(this);
+    this.openDropdown = this.openDropdown.bind(this);
+    this.closeDropdown = this.closeDropdown.bind(this);
   }
 
-  openCloseDropdown(prop) {
-    const { opened } = this.state;
+  getButtons() {
+    const { isOpen } = this.state;
+    const { values, chosenMatch, click } = this.props;
 
-    this.setState({ opened: prop !== undefined ? prop : !opened });
-  }
-
-  render() {
-    const { opened } = this.state;
-
-    const {
-      values, chosenMatch, className, click,
-    } = this.props;
-
-    const button = opened ? (
-      values.map(value => (
+    if (isOpen) {
+      return values.map(value => (
         <button type="button" key={value} onClick={() => click(value)} className="hint__text">
           {value}
         </button>
-      ))
-    ) : (
+      ));
+    }
+    return (
       <button type="button" className="hint__text">
         {chosenMatch}
       </button>
     );
+  }
+
+  openDropdown() {
+    this.setState({ isOpen: true });
+  }
+
+  closeDropdown() {
+    this.setState({ isOpen: false });
+  }
+
+  render() {
+    const { className } = this.props;
+
+    const button = this.getButtons();
 
     return (
       <div
         className={classNames('hint', className)}
-        onMouseEnter={() => this.openCloseDropdown(true)}
-        onMouseLeave={() => this.openCloseDropdown(false)}
+        onMouseEnter={this.openDropdown}
+        onMouseLeave={this.closeDropdown}
       >
         {button}
       </div>

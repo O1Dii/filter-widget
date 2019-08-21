@@ -29,21 +29,15 @@ class HintContainer extends React.PureComponent {
     const { className, chosenMatch, sortType } = this.props;
     const firstHintValues = ['**', '*_', '""'];
 
-    const mainClassName = classNames('hint-container', className);
-
     return (
-      <div className={mainClassName}>
+      <div className={classNames('hint-container', className)}>
         <HintDropdown
           chosenMatch={chosenMatch}
           values={firstHintValues}
           click={this.onMatchChange}
-          className="hint-container__first-hint"
+          className="hint-container__hint-dropdown"
         />
-        <Hint
-          sortType={sortType}
-          click={this.onSortingChange}
-          className="hint-container__second-hint"
-        />
+        <Hint sortType={sortType} click={this.onSortingChange} className="hint-container__hint" />
       </div>
     );
   }

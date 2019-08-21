@@ -10,7 +10,7 @@ class Dropdown extends React.PureComponent {
     super(props);
 
     this.state = {
-      opened: false,
+      isOpen: false,
     };
 
     this.closeDropdown = this.closeDropdown.bind(this);
@@ -18,19 +18,19 @@ class Dropdown extends React.PureComponent {
   }
 
   closeDropdown() {
-    this.setState({ opened: false });
+    this.setState({ isOpen: false });
   }
 
   openCloseDropdown() {
-    const { opened } = this.state;
-    this.setState({ opened: !opened });
+    const { isOpen } = this.state;
+    this.setState({ isOpen: !isOpen });
   }
 
   render() {
-    const { opened } = this.state;
+    const { isOpen } = this.state;
     const { title, subtitle, children } = this.props;
 
-    const menuClassName = classNames('dropdown__content', { dropdown__content_open: opened });
+    const menuClassName = classNames('dropdown__content', { dropdown__content_open: isOpen });
 
     return (
       <OutsideClickHandler onOutsideClick={this.closeDropdown}>

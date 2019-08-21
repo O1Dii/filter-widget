@@ -13,8 +13,8 @@ class List extends React.PureComponent {
 
     const res = items
       .map(({ id, name }) => {
-        const val = selectedItems.includes(id);
-        return <CheckboxText key={id} id={id} checked={val} text={name} onCheck={onChecked} />;
+        const checked = selectedItems.includes(id);
+        return <CheckboxText key={id} id={id} checked={checked} text={name} onCheck={onChecked} />;
       })
       .toList();
 

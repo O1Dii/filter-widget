@@ -21,10 +21,10 @@
     align-items: center;
     flex-shrink: 0;
     justify-content: center;
-  }
 
-  &__bars:hover {
-    color: $main-text-color;
+    &:hover {
+      color: $main-text-color;
+    }
   }
 
   &__title {

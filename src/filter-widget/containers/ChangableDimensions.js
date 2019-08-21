@@ -7,12 +7,12 @@ const mapStateToProps = (state) => {
   const currentData = state.get('dimensions');
   const currentSelectedContexts = state.get('selectedContexts');
   const currentSelectedData = state.get('selectedDimensions');
-  const disabled = !currentSelectedContexts.size;
+  const isDisabled = !currentSelectedContexts.size;
 
   const filteredData = currentData.filter(item => currentSelectedContexts.includes(item.contextId));
 
   return {
-    disabled,
+    isDisabled,
     title: 'dimensions',
     items: filteredData,
     selectedItems: currentSelectedData,

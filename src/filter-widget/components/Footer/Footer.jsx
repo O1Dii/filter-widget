@@ -9,10 +9,9 @@ import './Footer.scss';
 class Footer extends React.PureComponent {
   render() {
     const { className } = this.props;
-    const mainClassName = classNames('footer', className);
 
     return (
-      <div className={mainClassName}>
+      <div className={classNames('footer', className)}>
         <SeparatedContainer />
       </div>
     );
