@@ -1,13 +1,15 @@
 @import "../../variables.scss";
 
 .dropdown {
-  text-align: center;
-  text-align-last: center;
+  display: flex;
+
+  width: 100%;
 
   color: $main-text-color;
   border-color: transparent;
   background-color: transparent;
 
+  align-items: center;
   appearance: none;
 
   &__content {
@@ -17,12 +19,55 @@
     display: none;
 
     width: 257px;
+    margin-top: 18px;
 
     border-top: 5px solid $accent-color;
     background-color: $primary-color;
-  }
-}
 
-.open {
-  display: block;
+    align-self: flex-start;
+  }
+
+  &__content_open {
+    display: block;
+  }
+
+  &__arrow {
+    position: relative;
+    bottom: -3px;
+
+    margin: 0 5px 0 0;
+
+    color: $light-transparent-color;
+
+    font-size: 12px;
+  }
+
+  &__button {
+    display: flex;
+
+    text-transform: uppercase;
+
+    color: $main-text-color;
+    border: none;
+    outline: none;
+    background-color: transparent;
+  }
+
+  &:hover &__arrow {
+    color: $main-text-color;
+  }
+
+  &__subtitle {
+    overflow: hidden;
+
+    width: 100%;
+    margin: 0;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    color: $accent-color;
+
+    font-size: 12px;
+  }
 }

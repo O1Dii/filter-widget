@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import Immutable from 'immutable';
 import SeparatedContainer from '../SeparatedContainer/SeparatedContainer';
-import DropdownMenu from '../DropdownMenu/DropdownMenu';
+import Dropdown from '../Dropdown/Dropdown';
 import CheckboxText from '../CheckboxText/CheckboxText';
 
 class DropdownBlock extends React.PureComponent {
@@ -18,7 +18,7 @@ class DropdownBlock extends React.PureComponent {
 
     return (
       <SeparatedContainer disabled={disabled}>
-        <DropdownMenu title={title} subtitle={subtitle} dropdownClass={dropdownClass}>
+        <Dropdown title={title} subtitle={subtitle} dropdownClass={dropdownClass}>
           {items
             .map(({ id, name }) => {
               const val = selectedItems.includes(id);
@@ -27,7 +27,7 @@ class DropdownBlock extends React.PureComponent {
               );
             })
             .toList()}
-        </DropdownMenu>
+        </Dropdown>
       </SeparatedContainer>
     );
   }

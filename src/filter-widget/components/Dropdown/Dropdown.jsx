@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import OutsideClickHandler from 'react-outside-click-handler';
 import classNames from 'classnames';
 
-import DropdownButton from '../DropdownButton/DropdownButton';
-
 import './Dropdown.scss';
 
 class Dropdown extends React.PureComponent {
@@ -15,39 +13,44 @@ class Dropdown extends React.PureComponent {
       opened: false,
     };
 
+    this.closeDropdown = this.closeDropdown.bind(this);
     this.openCloseDropdown = this.openCloseDropdown.bind(this);
   }
 
-  openCloseDropdown(prop) {
+  closeDropdown() {
+    this.setState({ opened: false });
+  }
+
+  openCloseDropdown() {
     const { opened } = this.state;
-    this.setState({ opened: prop !== undefined ? prop : !opened });
+    this.setState({ opened: !opened });
   }
 
   render() {
     const { opened } = this.state;
-    const { title, children, dropdownId } = this.props;
+    const { title, subtitle, children } = this.props;
 
-    const menuClassName = classNames({ dropdown__content: true, open: opened });
+    const menuClassName = classNames('dropdown__content', { dropdown__content_open: opened });
 
     return (
-      <div className="dropdown">
-        <OutsideClickHandler onOutsideClick={() => this.openCloseDropdown(false)}>
-          <DropdownButton
-            title={title}
-            dropdownId={dropdownId}
-            openClose={() => this.openCloseDropdown()}
-          />
+      <OutsideClickHandler onOutsideClick={this.closeDropdown}>
+        <div className="dropdown">
+          <button type="button" className="dropdown__button" onClick={this.openCloseDropdown}>
+            <i className="dropdown__arrow fas fa-angle-down" />
+            {title}
+          </button>
           <div className={menuClassName}>{children}</div>
-        </OutsideClickHandler>
-      </div>
+          <p className="dropdown__subtitle">{subtitle}</p>
+        </div>
+      </OutsideClickHandler>
     );
   }
 }
 
 Dropdown.propTypes = {
   title: PropTypes.string.isRequired,
+  subtitle: PropTypes.string.isRequired,
   children: PropTypes.oneOfType([PropTypes.element, PropTypes.node, PropTypes.array]).isRequired,
-  dropdownId: PropTypes.string.isRequired,
 };
 
 export default Dropdown;
