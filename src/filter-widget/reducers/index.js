@@ -16,7 +16,7 @@ import { PARTIAL_MATCH, SORTING_ASC } from '../constants';
 
 function uncheckFilters(state, dimensionId) {
   const arr = state.get('selectedFilters');
-  const newArr = arr.filter(item => state.get('filters').get(item)[1].dimensionId !== dimensionId);
+  const newArr = arr.filter(item => state.get('filters').get(item).dimensionId !== dimensionId);
 
   return state.set('selectedFilters', newArr);
 }
@@ -26,7 +26,7 @@ function uncheckDimensions(state, contextId) {
   const arr = state.get('selectedDimensions');
 
   const toExcludeValues = arr.filter(
-    item => state.get('dimensions').get(item)[1].contextId === contextId,
+    item => state.get('dimensions').get(item).contextId === contextId,
   );
 
   toExcludeValues.forEach((item) => {
@@ -51,7 +51,7 @@ function toggleCurrent(state, payload, name) {
 }
 
 function recieveData(state, payload, name) {
-  const arr = Immutable.List(payload.map(item => [item.id, item]));
+  const arr = Immutable.Map(payload.map(item => [item.id, item]));
 
   return state.set(name, arr);
 }
@@ -77,9 +77,9 @@ const main = handleActions(
     [sortingChange]: (state, { payload }) => state.set('sortType', payload),
   },
   Immutable.Map({
-    contexts: Immutable.List(),
-    dimensions: Immutable.List(),
-    filters: Immutable.List(),
+    contexts: Immutable.Map(),
+    dimensions: Immutable.Map(),
+    filters: Immutable.Map(),
     selectedContexts: Immutable.List(),
     selectedDimensions: Immutable.List(),
     selectedFilters: Immutable.List(),

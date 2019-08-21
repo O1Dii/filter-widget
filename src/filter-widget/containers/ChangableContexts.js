@@ -1,16 +1,16 @@
 import { connect } from 'react-redux';
 
 import { toggleContext } from '../actions';
-import Contexts from '../components/Contexts/Contexts';
+import DropdownBlock from '../components/DropdownBlock/DropdownBlock';
 
 const mapStateToProps = (state) => {
-  const currentData = state.get('contexts');
-  const currentSelectedData = state.get('selectedContexts');
+  const currentContexts = state.get('contexts');
+  const currentSelectedContexts = state.get('selectedContexts');
 
   return {
     title: 'contexts',
-    data: currentData,
-    selectedData: currentSelectedData,
+    items: currentContexts,
+    selectedItems: currentSelectedContexts,
   };
 };
 
@@ -21,6 +21,6 @@ const mapDispatchToProps = {
 const ChangableContexts = connect(
   mapStateToProps,
   mapDispatchToProps,
-)(Contexts);
+)(DropdownBlock);
 
 export default ChangableContexts;

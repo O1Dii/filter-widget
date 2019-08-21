@@ -25,7 +25,7 @@ SeparatedContainer.propTypes = {
 };
 
 SeparatedContainer.defaultProps = {
-  children: [],
+  children: '',
   disabled: false,
 };
 

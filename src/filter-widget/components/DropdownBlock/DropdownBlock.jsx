@@ -1,48 +1,53 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Immutable from 'immutable';
 import SeparatedContainer from '../SeparatedContainer/SeparatedContainer';
 import DropdownMenu from '../DropdownMenu/DropdownMenu';
 import CheckboxText from '../CheckboxText/CheckboxText';
 
-class Contexts extends React.PureComponent {
+class DropdownBlock extends React.PureComponent {
   render() {
     const {
-      title, onChecked, data, selectedData, dropdownClass, disabled,
+      title, onChecked, items, selectedItems, dropdownClass, disabled,
     } = this.props;
 
-    const subtitle = selectedData
-      .map(item => data.filter(([index, { id }]) => id === item).get(0)[1].name)
+    const subtitle = selectedItems
+      .map(item => items.filter(({ id }) => id === item).get(item).name)
       .join(', ');
 
     return (
       <SeparatedContainer disabled={disabled}>
         <DropdownMenu title={title} subtitle={subtitle} dropdownClass={dropdownClass}>
-          {data.map(([index, { id, name }]) => {
-            const val = selectedData.includes(id);
-            return <CheckboxText key={id} text={name} id={id} checked={val} check={onChecked} />;
-          })}
+          {items
+            .map(({ id, name }) => {
+              const val = selectedItems.includes(id);
+              return (
+                <CheckboxText key={id} text={name} id={id} checked={val} onCheck={onChecked} />
+              );
+            })
+            .toList()}
         </DropdownMenu>
       </SeparatedContainer>
     );
   }
 }
 
-Contexts.propTypes = {
+DropdownBlock.propTypes = {
   onChecked: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
-  data: PropTypes.arrayOf(
+  items: PropTypes.arrayOf(
     PropTypes.shape({ id: PropTypes.number, name: PropTypes.string, val: PropTypes.bool }),
   ),
-  selectedData: PropTypes.arrayOf(PropTypes.string),
+  selectedItems: PropTypes.arrayOf(PropTypes.string),
   dropdownClass: PropTypes.string.isRequired,
   disabled: PropTypes.bool,
 };
 
-Contexts.defaultProps = {
-  data: [],
-  selectedData: [],
+DropdownBlock.defaultProps = {
+  items: Immutable.Map(),
+  selectedItems: Immutable.List(),
   disabled: false,
 };
 
-export default Contexts;
+export default DropdownBlock;

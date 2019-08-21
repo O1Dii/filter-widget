@@ -10,8 +10,8 @@ class CheckboxText extends React.PureComponent {
   }
 
   onChange() {
-    const { check, id } = this.props;
-    check(id);
+    const { onCheck, id } = this.props;
+    onCheck(id);
   }
 
   render() {
@@ -34,7 +34,7 @@ class CheckboxText extends React.PureComponent {
 CheckboxText.propTypes = {
   text: PropTypes.string.isRequired,
   checked: PropTypes.bool.isRequired,
-  check: PropTypes.func.isRequired,
+  onCheck: PropTypes.func.isRequired,
   id: PropTypes.number.isRequired,
 };
 

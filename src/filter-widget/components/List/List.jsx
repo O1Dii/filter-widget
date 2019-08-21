@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Scrollbars } from 'react-custom-scrollbars';
+import Immutable from 'immutable';
 
 import CheckboxText from '../CheckboxText/CheckboxText';
 
@@ -8,12 +9,14 @@ import './List.scss';
 
 class List extends React.PureComponent {
   render() {
-    const { data, selectedData, onChecked } = this.props;
+    const { items, selectedItems, onChecked } = this.props;
 
-    const res = data.map(([index, { id, name }]) => {
-      const val = selectedData.includes(id);
-      return <CheckboxText key={id} id={id} checked={val} text={name} check={onChecked} />;
-    });
+    const res = items
+      .map(({ id, name }) => {
+        const val = selectedItems.includes(id);
+        return <CheckboxText key={id} id={id} checked={val} text={name} onCheck={onChecked} />;
+      })
+      .toList();
 
     return (
       <div className="list">
@@ -26,16 +29,16 @@ class List extends React.PureComponent {
 }
 
 List.propTypes = {
-  data: PropTypes.arrayOf(
+  items: PropTypes.arrayOf(
     PropTypes.shape({ id: PropTypes.number, name: PropTypes.string, val: PropTypes.bool }),
   ),
-  selectedData: PropTypes.arrayOf(PropTypes.string),
+  selectedItems: PropTypes.arrayOf(PropTypes.string),
   onChecked: PropTypes.func.isRequired,
 };
 
 List.defaultProps = {
-  data: [],
-  selectedData: [],
+  items: Immutable.Map(),
+  selectedItems: Immutable.List(),
 };
 
 export default List;

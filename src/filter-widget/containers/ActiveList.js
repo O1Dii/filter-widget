@@ -7,30 +7,26 @@ import { filters, reverseSort } from '../utils';
 import { toggleFilter } from '../actions';
 
 const mapStateToProps = (state) => {
-  const currentData = state.get('filters');
+  const currentFilters = state.get('filters');
   const currentSelectedDimensions = state.get('selectedDimensions');
-  const currentSelectedData = state.get('selectedFilters');
+  const currentSelectedFilters = state.get('selectedFilters');
   const searchText = state.get('searchText');
   const searchMatch = state.get('searchMatch');
   const sortType = state.get('sortType');
 
-  if (!currentData) {
-    return state;
-  }
+  let filteredItems = currentFilters.filter(item => currentSelectedDimensions.includes(item.dimensionId));
 
-  let filteredData = currentData.filter(([index, item]) => currentSelectedDimensions.includes(item.dimensionId));
-
-  filteredData = filters[searchMatch](filteredData, searchText);
+  filteredItems = filteredItems.filter(({ name }) => filters[searchMatch](name, searchText));
 
   if (sortType === SORTING_ASC) {
-    filteredData = filteredData.sort();
+    filteredItems = filteredItems.sort();
   } else {
-    filteredData = filteredData.sort(reverseSort);
+    filteredItems = filteredItems.sort(reverseSort);
   }
 
   return {
-    data: filteredData,
-    selectedData: currentSelectedData,
+    items: filteredItems,
+    selectedItems: currentSelectedFilters,
   };
 };
 

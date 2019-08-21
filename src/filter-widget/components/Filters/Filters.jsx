@@ -20,10 +20,8 @@ class Filters extends React.PureComponent {
   render() {
     const { className, hidden } = this.props;
 
-    const mainClassName = classNames('filters', className, hidden);
-
     return (
-      <div className={mainClassName}>
+      <div className={classNames('filters', className)}>
         <ActiveHeader />
         <ChangableContext />
         <ChangableDimensions />
