@@ -9,7 +9,7 @@ import CheckboxText from '../CheckboxText/CheckboxText';
 class DropdownBlock extends React.PureComponent {
   render() {
     const {
-      title, onChecked, items, selectedItems, isDisabled,
+      title, onCheck, items, selectedItems, isDisabled,
     } = this.props;
 
     const subtitle = items
@@ -23,9 +23,7 @@ class DropdownBlock extends React.PureComponent {
           {items
             .map(({ id, name }) => {
               const val = selectedItems.includes(id);
-              return (
-                <CheckboxText key={id} text={name} id={id} checked={val} onCheck={onChecked} />
-              );
+              return <CheckboxText key={id} text={name} id={id} checked={val} onCheck={onCheck} />;
             })
             .toList()}
         </Dropdown>
@@ -35,7 +33,7 @@ class DropdownBlock extends React.PureComponent {
 }
 
 DropdownBlock.propTypes = {
-  onChecked: PropTypes.func.isRequired,
+  onCheck: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
   items: PropTypes.instanceOf(Immutable.Map),
   selectedItems: PropTypes.instanceOf(Immutable.List),

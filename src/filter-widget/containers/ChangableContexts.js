@@ -15,7 +15,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = {
-  onChecked: toggleContextWithUncheck,
+  onCheck: toggleContextWithUncheck,
 };
 
 const ChangableContexts = connect(

@@ -39,7 +39,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = {
-  onChecked: toggleFilter,
+  onCheck: toggleFilter,
   onAllChecked: toggleFilters,
 };
 

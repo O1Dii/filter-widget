@@ -20,7 +20,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = {
-  onChecked: toggleDimensionWithUncheck,
+  onCheck: toggleDimensionWithUncheck,
 };
 
 const ChangableDimensions = connect(

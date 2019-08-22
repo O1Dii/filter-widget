@@ -9,8 +9,8 @@ import './List.scss';
 
 class List extends React.PureComponent {
   onCheck = id => {
-    const { onChecked } = this.props;
-    onChecked(id);
+    const { onCheck } = this.props;
+    onCheck(id);
   };
 
   onAllChecked = () => {
@@ -59,7 +59,7 @@ class List extends React.PureComponent {
 List.propTypes = {
   items: PropTypes.instanceOf(Immutable.Map),
   selectedItems: PropTypes.instanceOf(Immutable.List),
-  onChecked: PropTypes.func.isRequired,
+  onCheck: PropTypes.func.isRequired,
 };
 
 List.defaultProps = {
