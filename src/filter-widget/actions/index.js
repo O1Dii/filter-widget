@@ -74,6 +74,8 @@ export const toggleDimensionWithUncheck = dimensionId => (dispatch) => {
   dispatch(toggleDimension(dimensionId));
 };
 
+export const toggleFilters = createAction('TOGGLE_FILTERS', (arr, checked) => [arr, checked]);
+
 export const changeSearchInput = createAction('CHANGE_SEARCH');
 export const changeFilters = createAction('CHANGE_FILTERS');
 

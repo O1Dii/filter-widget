@@ -8,25 +8,47 @@ import CheckboxText from '../CheckboxText/CheckboxText';
 import './List.scss';
 
 class List extends React.PureComponent {
+  onCheck = id => {
+    const { onChecked } = this.props;
+    onChecked(id);
+  };
+
+  onAllChecked = () => {
+    const { onAllChecked, allChecked, items } = this.props;
+
+    onAllChecked(items.map(({ id }) => id).toList(), !allChecked);
+  };
+
   getItems = items => {
-    const { selectedItems, onChecked } = this.props;
+    const { selectedItems } = this.props;
 
     return items
       .map(({ id, name }) => {
         const checked = selectedItems.includes(id);
-        return <CheckboxText key={id} id={id} checked={checked} text={name} onCheck={onChecked} />;
+        return (
+          <CheckboxText
+            key={id}
+            id={id}
+            checked={checked}
+            text={name}
+            onCheck={() => this.onCheck(id)}
+          />
+        );
       })
       .toList();
   };
 
   render() {
-    const { items } = this.props;
+    const { items, allChecked } = this.props;
 
     const res = this.getItems(items);
 
     return (
       <div className="list">
         <Scrollbars autoHeight autoHeightMax={100} className="list__scrollbar">
+          {Boolean(res.size) && (
+            <CheckboxText id={0} checked={allChecked} text="(All)" onCheck={this.onAllChecked} />
+          )}
           {res}
         </Scrollbars>
       </div>

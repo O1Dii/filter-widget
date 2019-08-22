@@ -13,6 +13,7 @@ import {
   sortingChange,
   uncheckDimensions,
   uncheckFilters,
+  toggleFilters,
 } from '../actions';
 import { PARTIAL_MATCH, SORTING_ASC } from '../constants';
 
@@ -43,14 +44,26 @@ function toggleCurrent(state, payload, name) {
   return state.set(name, arr);
 }
 
-function toggleContexts(state, payload) {
+function toggleCurrentContext(state, payload) {
   return toggleCurrent(state, payload, 'selectedContexts');
 }
-function toggleDimensions(state, payload) {
+function toggleCurrentDimension(state, payload) {
   return toggleCurrent(state, payload, 'selectedDimensions');
 }
-function toggleFilters(state, payload) {
+function toggleCurrentFilter(state, payload) {
   return toggleCurrent(state, payload, 'selectedFilters');
+}
+
+function toggleCurrentFilters(state, [arr, checked]) {
+  let newArr;
+
+  if (checked) {
+    newArr = arr;
+  } else {
+    newArr = Immutable.List();
+  }
+
+  return state.set('selectedFilters', newArr);
 }
 
 function recieveData(state, payload, name) {
@@ -61,9 +74,10 @@ function recieveData(state, payload, name) {
 
 const main = handleActions(
   {
-    [toggleContext]: (state, { payload }) => toggleContexts(state, payload),
-    [toggleDimension]: (state, { payload }) => toggleDimensions(state, payload),
-    [toggleFilter]: (state, { payload }) => toggleFilters(state, payload),
+    [toggleContext]: (state, { payload }) => toggleCurrentContext(state, payload),
+    [toggleDimension]: (state, { payload }) => toggleCurrentDimension(state, payload),
+    [toggleFilter]: (state, { payload }) => toggleCurrentFilter(state, payload),
+    [toggleFilters]: (state, { payload }) => toggleCurrentFilters(state, payload),
     [uncheckDimensions]: (state, { payload }) => uncheckSertainDimensions(state, payload),
     [uncheckFilters]: (state, { payload }) => uncheckSertainFilters(state, payload),
     [recieveContexts]: (state, { payload }) => recieveData(state, payload, 'contexts'),

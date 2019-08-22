@@ -15,7 +15,7 @@ class CheckboxText extends React.PureComponent {
     return (
       <label className="checkbox-text">
         <input
-          value={checked}
+          checked={checked}
           type="checkbox"
           onChange={this.onChange}
           className="checkbox-text__checkbox"
