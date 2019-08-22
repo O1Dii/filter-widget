@@ -33,9 +33,46 @@ export const getAllData = () => (dispatch) => {
   dispatch(getFiltersData());
 };
 
+export const uncheckFilters = createAction('UNCHECK_FILTERS');
+export const uncheckDimensions = createAction('UNCHECK_DIMENSIONS');
+
+export const uncheckDimensionWithFilters = dimensionId => (dispatch, getState) => {
+  const state = getState();
+  const arr = state.get('selectedFilters');
+
+  const toExcludeValues = arr.filter(
+    item => state.getIn(['filters', item]).dimensionId === dimensionId,
+  );
+
+  dispatch(uncheckFilters(toExcludeValues));
+};
+export const uncheckContextWithDimensions = contextId => (dispatch, getState) => {
+  const state = getState();
+  const arr = state.get('selectedDimensions');
+
+  const toExcludeValues = arr.filter(
+    item => state.getIn(['dimensions', item]).contextId === contextId,
+  );
+
+  toExcludeValues.forEach((item) => {
+    dispatch(uncheckDimensionWithFilters(item));
+  });
+
+  dispatch(uncheckDimensions(toExcludeValues));
+};
+
 export const toggleContext = createAction('TOGGLE_CONTEXT');
 export const toggleDimension = createAction('TOGGLE_DIMENSION');
 export const toggleFilter = createAction('TOGGLE_FILTER');
+
+export const toggleContextWithUncheck = contextId => (dispatch) => {
+  dispatch(uncheckContextWithDimensions(contextId));
+  dispatch(toggleContext(contextId));
+};
+export const toggleDimensionWithUncheck = dimensionId => (dispatch) => {
+  dispatch(uncheckDimensionWithFilters(dimensionId));
+  dispatch(toggleDimension(dimensionId));
+};
 
 export const changeSearchInput = createAction('CHANGE_SEARCH');
 export const changeFilters = createAction('CHANGE_FILTERS');
@@ -49,6 +86,3 @@ export const matchChange = createAction('MATCH_CHANGE');
 export const sortingChange = createAction('SORTINGS_CHANGE', data => (data === SORTING_ASC ? SORTING_DESC : SORTING_ASC));
 
 export const openCloseAll = createAction('OPEN_CLOSE_ALL');
-
-export const uncheckDimensions = createAction('UNCHECK_DIMENSIONS');
-export const uncheckFilters = createAction('UNCHECK_FILTERS');

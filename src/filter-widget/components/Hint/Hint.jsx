@@ -5,9 +5,9 @@ import classNames from 'classnames';
 import './Hint.scss';
 
 class Hint extends React.PureComponent {
-  click = () => {
-    const { click, sortType } = this.props;
-    click(sortType);
+  onClick = () => {
+    const { onClick, sortType } = this.props;
+    onClick(sortType);
   };
 
   render() {
@@ -15,7 +15,7 @@ class Hint extends React.PureComponent {
 
     return (
       <div className={classNames('hint', className)}>
-        <button type="button" onClick={this.click} className="hint__text">
+        <button type="button" onClick={this.onClick} className="hint__text">
           {sortType}
         </button>
       </div>
@@ -26,7 +26,7 @@ class Hint extends React.PureComponent {
 Hint.propTypes = {
   sortType: PropTypes.string.isRequired,
   className: PropTypes.string,
-  click: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 Hint.defaultProps = {

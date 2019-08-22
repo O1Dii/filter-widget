@@ -12,8 +12,9 @@ class DropdownBlock extends React.PureComponent {
       title, onChecked, items, selectedItems, isDisabled,
     } = this.props;
 
-    const subtitle = selectedItems
-      .map(item => items.filter(({ id }) => id === item).get(item).name)
+    const subtitle = items
+      .filter(({ id }) => selectedItems.includes(id))
+      .map(({ name }) => name)
       .join(', ');
 
     return (

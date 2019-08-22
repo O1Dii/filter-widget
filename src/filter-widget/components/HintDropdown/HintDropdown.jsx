@@ -11,11 +11,11 @@ class Hint extends React.PureComponent {
 
   getButtons = () => {
     const { isOpen } = this.state;
-    const { values, chosenMatch, click } = this.props;
+    const { values, chosenMatch, onClick } = this.props;
 
     if (isOpen) {
       return values.map(value => (
-        <button type="button" key={value} onClick={() => click(value)} className="hint__text">
+        <button type="button" key={value} onClick={() => onClick(value)} className="hint__text">
           {value}
         </button>
       ));
@@ -56,7 +56,7 @@ Hint.propTypes = {
   chosenMatch: PropTypes.string.isRequired,
   values: PropTypes.arrayOf(PropTypes.string).isRequired,
   className: PropTypes.string,
-  click: PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 Hint.defaultProps = {

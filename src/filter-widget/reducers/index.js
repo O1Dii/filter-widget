@@ -16,28 +16,19 @@ import {
 } from '../actions';
 import { PARTIAL_MATCH, SORTING_ASC } from '../constants';
 
-function uncheckCurrentFilters(state, dimensionId) {
-  const arr = state.get('selectedFilters');
-  const newArr = arr.filter(item => state.get('filters').get(item).dimensionId !== dimensionId);
-
-  return state.set('selectedFilters', newArr);
-}
-
-function uncheckCurrentDimensions(state, contextId) {
-  let currentState = state;
-  const arr = state.get('selectedDimensions');
-
-  const toExcludeValues = arr.filter(
-    item => state.get('dimensions').get(item).contextId === contextId,
-  );
-
-  toExcludeValues.forEach((item) => {
-    currentState = uncheckCurrentFilters(currentState, item);
-  });
-
+function uncheckCurrent(state, toExcludeValues, name) {
+  const arr = state.get(name);
   const newArr = arr.filterNot(item => toExcludeValues.includes(item));
 
-  return currentState.set('selectedDimensions', newArr);
+  return state.set(name, newArr);
+}
+
+function uncheckSertainFilters(state, toExcludeValues) {
+  return uncheckCurrent(state, toExcludeValues, 'selectedFilters');
+}
+
+function uncheckSertainDimensions(state, toExcludeValues) {
+  return uncheckCurrent(state, toExcludeValues, 'selectedDimensions');
 }
 
 function toggleCurrent(state, payload, name) {
@@ -70,19 +61,11 @@ function recieveData(state, payload, name) {
 
 const main = handleActions(
   {
-    [toggleContext]: (state, { payload }) => {
-      const newState = uncheckCurrentDimensions(state, payload);
-
-      return toggleContexts(newState, payload);
-    },
-    [toggleDimension]: (state, { payload }) => {
-      const newState = uncheckCurrentFilters(state, payload);
-
-      return toggleDimensions(newState, payload);
-    },
+    [toggleContext]: (state, { payload }) => toggleContexts(state, payload),
+    [toggleDimension]: (state, { payload }) => toggleDimensions(state, payload),
     [toggleFilter]: (state, { payload }) => toggleFilters(state, payload),
-    [uncheckDimensions]: (state, { payload }) => uncheckCurrentDimensions(state, payload),
-    [uncheckFilters]: (state, { payload }) => uncheckCurrentFilters(state, payload),
+    [uncheckDimensions]: (state, { payload }) => uncheckSertainDimensions(state, payload),
+    [uncheckFilters]: (state, { payload }) => uncheckSertainFilters(state, payload),
     [recieveContexts]: (state, { payload }) => recieveData(state, payload, 'contexts'),
     [recieveDimensions]: (state, { payload }) => recieveData(state, payload, 'dimensions'),
     [recieveFilters]: (state, { payload }) => recieveData(state, payload, 'filters'),
