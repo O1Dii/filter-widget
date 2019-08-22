@@ -14,9 +14,9 @@ class List extends React.PureComponent {
   };
 
   onAllChecked = () => {
-    const { onAllChecked, allChecked, items } = this.props;
+    const { onAllChecked, allChecked, filteredItems } = this.props;
 
-    onAllChecked(items.map(({ id }) => id).toList(), !allChecked);
+    onAllChecked(filteredItems, !allChecked);
   };
 
   getItems = items => {

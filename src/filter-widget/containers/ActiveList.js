@@ -22,16 +22,17 @@ const mapStateToProps = (state) => {
   const searchMatch = state.get('searchMatch');
   const sortType = state.get('sortType');
 
-  let filteredItems = currentFilters.filter(item => currentSelectedDimensions.includes(item.dimensionId));
-
-  filteredItems = filteredItems.filter(({ name }) => filters[searchMatch](name, searchText));
+  const filteredItems = currentFilters.filter(item => currentSelectedDimensions.includes(item.dimensionId));
 
   const allChecked = currentSelectedFilters.count() === filteredItems.count();
 
-  filteredItems = sort(filteredItems, sortType);
+  let searchedItems = filteredItems.filter(({ name }) => filters[searchMatch](name, searchText));
+
+  searchedItems = sort(searchedItems, sortType);
 
   return {
-    items: filteredItems,
+    filteredItems: filteredItems.map(({ id }) => id).toList(),
+    items: searchedItems,
     allChecked,
     selectedItems: currentSelectedFilters,
   };
