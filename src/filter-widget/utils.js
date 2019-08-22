@@ -7,11 +7,11 @@ export const filters = {
 };
 
 export function reverseSort(a, b) {
-  if (a[1].name > b[1].name) {
+  if (a.name > b.name) {
     return -1;
   }
 
-  if (a[1].name < b[1].name) {
+  if (a.name < b.name) {
     return 1;
   }
 

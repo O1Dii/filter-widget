@@ -5,18 +5,11 @@ import classNames from 'classnames';
 import './HintDropdown.scss';
 
 class Hint extends React.PureComponent {
-  constructor(props) {
-    super(props);
+  state = {
+    isOpen: false,
+  };
 
-    this.state = {
-      isOpen: false,
-    };
-
-    this.openDropdown = this.openDropdown.bind(this);
-    this.closeDropdown = this.closeDropdown.bind(this);
-  }
-
-  getButtons() {
+  getButtons = () => {
     const { isOpen } = this.state;
     const { values, chosenMatch, click } = this.props;
 
@@ -32,15 +25,15 @@ class Hint extends React.PureComponent {
         {chosenMatch}
       </button>
     );
-  }
+  };
 
-  openDropdown() {
+  openDropdown = () => {
     this.setState({ isOpen: true });
-  }
+  };
 
-  closeDropdown() {
+  closeDropdown = () => {
     this.setState({ isOpen: false });
-  }
+  };
 
   render() {
     const { className } = this.props;

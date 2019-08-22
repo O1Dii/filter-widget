@@ -5,16 +5,10 @@ import classNames from 'classnames';
 import './Hint.scss';
 
 class Hint extends React.PureComponent {
-  constructor(props) {
-    super(props);
-
-    this.click = this.click.bind(this);
-  }
-
-  click() {
+  click = () => {
     const { click, sortType } = this.props;
     click(sortType);
-  }
+  };
 
   render() {
     const { sortType, className } = this.props;

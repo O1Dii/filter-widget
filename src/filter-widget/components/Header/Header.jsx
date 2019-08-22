@@ -4,15 +4,10 @@ import PropTypes from 'prop-types';
 import './Header.scss';
 
 class Header extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.openCloseAll = this.openCloseAll.bind(this);
-  }
-
-  openCloseAll() {
+  openCloseAll = () => {
     const { close } = this.props;
     close();
-  }
+  };
 
   render() {
     return (

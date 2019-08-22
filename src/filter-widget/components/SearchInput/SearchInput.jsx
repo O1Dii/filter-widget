@@ -5,15 +5,10 @@ import ActiveSearchFilters from '../../containers/ActiveSearchFilters';
 import './SearchInput.scss';
 
 class SearchInput extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.onChange = this.onChange.bind(this);
-  }
-
-  onChange(e) {
+  onChange = e => {
     const { searchChange } = this.props;
     searchChange(e.target.value);
-  }
+  };
 
   render() {
     const { search } = this.props;

@@ -6,25 +6,18 @@ import classNames from 'classnames';
 import './Dropdown.scss';
 
 class Dropdown extends React.PureComponent {
-  constructor(props) {
-    super(props);
+  state = {
+    isOpen: false,
+  };
 
-    this.state = {
-      isOpen: false,
-    };
-
-    this.closeDropdown = this.closeDropdown.bind(this);
-    this.openCloseDropdown = this.openCloseDropdown.bind(this);
-  }
-
-  closeDropdown() {
+  closeDropdown = () => {
     this.setState({ isOpen: false });
-  }
+  };
 
-  openCloseDropdown() {
+  openCloseDropdown = () => {
     const { isOpen } = this.state;
     this.setState({ isOpen: !isOpen });
-  }
+  };
 
   render() {
     const { isOpen } = this.state;

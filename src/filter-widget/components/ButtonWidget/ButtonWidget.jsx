@@ -7,15 +7,10 @@ import ActiveFilters from '../../containers/ActiveFilters';
 import './ButtonWidget.scss';
 
 class ButtonWidget extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.openClose = this.openClose.bind(this);
-  }
-
-  openClose() {
+  openClose = () => {
     const { openClose } = this.props;
     openClose();
-  }
+  };
 
   render() {
     return (

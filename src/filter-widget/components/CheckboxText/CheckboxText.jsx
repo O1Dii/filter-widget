@@ -4,15 +4,10 @@ import PropTypes from 'prop-types';
 import './CheckboxText.scss';
 
 class CheckboxText extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.onChange = this.onChange.bind(this);
-  }
-
-  onChange() {
+  onChange = () => {
     const { onCheck, id } = this.props;
     onCheck(id);
-  }
+  };
 
   render() {
     const { text, checked } = this.props;

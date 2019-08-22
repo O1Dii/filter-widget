@@ -71,12 +71,12 @@ function recieveData(state, payload, name) {
 const main = handleActions(
   {
     [toggleContext]: (state, { payload }) => {
-      const newState = uncheckDimensions(state, payload);
+      const newState = uncheckCurrentDimensions(state, payload);
 
       return toggleContexts(newState, payload);
     },
     [toggleDimension]: (state, { payload }) => {
-      const newState = uncheckFilters(state, payload);
+      const newState = uncheckCurrentFilters(state, payload);
 
       return toggleDimensions(newState, payload);
     },

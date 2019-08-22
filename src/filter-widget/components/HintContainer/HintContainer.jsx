@@ -8,22 +8,15 @@ import HintDropdown from '../HintDropdown/HintDropdown';
 import './HintContainer.scss';
 
 class HintContainer extends React.PureComponent {
-  constructor(props) {
-    super(props);
-
-    this.onMatchChange = this.onMatchChange.bind(this);
-    this.onSortingChange = this.onSortingChange.bind(this);
-  }
-
-  onMatchChange(data) {
+  onMatchChange = data => {
     const { matchChange } = this.props;
     matchChange(data);
-  }
+  };
 
-  onSortingChange(data) {
+  onSortingChange = data => {
     const { sortingChange } = this.props;
     sortingChange(data);
-  }
+  };
 
   render() {
     const { className, chosenMatch, sortType } = this.props;
