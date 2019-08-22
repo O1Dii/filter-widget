@@ -36,10 +36,8 @@ class DropdownBlock extends React.PureComponent {
 DropdownBlock.propTypes = {
   onChecked: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
-  items: PropTypes.arrayOf(
-    PropTypes.shape({ id: PropTypes.number, name: PropTypes.string, val: PropTypes.bool }),
-  ),
-  selectedItems: PropTypes.arrayOf(PropTypes.string),
+  items: PropTypes.instanceOf(Immutable.Map),
+  selectedItems: PropTypes.instanceOf(Immutable.List),
   isDisabled: PropTypes.bool,
 };
 

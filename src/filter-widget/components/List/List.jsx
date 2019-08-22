@@ -29,10 +29,8 @@ class List extends React.PureComponent {
 }
 
 List.propTypes = {
-  items: PropTypes.arrayOf(
-    PropTypes.shape({ id: PropTypes.number, name: PropTypes.string, val: PropTypes.bool }),
-  ),
-  selectedItems: PropTypes.arrayOf(PropTypes.string),
+  items: PropTypes.instanceOf(Immutable.Map),
+  selectedItems: PropTypes.instanceOf(Immutable.List),
   onChecked: PropTypes.func.isRequired,
 };
 

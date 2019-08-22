@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import { openCloseAll } from '../actions';
-import OpenButton from '../components/OpenButton/OpenButton';
+import ButtonWidget from '../components/ButtonWidget/ButtonWidget';
 
 const mapStateToProps = () => ({});
 
@@ -9,9 +9,9 @@ const mapDispatchToProps = {
   openClose: openCloseAll,
 };
 
-const ActiveOpenButton = connect(
+const ActiveButtonWidget = connect(
   mapStateToProps,
   mapDispatchToProps,
-)(OpenButton);
+)(ButtonWidget);
 
-export default ActiveOpenButton;
+export default ActiveButtonWidget;

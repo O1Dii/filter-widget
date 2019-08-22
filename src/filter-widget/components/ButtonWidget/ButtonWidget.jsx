@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 
 import ActiveFilters from '../../containers/ActiveFilters';
 
-import './OpenButton.scss';
+import './ButtonWidget.scss';
 
-class OpenButton extends React.PureComponent {
+class ButtonWidget extends React.PureComponent {
   constructor(props) {
     super(props);
     this.openClose = this.openClose.bind(this);
@@ -32,8 +32,8 @@ class OpenButton extends React.PureComponent {
   }
 }
 
-OpenButton.propTypes = {
+ButtonWidget.propTypes = {
   openClose: PropTypes.func.isRequired,
 };
 
-export default OpenButton;
+export default ButtonWidget;
