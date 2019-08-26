@@ -2,30 +2,29 @@ import { createAction } from 'redux-actions';
 import { getContexts, getDimensions, getFilters } from '../data';
 
 import { SORTING_ASC, SORTING_DESC } from '../constants';
-import { getFilteredFiltersIds } from '../selectors';
 
 export const requestContexts = createAction('REQUEST_CONTEXTS');
 export const recieveContexts = createAction('RECIEVE_CONTEXTS');
 export const getContextsData = () => (dispatch) => {
   dispatch(requestContexts());
-  const data = getContexts();
-  dispatch(recieveContexts(data));
+  const contexts = getContexts();
+  dispatch(recieveContexts(contexts));
 };
 
 export const requestDimensions = createAction('REQUEST_DIMENSIONS');
 export const recieveDimensions = createAction('RECIEVE_DIMENSIONS');
 export const getDimensionsData = () => (dispatch) => {
   dispatch(requestDimensions());
-  const data = getDimensions();
-  dispatch(recieveDimensions(data));
+  const dimensions = getDimensions();
+  dispatch(recieveDimensions(dimensions));
 };
 
 export const requestFilters = createAction('REQUEST_FILTERS');
 export const recieveFilters = createAction('RECIEVE_FILTERS');
 export const getFiltersData = () => (dispatch) => {
   dispatch(requestFilters());
-  const data = getFilters();
-  dispatch(recieveFilters(data));
+  const filters = getFilters();
+  dispatch(recieveFilters(filters));
 };
 
 export const getAllData = () => (dispatch) => {
@@ -41,11 +40,11 @@ export const uncheckDimensionWithFilters = dimensionId => (dispatch, getState) =
   const filters = getState().get('filters');
   const selectedFilters = getState().get('selectedFilters');
 
-  const toExcludeValues = selectedFilters.filter(
+  const toUncheckFilters = selectedFilters.filter(
     item => filters.getIn([item, 'dimensionId']) === dimensionId,
   );
 
-  dispatch(uncheckFilters(toExcludeValues));
+  dispatch(uncheckFilters(toUncheckFilters));
 };
 
 export const toggleContext = createAction('TOGGLE_CONTEXT');
@@ -56,15 +55,15 @@ export const toggleContextWithUncheck = contextId => (dispatch, getState) => {
   const dimensions = getState().get('dimensions');
   const selectedDimensions = getState().get('selectedDimensions');
 
-  const toExcludeValues = selectedDimensions.filter(
+  const toUncheckDimensions = selectedDimensions.filter(
     item => dimensions.getIn([item, 'contextId']) === contextId,
   );
 
-  toExcludeValues.forEach((item) => {
+  toUncheckDimensions.forEach((item) => {
     dispatch(uncheckDimensionWithFilters(item));
   });
 
-  dispatch(uncheckDimensions(toExcludeValues));
+  dispatch(uncheckDimensions(toUncheckDimensions));
 
   dispatch(toggleContext(contextId));
 };
@@ -80,14 +79,8 @@ export const toggleFilters = createAction('TOGGLE_FILTERS', (filteredFilters, al
 ]);
 
 export const changeSearchInput = createAction('CHANGE_SEARCH');
-export const changeFilters = createAction('CHANGE_FILTERS');
-
-export const changeSearch = data => (dispatch) => {
-  dispatch(changeSearchInput(data));
-  dispatch(changeFilters(data));
-};
 
 export const matchChange = createAction('MATCH_CHANGE');
-export const sortingChange = createAction('SORTINGS_CHANGE', data => (data === SORTING_ASC ? SORTING_DESC : SORTING_ASC));
+export const sortingChange = createAction('SORTINGS_CHANGE', sortType => (sortType === SORTING_ASC ? SORTING_DESC : SORTING_ASC));
 
 export const openCloseAll = createAction('OPEN_CLOSE_ALL');

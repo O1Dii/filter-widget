@@ -14,27 +14,27 @@ class List extends React.PureComponent {
     onCheck(id);
   };
 
-  onAllChecked = () => {
-    const { onAllChecked, filteredItems, selectedItems } = this.props;
+  onAllCheck = () => {
+    const { onAllCheck, filteredFilters, selectedFilters } = this.props;
 
-    const allChecked = filteredItems.count() === selectedItems.count();
-    onAllChecked(filteredItems, !allChecked);
+    const allChecked = filteredFilters.count() === selectedFilters.count();
+    onAllCheck(filteredFilters, !allChecked);
   };
 
-  getItems = items => {
-    const { selectedItems } = this.props;
+  getFilters = filters => {
+    const { selectedFilters } = this.props;
 
-    return items
-      .map(item => {
-        const checked = selectedItems.includes(item.get('id'));
+    return filters
+      .map(filter => {
+        const checked = selectedFilters.includes(filter.get('id'));
 
         return (
           <CheckboxText
-            key={item.get('id')}
-            id={item.get('id')}
+            key={filter.get('id')}
+            id={filter.get('id')}
             checked={checked}
-            text={item.get('name')}
-            onCheck={() => this.onCheck(item.get('id'))}
+            text={filter.get('name')}
+            onCheck={() => this.onCheck(filter.get('id'))}
           />
         );
       })
@@ -42,18 +42,18 @@ class List extends React.PureComponent {
   };
 
   render() {
-    const { items, filteredItems, selectedItems } = this.props;
+    const { visibleFilters, filteredFilters, selectedFilters } = this.props;
 
-    const allChecked = filteredItems.count() === selectedItems.count();
-    const res = this.getItems(items);
+    const allChecked = filteredFilters.count() === selectedFilters.count();
+    const filters = this.getFilters(visibleFilters);
 
     return (
       <div className="list">
         <Scrollbars autoHeight autoHeightMax={100} className="list__scrollbar">
-          {!res.isEmpty() && (
-            <CheckboxText id={0} checked={allChecked} text="(All)" onCheck={this.onAllChecked} />
+          {!filters.isEmpty() && (
+            <CheckboxText id={0} checked={allChecked} text="(All)" onCheck={this.onAllCheck} />
           )}
-          {res}
+          {filters}
         </Scrollbars>
       </div>
     );
@@ -61,14 +61,16 @@ class List extends React.PureComponent {
 }
 
 List.propTypes = {
-  items: PropTypes.instanceOf(Immutable.Map),
-  selectedItems: PropTypes.instanceOf(Immutable.List),
+  visibleFilters: PropTypes.instanceOf(Immutable.Map),
+  selectedFilters: PropTypes.instanceOf(Immutable.List),
+  filteredFilters: PropTypes.instanceOf(Immutable.List),
   onCheck: PropTypes.func.isRequired,
 };
 
 List.defaultProps = {
-  items: Immutable.Map(),
-  selectedItems: Immutable.List(),
+  visibleFilters: Immutable.Map(),
+  selectedFilters: Immutable.List(),
+  filteredFilters: Immutable.List(),
 };
 
 export default List;

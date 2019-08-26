@@ -28,7 +28,8 @@ export const getFilteredFiltersIds = createSelector(
 export const getSearchedAndSortedFilters = createSelector(
   [getSearchText, getSearchMatch, getSortType, getFilteredFilters],
   (searchText, searchMatch, sortType, filteredFilters) => {
-    const unsortedFilters = filteredFilters.filter(filter => filters[searchMatch](filter.get('name'), searchText));
+    const comparator = filters[searchMatch];
+    const unsortedFilters = filteredFilters.filter(filter => comparator(filter.get('name'), searchText));
     return sort(unsortedFilters, sortType);
   },
 );

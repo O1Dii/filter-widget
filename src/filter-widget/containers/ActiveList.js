@@ -6,14 +6,14 @@ import { toggleFilter, toggleFilters } from '../actions';
 import { getFilteredFiltersIds, getSearchedAndSortedFilters } from '../selectors';
 
 const mapStateToProps = state => ({
-  filteredItems: getFilteredFiltersIds(state),
-  items: getSearchedAndSortedFilters(state),
-  selectedItems: state.get('selectedFilters'),
+  filteredFilters: getFilteredFiltersIds(state),
+  visibleFilters: getSearchedAndSortedFilters(state),
+  selectedFilters: state.get('selectedFilters'),
 });
 
 const mapDispatchToProps = {
   onCheck: toggleFilter,
-  onAllChecked: toggleFilters,
+  onAllCheck: toggleFilters,
 };
 
 const ActiveList = connect(

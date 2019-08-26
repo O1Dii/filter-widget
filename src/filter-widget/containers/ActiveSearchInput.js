@@ -1,14 +1,14 @@
 import { connect } from 'react-redux';
 
-import { changeSearch } from '../actions';
+import { changeSearchInput } from '../actions';
 import SearchInput from '../components/SearchInput/SearchInput';
 
 const mapStateToProps = state => ({
-  search: state.get('searchText'),
+  searchText: state.get('searchText'),
 });
 
 const mapDispatchToProps = {
-  searchChange: changeSearch,
+  onSearchTextChange: changeSearchInput,
 };
 
 const ActiveSearchInput = connect(

@@ -6,19 +6,19 @@ import './SearchInput.scss';
 
 class SearchInput extends React.PureComponent {
   onChange = e => {
-    const { searchChange } = this.props;
-    searchChange(e.target.value);
+    const { onSearchTextChange } = this.props;
+    onSearchTextChange(e.target.value);
   };
 
   render() {
-    const { search } = this.props;
+    const { searchText } = this.props;
 
     return (
       <div className="search-input">
         <label>
           <i className="search-input__icon fas fa-search" />
 
-          <input value={search} className="search-input__input" onChange={this.onChange} />
+          <input value={searchText} className="search-input__input" onChange={this.onChange} />
         </label>
 
         <ActiveSearchFilters className="search-input__hint-container" />
@@ -28,8 +28,8 @@ class SearchInput extends React.PureComponent {
 }
 
 SearchInput.propTypes = {
-  search: PropTypes.string.isRequired,
-  searchChange: PropTypes.func.isRequired,
+  searchText: PropTypes.string.isRequired,
+  onSearchTextChange: PropTypes.func.isRequired,
 };
 
 export default SearchInput;

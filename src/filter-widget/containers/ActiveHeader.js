@@ -4,7 +4,7 @@ import { openCloseAll } from '../actions';
 import Header from '../components/Header/Header';
 
 const mapDispatchToProps = {
-  close: openCloseAll,
+  onCloseClick: openCloseAll,
 };
 
 const ActiveHeader = connect(

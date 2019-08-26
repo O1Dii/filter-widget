@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import './Header.scss';
 
 class Header extends React.PureComponent {
-  openCloseAll = () => {
-    const { close } = this.props;
-    close();
+  onCloseClick = () => {
+    const { onCloseClick } = this.props;
+    onCloseClick();
   };
 
   render() {
@@ -14,14 +14,14 @@ class Header extends React.PureComponent {
       <div className="header">
         <i className="header__bars fas fa-bars" />
         <h2 className="header__title">Filters</h2>
-        <button type="button" onClick={this.openCloseAll} className="header__exit fas fa-times" />
+        <button type="button" onClick={this.onCloseClick} className="header__exit fas fa-times" />
       </div>
     );
   }
 }
 
 Header.propTypes = {
-  close: PropTypes.func.isRequired,
+  onCloseClick: PropTypes.func.isRequired,
 };
 
 export default Header;

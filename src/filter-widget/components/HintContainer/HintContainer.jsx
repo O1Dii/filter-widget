@@ -9,13 +9,13 @@ import './HintContainer.scss';
 
 class HintContainer extends React.PureComponent {
   onMatchChange = data => {
-    const { matchChange } = this.props;
-    matchChange(data);
+    const { onMatchChange } = this.props;
+    onMatchChange(data);
   };
 
   onSortingChange = data => {
-    const { sortingChange } = this.props;
-    sortingChange(data);
+    const { onSortingChange } = this.props;
+    onSortingChange(data);
   };
 
   render() {
@@ -38,9 +38,9 @@ class HintContainer extends React.PureComponent {
 
 HintContainer.propTypes = {
   className: PropTypes.string,
-  matchChange: PropTypes.func.isRequired,
+  onMatchChange: PropTypes.func.isRequired,
   chosenMatch: PropTypes.string.isRequired,
-  sortingChange: PropTypes.func.isRequired,
+  onSortingChange: PropTypes.func.isRequired,
   sortType: PropTypes.string.isRequired,
 };
 

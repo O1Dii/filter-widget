@@ -9,8 +9,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  matchChange,
-  sortingChange,
+  onMatchChange: matchChange,
+  onSortingChange: sortingChange,
 };
 
 const ActiveSearchFilters = connect(

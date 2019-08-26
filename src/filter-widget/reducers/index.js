@@ -19,10 +19,10 @@ import { PARTIAL_MATCH, SORTING_ASC } from '../constants';
 import { contextRecord, dimensionRecord, filterRecord } from '../records';
 
 function uncheckCurrent(state, toExcludeValues, name) {
-  const arr = state.get(name);
-  const newArr = arr.filterNot(item => toExcludeValues.includes(item));
+  const currentItems = state.get(name);
+  const newItems = currentItems.filterNot(item => toExcludeValues.includes(item));
 
-  return state.set(name, newArr);
+  return state.set(name, newItems);
 }
 
 function uncheckSertainFilters(state, toExcludeValues) {
@@ -33,44 +33,44 @@ function uncheckSertainDimensions(state, toExcludeValues) {
   return uncheckCurrent(state, toExcludeValues, 'selectedDimensions');
 }
 
-function toggleCurrent(state, payload, name) {
-  let arr = state.get(name);
+function toggleCurrent(state, selectedId, name) {
+  let currentItems = state.get(name);
 
-  if (arr.includes(payload)) {
-    arr = arr.delete(arr.indexOf(payload));
+  if (currentItems.includes(selectedId)) {
+    currentItems = currentItems.delete(currentItems.indexOf(selectedId));
   } else {
-    arr = arr.push(payload);
+    currentItems = currentItems.push(selectedId);
   }
 
-  return state.set(name, arr);
+  return state.set(name, currentItems);
 }
 
-function toggleCurrentContext(state, payload) {
-  return toggleCurrent(state, payload, 'selectedContexts');
+function toggleCurrentContext(state, selectedContextId) {
+  return toggleCurrent(state, selectedContextId, 'selectedContexts');
 }
-function toggleCurrentDimension(state, payload) {
-  return toggleCurrent(state, payload, 'selectedDimensions');
+function toggleCurrentDimension(state, selectedDimensionsId) {
+  return toggleCurrent(state, selectedDimensionsId, 'selectedDimensions');
 }
-function toggleCurrentFilter(state, payload) {
-  return toggleCurrent(state, payload, 'selectedFilters');
+function toggleCurrentFilter(state, selectedFiltersId) {
+  return toggleCurrent(state, selectedFiltersId, 'selectedFilters');
 }
 
-function toggleCurrentFilters(state, [arr, checked]) {
-  let newArr;
+function toggleCurrentFilters(state, [filters, allChecked]) {
+  let newFilters;
 
-  if (checked) {
-    newArr = arr;
+  if (allChecked) {
+    newFilters = filters;
   } else {
-    newArr = Immutable.List();
+    newFilters = Immutable.List();
   }
 
-  return state.set('selectedFilters', newArr);
+  return state.set('selectedFilters', newFilters);
 }
 
 function recieveData(state, payload, name, record) {
-  const arr = Immutable.Map(payload.map(item => [item.id, record(item)]));
+  const items = Immutable.Map(payload.map(item => [item.id, record(item)]));
 
-  return state.set(name, arr);
+  return state.set(name, items);
 }
 
 const main = handleActions(

@@ -4,7 +4,7 @@ import { openCloseAll } from '../actions';
 import ButtonWidget from '../components/ButtonWidget/ButtonWidget';
 
 const mapDispatchToProps = {
-  openClose: openCloseAll,
+  onClick: openCloseAll,
 };
 
 const ActiveButtonWidget = connect(

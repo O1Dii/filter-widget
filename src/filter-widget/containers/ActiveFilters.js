@@ -4,7 +4,7 @@ import { getAllData } from '../actions';
 import Filters from '../components/Filters/Filters';
 
 const mapStateToProps = state => ({
-  hidden: state.get('hidden'),
+  visible: state.get('visible'),
 });
 
 const mapDispatchToProps = {
