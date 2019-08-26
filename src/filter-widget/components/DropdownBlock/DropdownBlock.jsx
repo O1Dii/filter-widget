@@ -13,17 +13,25 @@ class DropdownBlock extends React.PureComponent {
     } = this.props;
 
     const subtitle = items
-      .filter(({ id }) => selectedItems.includes(id))
-      .map(({ name }) => name)
+      .filter(item => selectedItems.includes(item.get('id')))
+      .map(item => item.get('name'))
       .join(', ');
 
     return (
       <SeparatedContainer isDisabled={isDisabled}>
         <Dropdown title={title} subtitle={subtitle}>
           {items
-            .map(({ id, name }) => {
-              const val = selectedItems.includes(id);
-              return <CheckboxText key={id} text={name} id={id} checked={val} onCheck={onCheck} />;
+            .map((item) => {
+              const checked = selectedItems.includes(item.get('id'));
+              return (
+                <CheckboxText
+                  key={item.get('id')}
+                  text={item.get('name')}
+                  id={item.get('id')}
+                  checked={checked}
+                  onCheck={onCheck}
+                />
+              );
             })
             .toList()}
         </Dropdown>

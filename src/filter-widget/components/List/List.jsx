@@ -10,12 +10,14 @@ import './List.scss';
 class List extends React.PureComponent {
   onCheck = id => {
     const { onCheck } = this.props;
+
     onCheck(id);
   };
 
   onAllChecked = () => {
-    const { onAllChecked, allChecked, filteredItems } = this.props;
+    const { onAllChecked, filteredItems, selectedItems } = this.props;
 
+    const allChecked = filteredItems.count() === selectedItems.count();
     onAllChecked(filteredItems, !allChecked);
   };
 
@@ -23,15 +25,16 @@ class List extends React.PureComponent {
     const { selectedItems } = this.props;
 
     return items
-      .map(({ id, name }) => {
-        const checked = selectedItems.includes(id);
+      .map(item => {
+        const checked = selectedItems.includes(item.get('id'));
+
         return (
           <CheckboxText
-            key={id}
-            id={id}
+            key={item.get('id')}
+            id={item.get('id')}
             checked={checked}
-            text={name}
-            onCheck={() => this.onCheck(id)}
+            text={item.get('name')}
+            onCheck={() => this.onCheck(item.get('id'))}
           />
         );
       })
@@ -39,14 +42,15 @@ class List extends React.PureComponent {
   };
 
   render() {
-    const { items, allChecked } = this.props;
+    const { items, filteredItems, selectedItems } = this.props;
 
+    const allChecked = filteredItems.count() === selectedItems.count();
     const res = this.getItems(items);
 
     return (
       <div className="list">
         <Scrollbars autoHeight autoHeightMax={100} className="list__scrollbar">
-          {Boolean(res.size) && (
+          {!res.isEmpty() && (
             <CheckboxText id={0} checked={allChecked} text="(All)" onCheck={this.onAllChecked} />
           )}
           {res}

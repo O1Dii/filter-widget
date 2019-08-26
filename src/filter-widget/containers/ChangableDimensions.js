@@ -2,22 +2,14 @@ import { connect } from 'react-redux';
 
 import { toggleDimensionWithUncheck } from '../actions';
 import DropdownBlock from '../components/DropdownBlock/DropdownBlock';
+import { getFilteredDimensions } from '../selectors';
 
-const mapStateToProps = (state) => {
-  const currentData = state.get('dimensions');
-  const currentSelectedContexts = state.get('selectedContexts');
-  const currentSelectedData = state.get('selectedDimensions');
-  const isDisabled = !currentSelectedContexts.count();
-
-  const filteredData = currentData.filter(item => currentSelectedContexts.includes(item.contextId));
-
-  return {
-    isDisabled,
-    title: 'dimensions',
-    items: filteredData,
-    selectedItems: currentSelectedData,
-  };
-};
+const mapStateToProps = state => ({
+  isDisabled: !state.get('selectedContexts').count(),
+  title: 'dimensions',
+  items: getFilteredDimensions(state),
+  selectedItems: state.get('selectedDimensions'),
+});
 
 const mapDispatchToProps = {
   onCheck: toggleDimensionWithUncheck,

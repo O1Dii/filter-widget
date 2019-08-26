@@ -16,6 +16,7 @@ import {
   toggleFilters,
 } from '../actions';
 import { PARTIAL_MATCH, SORTING_ASC } from '../constants';
+import { contextRecord, dimensionRecord, filterRecord } from '../records';
 
 function uncheckCurrent(state, toExcludeValues, name) {
   const arr = state.get(name);
@@ -66,8 +67,8 @@ function toggleCurrentFilters(state, [arr, checked]) {
   return state.set('selectedFilters', newArr);
 }
 
-function recieveData(state, payload, name) {
-  const arr = Immutable.Map(payload.map(item => [item.id, item]));
+function recieveData(state, payload, name, record) {
+  const arr = Immutable.Map(payload.map(item => [item.id, record(item)]));
 
   return state.set(name, arr);
 }
@@ -80,9 +81,9 @@ const main = handleActions(
     [toggleFilters]: (state, { payload }) => toggleCurrentFilters(state, payload),
     [uncheckDimensions]: (state, { payload }) => uncheckSertainDimensions(state, payload),
     [uncheckFilters]: (state, { payload }) => uncheckSertainFilters(state, payload),
-    [recieveContexts]: (state, { payload }) => recieveData(state, payload, 'contexts'),
-    [recieveDimensions]: (state, { payload }) => recieveData(state, payload, 'dimensions'),
-    [recieveFilters]: (state, { payload }) => recieveData(state, payload, 'filters'),
+    [recieveContexts]: (state, { payload }) => recieveData(state, payload, 'contexts', contextRecord),
+    [recieveDimensions]: (state, { payload }) => recieveData(state, payload, 'dimensions', dimensionRecord),
+    [recieveFilters]: (state, { payload }) => recieveData(state, payload, 'filters', filterRecord),
     [changeSearchInput]: (state, { payload }) => state.set('searchText', payload),
     [matchChange]: (state, { payload }) => state.set('searchMatch', payload),
     [sortingChange]: (state, { payload }) => state.set('sortType', payload),

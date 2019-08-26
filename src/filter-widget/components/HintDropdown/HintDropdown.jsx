@@ -38,15 +38,13 @@ class Hint extends React.PureComponent {
   render() {
     const { className } = this.props;
 
-    const button = this.getButtons();
-
     return (
       <div
         className={classNames('hint', className)}
         onMouseEnter={this.openDropdown}
         onMouseLeave={this.closeDropdown}
       >
-        {button}
+        {this.getButtons()}
       </div>
     );
   }

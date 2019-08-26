@@ -3,16 +3,11 @@ import { connect } from 'react-redux';
 import { toggleContextWithUncheck } from '../actions';
 import DropdownBlock from '../components/DropdownBlock/DropdownBlock';
 
-const mapStateToProps = (state) => {
-  const currentContexts = state.get('contexts');
-  const currentSelectedContexts = state.get('selectedContexts');
-
-  return {
-    title: 'contexts',
-    items: currentContexts,
-    selectedItems: currentSelectedContexts,
-  };
-};
+const mapStateToProps = state => ({
+  title: 'contexts',
+  items: state.get('contexts'),
+  selectedItems: state.get('selectedContexts'),
+});
 
 const mapDispatchToProps = {
   onCheck: toggleContextWithUncheck,
