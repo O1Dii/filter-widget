@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { toggleDimensionWithUncheck } from '../actions';
+import { checkDimension, uncheckDimensionWithFilters } from '../actions';
 import DropdownBlock from '../components/DropdownBlock/DropdownBlock';
 import { getFilteredDimensions } from '../selectors';
 
@@ -12,7 +12,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  onCheck: toggleDimensionWithUncheck,
+  onCheck: checkDimension,
+  onUncheck: uncheckDimensionWithFilters,
 };
 
 const ChangableDimensions = connect(

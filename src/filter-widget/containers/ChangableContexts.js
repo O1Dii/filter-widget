@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { toggleContextWithUncheck } from '../actions';
+import { checkContext, uncheckContextWithDimensions } from '../actions';
 import DropdownBlock from '../components/DropdownBlock/DropdownBlock';
 
 const mapStateToProps = state => ({
@@ -10,7 +10,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = {
-  onCheck: toggleContextWithUncheck,
+  onCheck: checkContext,
+  onUncheck: uncheckContextWithDimensions,
 };
 
 const ChangableContexts = connect(

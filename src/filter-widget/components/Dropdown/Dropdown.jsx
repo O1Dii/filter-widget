@@ -10,11 +10,11 @@ class Dropdown extends React.PureComponent {
     isOpen: false,
   };
 
-  closeDropdown = () => {
+  onOutsideClick = () => {
     this.setState({ isOpen: false });
   };
 
-  openCloseDropdown = () => {
+  onDropdownClick = () => {
     const { isOpen } = this.state;
     this.setState({ isOpen: !isOpen });
   };
@@ -26,9 +26,9 @@ class Dropdown extends React.PureComponent {
     const menuClassName = classNames('dropdown__content', { dropdown__content_open: isOpen });
 
     return (
-      <OutsideClickHandler onOutsideClick={this.closeDropdown}>
+      <OutsideClickHandler onOutsideClick={this.onOutsideClick}>
         <div className="dropdown">
-          <button type="button" className="dropdown__button" onClick={this.openCloseDropdown}>
+          <button type="button" className="dropdown__button" onClick={this.onDropdownClick}>
             <i className="dropdown__arrow fas fa-angle-down" />
             {title}
           </button>

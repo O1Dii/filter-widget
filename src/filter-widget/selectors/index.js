@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect';
+import { is } from 'immutable';
 
 import { filters, sort } from '../utils';
 
@@ -6,6 +7,7 @@ const getDimensions = state => state.get('dimensions');
 const getSelectedContexts = state => state.get('selectedContexts');
 const getFilters = state => state.get('filters');
 const getSelectedDimensions = state => state.get('selectedDimensions');
+const getSelectedFilters = state => state.get('selectedFilters');
 const getSearchText = state => state.get('searchText');
 const getSearchMatch = state => state.get('searchMatch');
 const getSortType = state => state.get('sortType');
@@ -20,16 +22,25 @@ export const getFilteredFilters = createSelector(
   (unfilteredFilters, selectedDimensions) => unfilteredFilters.filter(item => selectedDimensions.includes(item.get('dimensionId'))),
 );
 
-export const getFilteredFiltersIds = createSelector(
-  [getFilteredFilters],
-  filteredFilters => filteredFilters.map(filter => filter.get('id')).toList(),
+export const getSearchedUnsortedFilters = createSelector(
+  [getSearchText, getSearchMatch, getFilteredFilters],
+  (searchText, searchMatch, filteredFilters) => {
+    const comparator = filters[searchMatch];
+    return filteredFilters.filter(filter => comparator(filter.get('name'), searchText));
+  },
 );
 
-export const getSearchedAndSortedFilters = createSelector(
-  [getSearchText, getSearchMatch, getSortType, getFilteredFilters],
-  (searchText, searchMatch, sortType, filteredFilters) => {
-    const comparator = filters[searchMatch];
-    const unsortedFilters = filteredFilters.filter(filter => comparator(filter.get('name'), searchText));
-    return sort(unsortedFilters, sortType);
-  },
+export const getSearchedSortedFilters = createSelector(
+  [getSearchedUnsortedFilters, getSortType],
+  (unsortedFilters, sortType) => sort(unsortedFilters, sortType),
+);
+
+export const getSearchedFiltersIds = createSelector(
+  [getSearchedSortedFilters],
+  searchedFilters => searchedFilters.map(filter => filter.get('id')).toList(),
+);
+
+export const getAllChecked = createSelector(
+  [getSelectedFilters, getSearchedFiltersIds],
+  (selectedFilters, searchedFilters) => is(searchedFilters.toSet(), selectedFilters.toSet()),
 );

@@ -2,6 +2,7 @@ import { createAction } from 'redux-actions';
 import { getContexts, getDimensions, getFilters } from '../data';
 
 import { SORTING_ASC, SORTING_DESC } from '../constants';
+import { getSearchedFiltersIds, getAllChecked } from '../selectors';
 
 export const requestContexts = createAction('REQUEST_CONTEXTS');
 export const recieveContexts = createAction('RECIEVE_CONTEXTS');
@@ -36,47 +37,63 @@ export const getAllData = () => (dispatch) => {
 export const uncheckFilters = createAction('UNCHECK_FILTERS');
 export const uncheckDimensions = createAction('UNCHECK_DIMENSIONS');
 
+export const checkContext = createAction('CHECK_CONTEXT');
+export const uncheckContext = createAction('UNCHECK_CONTEXT');
+export const checkDimension = createAction('CHECK_DIMENSION');
+export const uncheckDimension = createAction('UNCHECK_DIMENSION');
+export const checkFilter = createAction('CHECK_FILTER');
+export const uncheckFilter = createAction('UNCHECK_FILTER');
+
 export const uncheckDimensionWithFilters = dimensionId => (dispatch, getState) => {
   const filters = getState().get('filters');
   const selectedFilters = getState().get('selectedFilters');
 
   const toUncheckFilters = selectedFilters.filter(
-    item => filters.getIn([item, 'dimensionId']) === dimensionId,
+    selectedFilter => filters.getIn([selectedFilter, 'dimensionId']) === dimensionId,
   );
 
   dispatch(uncheckFilters(toUncheckFilters));
+
+  dispatch(uncheckDimension(dimensionId));
 };
 
-export const toggleContext = createAction('TOGGLE_CONTEXT');
-export const toggleDimension = createAction('TOGGLE_DIMENSION');
-export const toggleFilter = createAction('TOGGLE_FILTER');
-
-export const toggleContextWithUncheck = contextId => (dispatch, getState) => {
+export const uncheckContextWithDimensions = contextId => (dispatch, getState) => {
   const dimensions = getState().get('dimensions');
   const selectedDimensions = getState().get('selectedDimensions');
 
   const toUncheckDimensions = selectedDimensions.filter(
-    item => dimensions.getIn([item, 'contextId']) === contextId,
+    selectedDimension => dimensions.getIn([selectedDimension, 'contextId']) === contextId,
   );
 
-  toUncheckDimensions.forEach((item) => {
-    dispatch(uncheckDimensionWithFilters(item));
+  toUncheckDimensions.forEach((dimension) => {
+    dispatch(uncheckDimensionWithFilters(dimension));
   });
 
   dispatch(uncheckDimensions(toUncheckDimensions));
 
-  dispatch(toggleContext(contextId));
+  dispatch(uncheckContext(contextId));
 };
 
-export const toggleDimensionWithUncheck = dimensionId => (dispatch) => {
-  dispatch(uncheckDimensionWithFilters(dimensionId));
-  dispatch(toggleDimension(dimensionId));
+export const checkAllFiltersDispatch = createAction('CHECK_ALL_FILTERS');
+
+export const uncheckAllFilters = createAction('UNCHECK_ALL_FILTERS');
+
+export const checkAllFilters = () => (dispatch, getStore) => {
+  const filters = getSearchedFiltersIds(getStore());
+
+  dispatch(checkAllFiltersDispatch(filters));
 };
 
-export const toggleFilters = createAction('TOGGLE_FILTERS', (filteredFilters, allChecked) => [
-  filteredFilters,
-  allChecked,
-]);
+// export const toggleAllFilters = () => (dispatch, getStore) => {
+//   const filters = getSearchedFiltersIds(getStore());
+//   const allChecked = getAllChecked(getStore());
+
+//   if (allChecked) {
+//     dispatch(uncheckAllFilters(filters));
+//   }
+
+//   dispatch(checkAllFilters(filters));
+// };
 
 export const changeSearchInput = createAction('CHANGE_SEARCH');
 

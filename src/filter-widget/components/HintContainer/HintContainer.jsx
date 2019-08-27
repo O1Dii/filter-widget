@@ -8,18 +8,10 @@ import HintDropdown from '../HintDropdown/HintDropdown';
 import './HintContainer.scss';
 
 class HintContainer extends React.PureComponent {
-  onMatchChange = data => {
-    const { onMatchChange } = this.props;
-    onMatchChange(data);
-  };
-
-  onSortingChange = data => {
-    const { onSortingChange } = this.props;
-    onSortingChange(data);
-  };
-
   render() {
-    const { className, chosenMatch, sortType } = this.props;
+    const {
+      className, chosenMatch, sortType, onMatchChange, onSortingChange,
+    } = this.props;
     const firstHintValues = ['**', '*_', '""'];
 
     return (
@@ -27,10 +19,10 @@ class HintContainer extends React.PureComponent {
         <HintDropdown
           chosenMatch={chosenMatch}
           values={firstHintValues}
-          onClick={this.onMatchChange}
+          onClick={onMatchChange}
           className="hint-container__hint-dropdown"
         />
-        <Hint sortType={sortType} onClick={this.onSortingChange} className="hint-container__hint" />
+        <Hint sortType={sortType} onClick={onSortingChange} className="hint-container__hint" />
       </div>
     );
   }

@@ -9,6 +9,14 @@ class Hint extends React.PureComponent {
     isOpen: false,
   };
 
+  openDropdown = () => {
+    this.setState({ isOpen: true });
+  };
+
+  closeDropdown = () => {
+    this.setState({ isOpen: false });
+  };
+
   getButtons = () => {
     const { isOpen } = this.state;
     const { values, chosenMatch, onClick } = this.props;
@@ -20,19 +28,12 @@ class Hint extends React.PureComponent {
         </button>
       ));
     }
+
     return (
       <button type="button" className="hint__text">
         {chosenMatch}
       </button>
     );
-  };
-
-  openDropdown = () => {
-    this.setState({ isOpen: true });
-  };
-
-  closeDropdown = () => {
-    this.setState({ isOpen: false });
   };
 
   render() {

@@ -2,18 +2,22 @@ import { connect } from 'react-redux';
 
 import List from '../components/List/List';
 
-import { toggleFilter, toggleFilters } from '../actions';
-import { getFilteredFiltersIds, getSearchedAndSortedFilters } from '../selectors';
+import {
+  checkFilter, uncheckFilter, checkAllFilters, uncheckAllFilters,
+} from '../actions';
+import { getSearchedSortedFilters, getAllChecked } from '../selectors';
 
 const mapStateToProps = state => ({
-  filteredFilters: getFilteredFiltersIds(state),
-  visibleFilters: getSearchedAndSortedFilters(state),
+  visibleFilters: getSearchedSortedFilters(state),
   selectedFilters: state.get('selectedFilters'),
+  allChecked: getAllChecked(state),
 });
 
 const mapDispatchToProps = {
-  onCheck: toggleFilter,
-  onAllCheck: toggleFilters,
+  onCheck: checkFilter,
+  onUncheck: uncheckFilter,
+  onAllCheck: checkAllFilters,
+  onAllUncheck: uncheckAllFilters,
 };
 
 const ActiveList = connect(

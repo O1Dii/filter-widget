@@ -9,7 +9,7 @@ import CheckboxText from '../CheckboxText/CheckboxText';
 class DropdownBlock extends React.PureComponent {
   render() {
     const {
-      title, onCheck, items, selectedItems, isDisabled,
+      title, onCheck, onUncheck, items, selectedItems, isDisabled,
     } = this.props;
 
     const subtitle = items
@@ -30,6 +30,7 @@ class DropdownBlock extends React.PureComponent {
                   id={item.get('id')}
                   checked={checked}
                   onCheck={onCheck}
+                  onUncheck={onUncheck}
                 />
               );
             })
@@ -42,6 +43,7 @@ class DropdownBlock extends React.PureComponent {
 
 DropdownBlock.propTypes = {
   onCheck: PropTypes.func.isRequired,
+  onUncheck: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
   items: PropTypes.instanceOf(Immutable.Map),
   selectedItems: PropTypes.instanceOf(Immutable.List),

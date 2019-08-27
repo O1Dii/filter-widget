@@ -2,69 +2,40 @@ import { handleActions } from 'redux-actions';
 import Immutable from 'immutable';
 
 import {
-  toggleContext,
-  toggleDimension,
-  toggleFilter,
+  checkContext,
+  checkDimension,
+  checkFilter,
+  uncheckContext,
+  uncheckDimension,
+  uncheckFilter,
+  checkAllFiltersDispatch,
+  uncheckAllFilters,
+  uncheckDimensions,
+  uncheckFilters,
   recieveContexts,
   recieveDimensions,
   recieveFilters,
   changeSearchInput,
   matchChange,
   sortingChange,
-  uncheckDimensions,
-  uncheckFilters,
-  toggleFilters,
 } from '../actions';
 import { PARTIAL_MATCH, SORTING_ASC } from '../constants';
-import { contextRecord, dimensionRecord, filterRecord } from '../records';
+import contextRecord from '../records/contextRecord';
+import dimensionRecord from '../records/dimensionRecord';
+import filterRecord from '../records/filterRecord';
 
-function uncheckCurrent(state, toExcludeValues, name) {
+function uncheckSertain(state, toExcludeValues, name) {
   const currentItems = state.get(name);
   const newItems = currentItems.filterNot(item => toExcludeValues.includes(item));
 
   return state.set(name, newItems);
 }
 
-function uncheckSertainFilters(state, toExcludeValues) {
-  return uncheckCurrent(state, toExcludeValues, 'selectedFilters');
+function checkCurrent(state, selectedId, name) {
+  return state.set(name, state.get(name).push(selectedId));
 }
-
-function uncheckSertainDimensions(state, toExcludeValues) {
-  return uncheckCurrent(state, toExcludeValues, 'selectedDimensions');
-}
-
-function toggleCurrent(state, selectedId, name) {
-  let currentItems = state.get(name);
-
-  if (currentItems.includes(selectedId)) {
-    currentItems = currentItems.delete(currentItems.indexOf(selectedId));
-  } else {
-    currentItems = currentItems.push(selectedId);
-  }
-
-  return state.set(name, currentItems);
-}
-
-function toggleCurrentContext(state, selectedContextId) {
-  return toggleCurrent(state, selectedContextId, 'selectedContexts');
-}
-function toggleCurrentDimension(state, selectedDimensionsId) {
-  return toggleCurrent(state, selectedDimensionsId, 'selectedDimensions');
-}
-function toggleCurrentFilter(state, selectedFiltersId) {
-  return toggleCurrent(state, selectedFiltersId, 'selectedFilters');
-}
-
-function toggleCurrentFilters(state, [filters, allChecked]) {
-  let newFilters;
-
-  if (allChecked) {
-    newFilters = filters;
-  } else {
-    newFilters = Immutable.List();
-  }
-
-  return state.set('selectedFilters', newFilters);
+function uncheckCurrent(state, selectedId, name) {
+  return state.set(name, state.get(name).delete(state.get(name).indexOf(selectedId)));
 }
 
 function recieveData(state, payload, name, record) {
@@ -75,12 +46,16 @@ function recieveData(state, payload, name, record) {
 
 const main = handleActions(
   {
-    [toggleContext]: (state, { payload }) => toggleCurrentContext(state, payload),
-    [toggleDimension]: (state, { payload }) => toggleCurrentDimension(state, payload),
-    [toggleFilter]: (state, { payload }) => toggleCurrentFilter(state, payload),
-    [toggleFilters]: (state, { payload }) => toggleCurrentFilters(state, payload),
-    [uncheckDimensions]: (state, { payload }) => uncheckSertainDimensions(state, payload),
-    [uncheckFilters]: (state, { payload }) => uncheckSertainFilters(state, payload),
+    [checkContext]: (state, { payload }) => checkCurrent(state, payload, 'selectedContexts'),
+    [uncheckContext]: (state, { payload }) => uncheckCurrent(state, payload, 'selectedContexts'),
+    [checkDimension]: (state, { payload }) => checkCurrent(state, payload, 'selectedDimensions'),
+    [uncheckDimension]: (state, { payload }) => uncheckCurrent(state, payload, 'selectedDimensions'),
+    [checkFilter]: (state, { payload }) => checkCurrent(state, payload, 'selectedFilters'),
+    [uncheckFilter]: (state, { payload }) => uncheckCurrent(state, payload, 'selectedFilters'),
+    [checkAllFiltersDispatch]: (state, { payload }) => state.set('selectedFilters', payload),
+    [uncheckAllFilters]: state => state.set('selectedFilters', Immutable.List()),
+    [uncheckFilters]: (state, { payload }) => uncheckSertain(state, payload, 'selectedFilters'),
+    [uncheckDimensions]: (state, { payload }) => uncheckSertain(state, payload, 'selectedDimensions'),
     [recieveContexts]: (state, { payload }) => recieveData(state, payload, 'contexts', contextRecord),
     [recieveDimensions]: (state, { payload }) => recieveData(state, payload, 'dimensions', dimensionRecord),
     [recieveFilters]: (state, { payload }) => recieveData(state, payload, 'filters', filterRecord),
