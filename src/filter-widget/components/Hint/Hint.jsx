@@ -5,17 +5,12 @@ import classNames from 'classnames';
 import './Hint.scss';
 
 class Hint extends React.PureComponent {
-  onClick = () => {
-    const { onClick, sortType } = this.props;
-    onClick(sortType);
-  };
-
   render() {
-    const { sortType, className } = this.props;
+    const { sortType, className, onClick } = this.props;
 
     return (
       <div className={classNames('hint', className)}>
-        <button type="button" onClick={this.onClick} className="hint__text">
+        <button type="button" onClick={() => onClick(sortType)} className="hint__text">
           {sortType}
         </button>
       </div>

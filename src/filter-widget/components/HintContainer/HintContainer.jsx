@@ -22,6 +22,7 @@ class HintContainer extends React.PureComponent {
           onClick={onMatchChange}
           className="hint-container__hint-dropdown"
         />
+
         <Hint sortType={sortType} onClick={onSortingChange} className="hint-container__hint" />
       </div>
     );

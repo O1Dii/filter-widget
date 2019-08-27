@@ -1,5 +1,5 @@
 import {
-  FULL_MATCH, PARTIAL_MATCH, STARTS_WITH, SORTING_ASC,
+  FULL_MATCH, PARTIAL_MATCH, STARTS_WITH, SORTING_ASC, SORTING_DESC,
 } from './constants';
 
 export const filters = {
@@ -8,22 +8,31 @@ export const filters = {
   [FULL_MATCH]: (data, searchText) => data === searchText,
 };
 
-export function reverseSort(a, b) {
-  if (a.get('name') > b.get('name')) {
+export function ascendingSort(a, b) {
+  if (a < b) {
     return -1;
   }
 
-  if (a.get('name') < b.get('name')) {
+  if (a > b) {
     return 1;
   }
 
   return 0;
 }
 
-export function sort(items, sortType) {
-  if (sortType === SORTING_ASC) {
-    return items.sort();
+export function descendingSort(a, b) {
+  if (a > b) {
+    return -1;
   }
 
-  return items.sort(reverseSort);
+  if (a < b) {
+    return 1;
+  }
+
+  return 0;
 }
+
+export const sort = {
+  [SORTING_ASC]: ascendingSort,
+  [SORTING_DESC]: descendingSort,
+};

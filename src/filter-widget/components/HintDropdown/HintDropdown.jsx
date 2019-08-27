@@ -9,11 +9,11 @@ class Hint extends React.PureComponent {
     isOpen: false,
   };
 
-  openDropdown = () => {
+  onMouseEnter = () => {
     this.setState({ isOpen: true });
   };
 
-  closeDropdown = () => {
+  onMouseLeave = () => {
     this.setState({ isOpen: false });
   };
 
@@ -42,8 +42,8 @@ class Hint extends React.PureComponent {
     return (
       <div
         className={classNames('hint', className)}
-        onMouseEnter={this.openDropdown}
-        onMouseLeave={this.closeDropdown}
+        onMouseEnter={this.onMouseEnter}
+        onMouseLeave={this.onMouseLeave}
       >
         {this.getButtons()}
       </div>

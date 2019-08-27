@@ -32,7 +32,7 @@ export const getSearchedUnsortedFilters = createSelector(
 
 export const getSearchedSortedFilters = createSelector(
   [getSearchedUnsortedFilters, getSortType],
-  (unsortedFilters, sortType) => sort(unsortedFilters, sortType),
+  (unsortedFilters, sortType) => unsortedFilters.sort((a, b) => sort[sortType](a.get('name'), b.get('name'))),
 );
 
 export const getSearchedFiltersIds = createSelector(

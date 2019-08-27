@@ -4,17 +4,14 @@ import PropTypes from 'prop-types';
 import './Header.scss';
 
 class Header extends React.PureComponent {
-  onCloseClick = () => {
-    const { onCloseClick } = this.props;
-    onCloseClick();
-  };
-
   render() {
+    const { onCloseClick } = this.props;
+
     return (
       <div className="header">
         <i className="header__bars fas fa-bars" />
         <h2 className="header__title">Filters</h2>
-        <button type="button" onClick={this.onCloseClick} className="header__exit fas fa-times" />
+        <button type="button" onClick={onCloseClick} className="header__exit fas fa-times" />
       </div>
     );
   }

@@ -21,8 +21,8 @@ class List extends React.PureComponent {
             id={filter.get('id')}
             checked={checked}
             text={filter.get('name')}
-            onCheck={() => onCheck(filter.get('id'))}
-            onUncheck={() => onUncheck(filter.get('id'))}
+            onCheck={onCheck}
+            onUncheck={onUncheck}
           />
         );
       })
