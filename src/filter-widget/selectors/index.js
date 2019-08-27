@@ -32,7 +32,10 @@ export const getSearchedUnsortedFilters = createSelector(
 
 export const getSearchedSortedFilters = createSelector(
   [getSearchedUnsortedFilters, getSortType],
-  (unsortedFilters, sortType) => unsortedFilters.sort((a, b) => sort[sortType](a.get('name'), b.get('name'))),
+  (unsortedFilters, sortType) => {
+    const comparator = sort[sortType];
+    return unsortedFilters.sort((a, b) => comparator(a.get('name'), b.get('name')));
+  },
 );
 
 export const getSearchedFiltersIds = createSelector(
@@ -42,5 +45,5 @@ export const getSearchedFiltersIds = createSelector(
 
 export const getAllChecked = createSelector(
   [getSelectedFilters, getSearchedFiltersIds],
-  (selectedFilters, searchedFilters) => is(searchedFilters.toSet(), selectedFilters.toSet()),
+  (selectedFilters, searchedFilters) => searchedFilters.count() === selectedFilters.count(),
 );
