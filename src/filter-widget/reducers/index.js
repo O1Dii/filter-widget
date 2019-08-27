@@ -35,7 +35,9 @@ function checkCurrent(state, selectedId, name) {
   return state.set(name, state.get(name).push(selectedId));
 }
 function uncheckCurrent(state, selectedId, name) {
-  return state.set(name, state.get(name).delete(state.get(name).indexOf(selectedId)));
+  const currentItems = state.get(name);
+
+  return state.deleteIn([name, currentItems.indexOf(selectedId)]);
 }
 
 function recieveData(state, payload, name, record) {
