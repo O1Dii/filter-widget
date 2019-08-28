@@ -3,6 +3,8 @@
 .checkbox-text {
   display: flex;
 
+  cursor: pointer;
+
   align-items: center;
 
   &__container {
@@ -12,6 +14,8 @@
   &__checkmark {
     width: 12px;
     height: 12px;
+
+    cursor: pointer;
 
     border-radius: 2px;
     background-color: $light-transparent-color;

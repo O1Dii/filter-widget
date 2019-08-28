@@ -8,11 +8,25 @@
   border-bottom: 2px solid $light-background-color;
 
   &_disabled {
+    position: relative;
+
     pointer-events: none;
   }
 
+  &_disabled::after {
+    position: absolute;
+    right: 0;
+    left: 32px;
+
+    height: 100%;
+
+    content: "";
+
+    background-color: $cover-background-color;
+  }
+
   &__empty {
-    width: 10%;
+    width: 30px;
 
     border-right: 2px solid $light-background-color;
 
