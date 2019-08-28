@@ -1,5 +1,5 @@
 const path = require('path');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+// const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const PATHS = {
@@ -45,13 +45,6 @@ module.exports = {
         },
       },
       {
-        test: /\.(png|jpg|gif|svg)$/,
-        loader: 'file-loader',
-        options: {
-          name: '[name].[ext]',
-        },
-      },
-      {
         test: /\.scss$/,
         use: [
           'style-loader',
@@ -91,10 +84,6 @@ module.exports = {
       filename: './index.html',
       inject: true,
     }),
-    new CopyWebpackPlugin([
-      { from: `${PATHS.src}/img`, to: `${PATHS.assets}img` },
-      { from: `${PATHS.root}/static`, to: '' },
-    ]),
   ],
   resolve: {
     extensions: ['.js', '.jsx'],
