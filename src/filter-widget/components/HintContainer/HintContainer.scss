@@ -8,15 +8,11 @@
   padding-left: 20px;
 
   &__hint-dropdown {
-    display: flex;
-
     width: 25px;
     height: 20px;
     margin-right: 5px;
 
     border: 1px solid $light-transparent-color;
-
-    justify-content: center;
   }
 
   &__hint-dropdown:hover {
