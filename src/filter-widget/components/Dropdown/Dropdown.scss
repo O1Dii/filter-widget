@@ -12,6 +12,16 @@
   align-items: center;
   appearance: none;
 
+  &__title {
+    margin: 0;
+
+    letter-spacing: -1px;
+    text-transform: uppercase;
+
+    font-size: 15px;
+    font-weight: 300;
+  }
+
   &__content {
     position: absolute;
     z-index: 1;
@@ -21,8 +31,10 @@
     width: 257px;
     margin-top: 18px;
 
+    border: 1px solid $light-transparent-color;
     border-top: 5px solid $accent-color;
     background-color: $primary-color;
+    box-shadow: 0 10px 30px $cover-background-dark-color;
 
     align-self: flex-start;
   }
@@ -32,25 +44,24 @@
   }
 
   &__arrow {
-    position: relative;
-    bottom: -3px;
-
-    margin: 0 5px 0 0;
+    margin: 4px 8px 0 5px;
 
     color: $light-transparent-color;
 
-    font-size: 12px;
+    font-size: 13px;
   }
 
   &__button {
     display: flex;
 
-    text-transform: uppercase;
+    padding: 0;
 
     color: $main-text-color;
     border: none;
     outline: none;
     background-color: transparent;
+
+    align-content: flex-end;
   }
 
   &:hover &__arrow {
@@ -61,13 +72,15 @@
     overflow: hidden;
 
     width: 100%;
-    margin: 0;
+    margin: 0 0 0 8px;
 
     white-space: nowrap;
     text-overflow: ellipsis;
 
     color: $accent-color;
 
-    font-size: 12px;
+    font-size: 14px;
+
+    align-self: flex-start;
   }
 }

@@ -8,8 +8,10 @@
     margin: 5px 0;
 
     color: $main-text-color;
-    border: 1px solid $main-text-color;
+    border: 1px solid $light-transparent-color;
     background-color: $light-background-color;
+
+    font-size: 15px;
   }
 
   &__icon {

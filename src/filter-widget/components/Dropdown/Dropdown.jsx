@@ -30,7 +30,7 @@ class Dropdown extends React.PureComponent {
         <div className="dropdown">
           <button type="button" className="dropdown__button" onClick={this.onDropdownClick}>
             <i className="dropdown__arrow fas fa-angle-down" />
-            {title}
+            <h3 className="dropdown__title">{title}</h3>
           </button>
           <div className={menuClassName}>{children}</div>
           <p className="dropdown__subtitle">{subtitle}</p>

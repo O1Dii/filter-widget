@@ -2,8 +2,10 @@
 
 .search {
   &__hr {
+    height: 2px;
     margin: 15px 0;
 
-    color: $light-background-color;
+    border: none;
+    background-color: $light-transparent-color;
   }
 }

@@ -23,14 +23,19 @@ class Hint extends React.PureComponent {
 
     if (isOpen) {
       return values.map(value => (
-        <button type="button" key={value} onClick={() => onClick(value)} className="hint__text">
+        <button
+          type="button"
+          key={value}
+          onClick={() => onClick(value)}
+          className="hint-dropdown__text"
+        >
           {value}
         </button>
       ));
     }
 
     return (
-      <button type="button" className="hint__text">
+      <button type="button" className="hint-dropdown__text">
         {chosenMatch}
       </button>
     );
@@ -41,7 +46,7 @@ class Hint extends React.PureComponent {
 
     return (
       <div
-        className={classNames('hint', className)}
+        className={classNames('hint-dropdown', className)}
         onMouseEnter={this.onMouseEnter}
         onMouseLeave={this.onMouseLeave}
       >

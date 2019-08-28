@@ -19,12 +19,15 @@ class CheckboxText extends React.PureComponent {
 
     return (
       <label className="checkbox-text">
-        <input
-          checked={checked}
-          type="checkbox"
-          onChange={this.onChange}
-          className="checkbox-text__checkbox"
-        />
+        <label className="checkbox-text__container">
+          <input
+            checked={checked}
+            type="checkbox"
+            onChange={this.onChange}
+            className="checkbox-text__checkbox"
+          />
+          <div className="checkbox-text__checkmark"></div>
+        </label>
         <p className="checkbox-text__text">{text}</p>
       </label>
     );
