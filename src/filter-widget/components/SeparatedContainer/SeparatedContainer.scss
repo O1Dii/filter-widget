@@ -1,0 +1,44 @@
+@import "../../variables.scss";
+
+.separated-container {
+  display: flex;
+
+  height: 100%;
+
+  border-bottom: 2px solid $light-background-color;
+
+  &_disabled {
+    position: relative;
+
+    pointer-events: none;
+  }
+
+  &_disabled::after {
+    position: absolute;
+    right: 0;
+    left: 32px;
+
+    height: 100%;
+
+    content: "";
+
+    background-color: $cover-background-color;
+  }
+
+  &__empty {
+    width: 30px;
+
+    border-right: 2px solid $light-background-color;
+
+    flex-shrink: 0;
+  }
+
+  &__content {
+    width: 80%;
+    padding: 8px 5px;
+
+    background-color: $primary-color;
+
+    flex-grow: 1;
+  }
+}

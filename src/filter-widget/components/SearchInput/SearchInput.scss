@@ -1,0 +1,33 @@
+@import "../../variables.scss";
+
+.search-input {
+  display: flex;
+  flex-direction: column;
+
+  &__input {
+    width: 80%;
+    margin: 5px 0;
+
+    color: $main-text-color;
+    border: 1px solid $light-transparent-color;
+    background-color: $light-background-color;
+
+    font-size: 15px;
+  }
+
+  &__icon {
+    margin: 5px;
+
+    color: $light-transparent-color;
+
+    font-size: 12px;
+  }
+
+  &__hint-container {
+    height: 20px;
+  }
+
+  &:hover &__icon {
+    color: $main-text-color;
+  }
+}

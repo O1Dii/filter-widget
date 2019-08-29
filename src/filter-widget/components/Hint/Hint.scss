@@ -1,0 +1,21 @@
+@import "../../variables.scss";
+
+.hint {
+  border-radius: 3px;
+  background-color: $cover-background-dark-color;
+
+  &__text {
+    margin: 3px;
+    padding: 0;
+
+    cursor: pointer;
+    white-space: nowrap;
+
+    color: $main-text-color;
+    border: none;
+    outline: none;
+    background-color: transparent;
+
+    font-size: 11px;
+  }
+}

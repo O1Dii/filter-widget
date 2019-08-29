@@ -1,0 +1,25 @@
+@import "../../variables.scss";
+
+.hint-dropdown {
+  display: flex;
+  flex-direction: column;
+
+  border-radius: 3px;
+  background-color: $cover-background-dark-color;
+
+  justify-content: space-between;
+
+  &__text {
+    margin: 0;
+    padding: 0;
+
+    cursor: pointer;
+
+    color: $main-text-color;
+    border: none;
+    outline: none;
+    background-color: transparent;
+
+    font-size: 13px;
+  }
+}

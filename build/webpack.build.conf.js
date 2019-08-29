@@ -3,7 +3,7 @@ const baseWebpackConfig = require('./webpack.base.conf');
 
 const buildWebpackConfig = merge(baseWebpackConfig, {
   mode: 'production',
-  plugins: []
+  plugins: [],
 });
 
 module.exports = new Promise((resolve, reject) => {

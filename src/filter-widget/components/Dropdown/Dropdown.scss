@@ -1,0 +1,89 @@
+@import "../../variables.scss";
+
+.dropdown {
+  display: flex;
+
+  width: 100%;
+
+  color: $main-text-color;
+  border-color: transparent;
+  background-color: transparent;
+
+  align-items: center;
+  appearance: none;
+
+  &__title {
+    margin: 0;
+
+    text-transform: uppercase;
+
+    font-size: 15px;
+    font-weight: 300;
+  }
+
+  &__content {
+    position: absolute;
+    z-index: 1;
+
+    display: none;
+
+    width: 257px;
+    margin-top: 18px;
+
+    border: 1px solid $light-transparent-color;
+    border-top: 5px solid $accent-color;
+    background-color: $primary-color;
+    box-shadow: 0 10px 30px $cover-background-dark-color;
+
+    align-self: flex-start;
+  }
+
+  &__content_open {
+    display: block;
+  }
+
+  &__arrow {
+    margin: 4px 8px 0 5px;
+
+    color: $light-transparent-color;
+
+    font-size: 13px;
+  }
+
+  &__button {
+    display: flex;
+
+    width: 100%;
+    padding: 0;
+
+    cursor: pointer;
+
+    color: $main-text-color;
+    border: none;
+    outline: none;
+    background-color: transparent;
+
+    align-content: flex-end;
+  }
+
+  &:hover &__arrow {
+    color: $main-text-color;
+  }
+
+  &__subtitle {
+    overflow: hidden;
+
+    width: 100%;
+    margin: 0 0 0 8px;
+
+    text-align: start;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    color: $accent-color;
+
+    font-size: 14px;
+
+    align-self: flex-start;
+  }
+}

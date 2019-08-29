@@ -1,0 +1,11 @@
+@import "../../variables.scss";
+
+.search {
+  &__hr {
+    height: 2px;
+    margin: 15px 0;
+
+    border: none;
+    background-color: $light-transparent-color;
+  }
+}

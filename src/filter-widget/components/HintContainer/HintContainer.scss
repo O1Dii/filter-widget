@@ -1,0 +1,33 @@
+@import "../../variables.scss";
+
+.hint-container {
+  position: relative;
+
+  display: flex;
+
+  padding-left: 20px;
+
+  &__hint-dropdown {
+    width: 25px;
+    height: 20px;
+    margin-right: 5px;
+
+    border: 1px solid $light-transparent-color;
+  }
+
+  &__hint-dropdown:hover {
+    height: 54px;
+  }
+
+  &__hint {
+    display: flex;
+
+    width: 25px;
+    height: 20px;
+
+    border: 1px solid $light-transparent-color;
+
+    align-items: center;
+    justify-content: center;
+  }
+}
