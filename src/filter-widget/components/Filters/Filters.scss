@@ -1,6 +1,8 @@
 @import "../../variables.scss";
 
 .filters {
+  position: absolute;
+
   color: $main-text-color;
   background-color: $background-color;
 

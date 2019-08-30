@@ -11,7 +11,7 @@ class SearchInput extends React.PureComponent {
   };
 
   render() {
-    const { searchText } = this.props;
+    const { searchText, widgetId } = this.props;
 
     return (
       <div className="search-input">
@@ -21,7 +21,7 @@ class SearchInput extends React.PureComponent {
           <input value={searchText} className="search-input__input" onChange={this.onChange} />
         </label>
 
-        <ActiveSearchFilters className="search-input__hint-container" />
+        <ActiveSearchFilters className="search-input__hint-container" widgetId={widgetId} />
       </div>
     );
   }
@@ -30,6 +30,7 @@ class SearchInput extends React.PureComponent {
 SearchInput.propTypes = {
   searchText: PropTypes.string.isRequired,
   onSearchTextChange: PropTypes.func.isRequired,
+  widgetId: PropTypes.string.isRequired,
 };
 
 export default SearchInput;

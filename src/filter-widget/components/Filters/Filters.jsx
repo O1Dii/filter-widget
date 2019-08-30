@@ -7,7 +7,7 @@ import Footer from '../Footer/Footer';
 import ChangableContext from '../../containers/ChangableContexts';
 import ChangableDimensions from '../../containers/ChangableDimensions';
 import ActiveSearch from '../../containers/ActiveSearch';
-import ActiveHeader from '../../containers/ActiveHeader';
+import Header from '../Header/Header';
 
 import './Filters.scss';
 
@@ -18,23 +18,30 @@ class Filters extends React.PureComponent {
   }
 
   render() {
-    const { className } = this.props;
+    const {
+      className, visible, widgetId, onCloseClick,
+    } = this.props;
 
     return (
-      <div className={classNames('filters', className)}>
-        <ActiveHeader />
-        <ChangableContext />
-        <ChangableDimensions />
-        <ActiveSearch />
-        <Footer className="filters__footer" />
-      </div>
+      visible && (
+        <div className={classNames('filters', className)}>
+          <Header widgetId={widgetId} onCloseClick={onCloseClick} />
+          <ChangableContext widgetId={widgetId} />
+          <ChangableDimensions widgetId={widgetId} />
+          <ActiveSearch widgetId={widgetId} />
+          <Footer className="filters__footer" />
+        </div>
+      )
     );
   }
 }
 
 Filters.propTypes = {
+  onCloseClick: PropTypes.func.isRequired,
   className: PropTypes.string,
+  visible: PropTypes.bool.isRequired,
   onMount: PropTypes.func.isRequired,
+  widgetId: PropTypes.string.isRequired,
 };
 
 Filters.defaultProps = {

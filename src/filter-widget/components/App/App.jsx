@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ActiveButtonWidget from '../../containers/ActiveButtonWidget';
+import ButtonWidget from '../ButtonWidget/ButtonWidget';
 
 import './App.scss';
 
@@ -8,7 +8,9 @@ class App extends React.PureComponent {
   render() {
     return (
       <div className="app">
-        <ActiveButtonWidget />
+        <ButtonWidget id="0" />
+        <ButtonWidget id="1" />
+        <ButtonWidget id="2" />
       </div>
     );
   }
