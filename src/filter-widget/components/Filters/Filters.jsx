@@ -18,20 +18,16 @@ class Filters extends React.PureComponent {
   }
 
   render() {
-    const {
-      className, visible, widgetId, onCloseClick,
-    } = this.props;
+    const { className, widgetId, onCloseClick } = this.props;
 
     return (
-      visible && (
-        <div className={classNames('filters', className)}>
-          <Header widgetId={widgetId} onCloseClick={onCloseClick} />
-          <ChangableContext widgetId={widgetId} />
-          <ChangableDimensions widgetId={widgetId} />
-          <ActiveSearch widgetId={widgetId} />
-          <Footer className="filters__footer" />
-        </div>
-      )
+      <div className={classNames('filters', className)}>
+        <Header widgetId={widgetId} onCloseClick={onCloseClick} />
+        <ChangableContext widgetId={widgetId} />
+        <ChangableDimensions widgetId={widgetId} />
+        <ActiveSearch widgetId={widgetId} />
+        <Footer className="filters__footer" />
+      </div>
     );
   }
 }
@@ -39,7 +35,6 @@ class Filters extends React.PureComponent {
 Filters.propTypes = {
   onCloseClick: PropTypes.func.isRequired,
   className: PropTypes.string,
-  visible: PropTypes.bool.isRequired,
   onMount: PropTypes.func.isRequired,
   widgetId: PropTypes.string.isRequired,
 };

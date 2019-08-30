@@ -12,12 +12,14 @@ import {
   uncheckAllFilters,
   uncheckDimensions,
   uncheckFilters,
-  recieveContexts,
-  recieveDimensions,
-  recieveFilters,
+  receiveContexts,
+  receiveDimensions,
+  receiveFilters,
   changeSearchInput,
   matchChange,
   sortingChange,
+  createWidget,
+  closeWidget,
 } from '../actions';
 import { PARTIAL_MATCH, SORTING_ASC } from '../constants';
 
@@ -33,8 +35,16 @@ const initialWidgetState = {
   sortType: SORTING_ASC,
 };
 
+let lastId = 0;
+
 const main = handleActions(
   {
+    [createWidget]: (state) => {
+      lastId += 1;
+      return state.set(lastId.toString(), Immutable.Map(initialWidgetState));
+    },
+    [closeWidget]: (state, { payload }) => state.delete(payload.id),
+
     [checkContext]: (state, { payload }) => state.updateIn([payload.id, 'selectedContexts'], oldItems => oldItems.push(payload.contextId)),
     [uncheckContext]: (state, { payload }) => state.updateIn([payload.id, 'selectedContexts'], oldItems => oldItems.delete(oldItems.indexOf(payload.contextId))),
 
@@ -50,15 +60,15 @@ const main = handleActions(
     [uncheckFilters]: (state, { payload }) => state.updateIn([payload.id, 'selectedFilters'], oldItems => oldItems.filterNot(item => payload.filtersIds.includes(item))),
     [uncheckDimensions]: (state, { payload }) => state.updateIn([payload.id, 'selectedDimensions'], oldItems => oldItems.filterNot(item => payload.dimensionsIds.includes(item))),
 
-    [recieveContexts]: (state, { payload }) => state.setIn(
+    [receiveContexts]: (state, { payload }) => state.setIn(
       [payload.id, 'contexts'],
       Immutable.Map(payload.data.map(item => [item.get('id'), item])),
     ),
-    [recieveDimensions]: (state, { payload }) => state.setIn(
+    [receiveDimensions]: (state, { payload }) => state.setIn(
       [payload.id, 'dimensions'],
       Immutable.Map(payload.data.map(item => [item.get('id'), item])),
     ),
-    [recieveFilters]: (state, { payload }) => state.setIn(
+    [receiveFilters]: (state, { payload }) => state.setIn(
       [payload.id, 'filters'],
       Immutable.Map(payload.data.map(item => [item.get('id'), item])),
     ),
@@ -69,8 +79,6 @@ const main = handleActions(
   },
   Immutable.Map({
     0: Immutable.Map(initialWidgetState),
-    1: Immutable.Map(initialWidgetState),
-    2: Immutable.Map(initialWidgetState),
   }),
 );
 

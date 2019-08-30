@@ -1,42 +1,34 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import ActiveFilters from '../../containers/ActiveFilters';
 
 import './ButtonWidget.scss';
-import Draggable from 'react-draggable';
 
 class ButtonWidget extends React.PureComponent {
-  state = {
-    visible: true,
-  };
-
-  onClick = () => {
-    this.setState({ visible: !this.state.visible });
-  };
-
   render() {
-    const { id } = this.props;
+    const { widgetsIds, onClick, onCloseClick } = this.props;
 
     return (
       <div className="open-button">
-        <button onClick={this.onClick} type="button" className="open-button__button">
-          Open/Close
+        <button onClick={onClick} type="button" className="open-button__button">
+          Create new widget
         </button>
 
-        <ActiveFilters
-          className="open-button__filters"
-          widgetId={id}
-          visible={this.state.visible}
-          onCloseClick={this.onClick}
-        />
+        {widgetsIds.map(id => (
+          <ActiveFilters
+            className="open-button__filters"
+            key={id}
+            widgetId={id}
+            onCloseClick={onCloseClick}
+          />
+        ))}
       </div>
     );
   }
 }
 
-ButtonWidget.propTypes = {
-  id: PropTypes.string.isRequired,
-};
+ButtonWidget.propTypes = {};
+
+ButtonWidget.defaultProps = {};
 
 export default ButtonWidget;

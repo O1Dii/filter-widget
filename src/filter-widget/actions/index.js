@@ -8,36 +8,36 @@ import DimensionRecord from '../records/DimensionRecord';
 import FilterRecord from '../records/FilterRecord';
 
 export const requestContexts = createAction('REQUEST_CONTEXTS');
-export const recieveContexts = createAction('RECIEVE_CONTEXTS', (widgetId, contexts) => ({
+export const receiveContexts = createAction('RECEIVE_CONTEXTS', (widgetId, contexts) => ({
   data: contexts.map(item => ContextRecord(item)),
   id: widgetId,
 }));
 export const getContextsData = widgetId => (dispatch) => {
   dispatch(requestContexts());
   const contexts = getContexts();
-  dispatch(recieveContexts(widgetId, contexts));
+  dispatch(receiveContexts(widgetId, contexts));
 };
 
 export const requestDimensions = createAction('REQUEST_DIMENSIONS');
-export const recieveDimensions = createAction('RECIEVE_DIMENSIONS', (widgetId, dimensions) => ({
+export const receiveDimensions = createAction('RECEIVE_DIMENSIONS', (widgetId, dimensions) => ({
   data: dimensions.map(item => DimensionRecord(item)),
   id: widgetId,
 }));
 export const getDimensionsData = widgetId => (dispatch) => {
   dispatch(requestDimensions());
   const dimensions = getDimensions();
-  dispatch(recieveDimensions(widgetId, dimensions));
+  dispatch(receiveDimensions(widgetId, dimensions));
 };
 
 export const requestFilters = createAction('REQUEST_FILTERS');
-export const recieveFilters = createAction('RECIEVE_FILTERS', (widgetId, filters) => ({
+export const receiveFilters = createAction('RECEIVE_FILTERS', (widgetId, filters) => ({
   data: filters.map(item => FilterRecord(item)),
   id: widgetId,
 }));
 export const getFiltersData = widgetId => (dispatch) => {
   dispatch(requestFilters());
   const filters = getFilters();
-  dispatch(recieveFilters(widgetId, filters));
+  dispatch(receiveFilters(widgetId, filters));
 };
 
 export const getAllData = widgetId => (dispatch) => {
@@ -144,5 +144,10 @@ export const matchChange = createAction('MATCH_CHANGE', (widgetId, match) => ({
 }));
 export const sortingChange = createAction('SORTINGS_CHANGE', (widgetId, sortType) => ({
   sortType: sortType === SORTING_ASC ? SORTING_DESC : SORTING_ASC,
+  id: widgetId,
+}));
+
+export const createWidget = createAction('CREATE_WIDGET');
+export const closeWidget = createAction('CLOSE_WIDGET', widgetId => ({
   id: widgetId,
 }));
