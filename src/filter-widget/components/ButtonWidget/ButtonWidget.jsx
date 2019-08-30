@@ -5,12 +5,17 @@ import ActiveFilters from '../../containers/ActiveFilters';
 import './ButtonWidget.scss';
 
 class ButtonWidget extends React.PureComponent {
+  onClick = () => {
+    const { onClick } = this.props;
+    onClick();
+  };
+
   render() {
-    const { widgetsIds, onClick, onCloseClick } = this.props;
+    const { widgetsIds, onCloseClick } = this.props;
 
     return (
       <div className="open-button">
-        <button onClick={onClick} type="button" className="open-button__button">
+        <button onClick={this.onClick} type="button" className="open-button__button">
           Create new widget
         </button>
 
