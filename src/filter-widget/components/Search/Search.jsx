@@ -25,7 +25,7 @@ class Search extends React.PureComponent {
 
 Search.propTypes = {
   isDisabled: PropTypes.bool,
-  widgetId: PropTypes.string.isRequired,
+  widgetId: PropTypes.number.isRequired,
 };
 
 Search.defaultProps = {

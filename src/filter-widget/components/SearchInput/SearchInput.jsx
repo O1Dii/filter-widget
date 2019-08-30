@@ -30,7 +30,7 @@ class SearchInput extends React.PureComponent {
 SearchInput.propTypes = {
   searchText: PropTypes.string.isRequired,
   onSearchTextChange: PropTypes.func.isRequired,
-  widgetId: PropTypes.string.isRequired,
+  widgetId: PropTypes.number.isRequired,
 };
 
 export default SearchInput;

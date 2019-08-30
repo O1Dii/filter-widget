@@ -22,6 +22,7 @@ import {
   closeWidget,
 } from '../actions';
 import { PARTIAL_MATCH, SORTING_ASC } from '../constants';
+import { getNextId } from '../utils';
 
 const initialWidgetState = {
   contexts: Immutable.Map(),
@@ -35,14 +36,9 @@ const initialWidgetState = {
   sortType: SORTING_ASC,
 };
 
-let lastId = 0;
-
 const main = handleActions(
   {
-    [createWidget]: (state) => {
-      lastId += 1;
-      return state.set(lastId.toString(), Immutable.Map(initialWidgetState));
-    },
+    [createWidget]: state => state.set(getNextId(), Immutable.Map(initialWidgetState)),
     [closeWidget]: (state, { payload }) => state.delete(payload.id),
 
     [checkContext]: (state, { payload }) => state.updateIn([payload.id, 'selectedContexts'], oldItems => oldItems.push(payload.contextId)),
@@ -77,9 +73,7 @@ const main = handleActions(
     [matchChange]: (state, { payload }) => state.setIn([payload.id, 'searchMatch'], payload.match),
     [sortingChange]: (state, { payload }) => state.setIn([payload.id, 'sortType'], payload.sortType),
   },
-  Immutable.Map({
-    0: Immutable.Map(initialWidgetState),
-  }),
+  Immutable.Map(),
 );
 
 export default main;

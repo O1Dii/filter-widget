@@ -36,3 +36,10 @@ export const sort = {
   [SORTING_ASC]: ascendingSort,
   [SORTING_DESC]: descendingSort,
 };
+
+let id = 0;
+
+export const getNextId = () => {
+  id += 1;
+  return id;
+};

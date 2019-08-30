@@ -7,42 +7,46 @@
 
   align-items: center;
 
-  &__container {
-    margin: 0 8px 0 10px;
+  &__checkbox {
+    position: relative;
+
+    display: flex;
+
+    width: 0;
+    height: 0;
+    margin: 0 22px 0 10px;
+
+    cursor: pointer;
   }
 
-  &__checkmark {
+  &__checkbox::before {
+    position: absolute;
+
     width: 12px;
     height: 12px;
 
+    content: "";
     cursor: pointer;
 
     border-radius: 2px;
     background-color: $light-transparent-color;
+
+    align-self: center;
   }
 
-  &__checkbox {
-    position: absolute;
+  &__checkbox:checked::before {
+    content: "";
 
-    width: 0;
-    height: 0;
-
-    cursor: pointer;
-
-    opacity: 0;
-  }
-
-  &__checkbox:checked + &__checkmark {
     background-color: white;
   }
 
-  &__checkbox:checked + &__checkmark::after {
+  &__checkbox:checked::after {
     position: absolute;
-    left: 14px;
+    left: 4px;
 
     width: 3px;
     height: 6px;
-    margin-top: 1px;
+    margin-top: -5px;
 
     content: "";
     -webkit-transform: rotate(45deg);

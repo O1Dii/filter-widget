@@ -1,5 +1,19 @@
 .open-button {
+  &__filters-cover {
+    display: flex;
+    flex-direction: column;
+  }
+
   &__filters {
     width: 300px;
+    margin: 15px;
+
+    flex-grow: 0;
+  }
+
+  &__filters-container {
+    display: flex;
+
+    flex-wrap: wrap;
   }
 }

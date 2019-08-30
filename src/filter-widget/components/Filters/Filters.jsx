@@ -36,7 +36,7 @@ Filters.propTypes = {
   onCloseClick: PropTypes.func.isRequired,
   className: PropTypes.string,
   onMount: PropTypes.func.isRequired,
-  widgetId: PropTypes.string.isRequired,
+  widgetId: PropTypes.number.isRequired,
 };
 
 Filters.defaultProps = {
