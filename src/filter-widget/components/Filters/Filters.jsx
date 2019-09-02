@@ -12,7 +12,7 @@ import Header from '../Header/Header';
 
 import './Filters.scss';
 
-const spec = {
+const SourceSpec = {
   beginDrag: () => ({}),
   endDrag: (props, monitor) => {
     const dragWidgetId = monitor.getDropResult() && monitor.getDropResult().id;
@@ -26,15 +26,15 @@ const spec = {
   },
 };
 
-const target = {
+const targetSpec = {
   drop: props => ({ id: props.widgetId }),
 };
 
-function collectTarget(connect) {
+function targetCollect(connect) {
   return { connectDropTarget: connect.dropTarget() };
 }
 
-function collectSource(connect, monitor) {
+function sourceCollect(connect, monitor) {
   return {
     connectDragSource: connect.dragSource(),
     connectDragPreview: connect.dragPreview(),
@@ -42,8 +42,8 @@ function collectSource(connect, monitor) {
   };
 }
 
-@DropTarget('widget', target, collectTarget)
-@DragSource('widget', spec, collectSource)
+@DropTarget('widget', targetSpec, targetCollect)
+@DragSource('widget', SourceSpec, sourceCollect)
 class Filters extends React.PureComponent {
   componentDidMount() {
     const { onMount } = this.props;
