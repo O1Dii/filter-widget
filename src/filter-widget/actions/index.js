@@ -151,3 +151,8 @@ export const createWidget = createAction('CREATE_WIDGET');
 export const closeWidget = createAction('CLOSE_WIDGET', widgetId => ({
   id: widgetId,
 }));
+
+export const swapWidgets = createAction('SWAP_WIDGETS', (currentWidgetId, swappingWidgetId) => ({
+  id: currentWidgetId,
+  swapId: swappingWidgetId,
+}));

@@ -1,9 +1,12 @@
 @import "../../variables.scss";
 
 .filters {
-  // position: absolute;
   color: $main-text-color;
   background-color: $background-color;
 
   font-family: "Lato", sans-serif;
+
+  &_hidden {
+    opacity: 0;
+  }
 }

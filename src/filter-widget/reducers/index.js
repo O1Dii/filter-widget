@@ -20,6 +20,7 @@ import {
   sortingChange,
   createWidget,
   closeWidget,
+  swapWidgets,
 } from '../actions';
 import { PARTIAL_MATCH, SORTING_ASC } from '../constants';
 import { getNextId } from '../utils';
@@ -72,6 +73,14 @@ const main = handleActions(
     [changeSearchInput]: (state, { payload }) => state.setIn([payload.id, 'searchText'], payload.searchText),
     [matchChange]: (state, { payload }) => state.setIn([payload.id, 'searchMatch'], payload.match),
     [sortingChange]: (state, { payload }) => state.setIn([payload.id, 'sortType'], payload.sortType),
+
+    [swapWidgets]: (state, { payload }) => {
+      const temp = state.get(payload.id);
+
+      return state
+        .update(payload.id, () => state.get(payload.swapId))
+        .update(payload.swapId, () => temp);
+    },
   },
   Immutable.Map(),
 );

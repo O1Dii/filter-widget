@@ -43,14 +43,16 @@
     "webpack-merge": "^4.2.1"
   },
   "dependencies": {
+    "@babel/plugin-proposal-decorators": "^7.4.4",
     "classnames": "^2.2.6",
     "immutable": "^4.0.0-rc.12",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-custom-scrollbars": "^4.2.1",
+    "react-dnd": "^9.3.4",
+    "react-dnd-html5-backend": "^9.3.4",
     "react-dom": "^16.8.6",
-    "react-draggable": "^3.3.0",
-    "react-outside-click-handler": "^1.2.4",
+    "react-onclickoutside": "^6.9.0",
     "react-redux": "^7.1.0",
     "redux": "^4.0.4",
     "redux-actions": "^2.6.5",

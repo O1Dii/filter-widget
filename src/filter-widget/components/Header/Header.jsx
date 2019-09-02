@@ -12,7 +12,7 @@ class Header extends React.PureComponent {
   render() {
     return (
       <div className="header">
-        <i className="header__bars fas fa-bars" />
+        {this.props.connectDragSource(<i className="header__bars fas fa-bars" />)}
         <h2 className="header__title">Filters</h2>
         <button type="button" onClick={this.onCloseClick} className="header__exit fas fa-times" />
       </div>
