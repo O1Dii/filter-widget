@@ -30,6 +30,11 @@ class Header extends React.PureComponent {
 
 Header.propTypes = {
   onCloseClick: PropTypes.func.isRequired,
+  connectDragSource: PropTypes.func,
+};
+
+Header.propTypes = {
+  connectDragSource: null,
 };
 
 export default Header;

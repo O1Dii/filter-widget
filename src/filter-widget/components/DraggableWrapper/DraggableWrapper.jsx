@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { DragSource, DropTarget } from 'react-dnd';
 
+import StaticFilters from '../../containers/StaticFilters';
+
 const SourceSpec = {
   beginDrag: () => ({}),
   endDrag: (props, monitor) => {
@@ -44,15 +46,12 @@ class DraggableFilters extends React.PureComponent {
       connectDragPreview,
       connectDragSource,
       connectDropTarget,
-      content,
     } = this.props;
-
-    const Filters = content;
 
     return connectDragPreview(
       connectDropTarget(
         <div>
-          <Filters
+          <StaticFilters
             className={className}
             widgetId={widgetId}
             onCloseClick={onCloseClick}
@@ -66,9 +65,13 @@ class DraggableFilters extends React.PureComponent {
 }
 
 DraggableFilters.propTypes = {
+  connectDragPreview: PropTypes.func.isRequired,
+  connectDragSource: PropTypes.func.isRequired,
+  connectDropTarget: PropTypes.func.isRequired,
   onCloseClick: PropTypes.func.isRequired,
   className: PropTypes.string,
   widgetId: PropTypes.number.isRequired,
+  isDragging: PropTypes.bool.isRequired,
 };
 
 DraggableFilters.defaultProps = {
