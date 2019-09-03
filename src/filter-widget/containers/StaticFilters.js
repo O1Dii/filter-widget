@@ -1,15 +1,15 @@
 import { connect } from 'react-redux';
 
 import { getAllData } from '../actions';
-import StaticFilters from '../components/StaticFilters/StaticFilters';
+import Filters from '../components/Filters/Filters';
 
 const mapDispatchToProps = (dispatch, { widgetId }) => ({
   onMount: (...args) => dispatch(getAllData(widgetId, ...args)),
 });
 
-const Filters = connect(
+const StaticFilters = connect(
   () => ({}),
   mapDispatchToProps,
-)(StaticFilters);
+)(Filters);
 
-export default Filters;
+export default StaticFilters;
