@@ -10,7 +10,6 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   onClick: id => dispatch(createWidget(id)),
   onCloseClick: id => dispatch(closeWidget(id)),
-  onMount: (...args) => dispatch(getAllData(...args)),
 });
 
 const ActiveButtonWidget = connect(

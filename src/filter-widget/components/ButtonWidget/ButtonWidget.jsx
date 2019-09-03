@@ -8,9 +8,7 @@ import './ButtonWidget.scss';
 
 class ButtonWidget extends React.PureComponent {
   render() {
-    const {
-      widgetsIds, onClick, onCloseClick, onMount,
-    } = this.props;
+    const { widgetsIds, onClick, onCloseClick } = this.props;
 
     return (
       <div className="open-button">
@@ -22,7 +20,6 @@ class ButtonWidget extends React.PureComponent {
           {widgetsIds.map(id => (
             <div key={id} className="open-button__filters-cover">
               <DraggableFilters
-                onMount={onMount}
                 className="open-button__filters"
                 widgetId={id}
                 onCloseClick={onCloseClick}
@@ -38,7 +35,6 @@ class ButtonWidget extends React.PureComponent {
 ButtonWidget.propTypes = {
   onClick: PropTypes.func.isRequired,
   onCloseClick: PropTypes.func.isRequired,
-  onMount: PropTypes.func.isRequired,
   widgetsIds: PropTypes.instanceOf(Immutable.Seq),
 };
 
