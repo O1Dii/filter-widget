@@ -77,9 +77,7 @@ const main = handleActions(
     [swapWidgets]: (state, { payload }) => {
       const temp = state.get(payload.id);
 
-      return state
-        .update(payload.id, () => state.get(payload.swapId))
-        .update(payload.swapId, () => temp);
+      return state.set(payload.id, state.get(payload.swapId)).set(payload.swapId, temp);
     },
   },
   Immutable.Map(),
