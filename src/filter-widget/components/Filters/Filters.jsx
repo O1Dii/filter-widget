@@ -18,11 +18,11 @@ class Filters extends React.PureComponent {
 
   render() {
     const {
-      className, widgetId, onCloseClick, connectDragSource, isDragging,
+      className, widgetId, onCloseClick, connectDragSource,
     } = this.props;
 
     return (
-      <div className={classNames('filters', className, { filters_hidden: isDragging })}>
+      <div className={classNames('filters', className)}>
         <Header
           widgetId={widgetId}
           onCloseClick={onCloseClick}

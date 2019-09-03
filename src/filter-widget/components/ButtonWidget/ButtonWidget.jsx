@@ -2,7 +2,7 @@ import React from 'react';
 import Immutable from 'immutable';
 import PropTypes from 'prop-types';
 
-import DraggableWrapper from '../../containers/DraggableWrapper';
+import DraggableFilters from '../../containers/DraggableFilters';
 
 import './ButtonWidget.scss';
 
@@ -19,7 +19,7 @@ class ButtonWidget extends React.PureComponent {
         <div className="open-button__filters-container">
           {widgetsIds.map(id => (
             <div key={id} className="open-button__filters-cover">
-              <DraggableWrapper
+              <DraggableFilters
                 className="open-button__filters"
                 widgetId={id}
                 onCloseClick={onCloseClick}

@@ -1,15 +1,15 @@
 import { connect } from 'react-redux';
 
 import { swapWidgets } from '../actions';
-import Wrapper from '../components/DraggableWrapper/DraggableWrapper';
+import Filters from '../components/DraggableFilters/DraggableFilters';
 
 const mapDispatchToProps = (dispatch, { widgetId }) => ({
   onEndDrag: (...args) => dispatch(swapWidgets(widgetId, ...args)),
 });
 
-const DraggableWrapper = connect(
+const DraggableFilters = connect(
   () => ({}),
   mapDispatchToProps,
-)(Wrapper);
+)(Filters);
 
-export default DraggableWrapper;
+export default DraggableFilters;

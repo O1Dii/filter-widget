@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { DragSource, DropTarget } from 'react-dnd';
+import classNames from 'classnames';
 
 import StaticFilters from '../../containers/StaticFilters';
 
@@ -50,7 +51,7 @@ class DraggableFilters extends React.PureComponent {
 
     return connectDragPreview(
       connectDropTarget(
-        <div>
+        <div className={classNames({ filters_hidden: isDragging })}>
           <StaticFilters
             className={className}
             widgetId={widgetId}
