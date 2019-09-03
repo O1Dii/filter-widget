@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { createWidget, closeWidget } from '../actions';
+import { createWidget, closeWidget, getAllData } from '../actions';
 import ButtonWidget from '../components/ButtonWidget/ButtonWidget';
 
 const mapStateToProps = state => ({
@@ -10,6 +10,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   onClick: id => dispatch(createWidget(id)),
   onCloseClick: id => dispatch(closeWidget(id)),
+  onMount: (...args) => dispatch(getAllData(...args)),
 });
 
 const ActiveButtonWidget = connect(

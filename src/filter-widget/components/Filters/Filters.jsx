@@ -46,8 +46,8 @@ function sourceCollect(connect, monitor) {
 @DragSource('widget', SourceSpec, sourceCollect)
 class Filters extends React.PureComponent {
   componentDidMount() {
-    const { onMount } = this.props;
-    onMount();
+    const { onMount, widgetId } = this.props;
+    onMount(widgetId);
   }
 
   render() {
@@ -59,23 +59,26 @@ class Filters extends React.PureComponent {
       connectDragPreview,
       connectDragSource,
       connectDropTarget,
+      onEndDrag,
     } = this.props;
 
-    return connectDragPreview(
-      connectDropTarget(
-        <div className={classNames('filters', className, { filters_hidden: isDragging })}>
-          <Header
-            widgetId={widgetId}
-            onCloseClick={onCloseClick}
-            connectDragSource={connectDragSource}
-          />
-          <ChangableContext widgetId={widgetId} />
-          <ChangableDimensions widgetId={widgetId} />
-          <ActiveSearch widgetId={widgetId} />
-          <Footer className="filters__footer" />
-        </div>,
-      ),
+    const connectDrag = onEndDrag ? connectDragSource : null;
+
+    const content = (
+      <div className={classNames('filters', className, { filters_hidden: isDragging })}>
+        <Header widgetId={widgetId} onCloseClick={onCloseClick} connectDragSource={connectDrag} />
+        <ChangableContext widgetId={widgetId} />
+        <ChangableDimensions widgetId={widgetId} />
+        <ActiveSearch widgetId={widgetId} />
+        <Footer className="filters__footer" />
+      </div>
     );
+
+    if (onEndDrag) {
+      return connectDragPreview(connectDropTarget(content));
+    }
+
+    return content;
   }
 }
 

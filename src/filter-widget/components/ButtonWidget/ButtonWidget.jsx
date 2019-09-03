@@ -2,13 +2,15 @@ import React from 'react';
 import Immutable from 'immutable';
 import PropTypes from 'prop-types';
 
-import ActiveFilters from '../../containers/ActiveFilters';
+import DraggableFilters from '../../containers/DraggableFilters';
 
 import './ButtonWidget.scss';
 
 class ButtonWidget extends React.PureComponent {
   render() {
-    const { widgetsIds, onClick, onCloseClick } = this.props;
+    const {
+      widgetsIds, onClick, onCloseClick, onMount,
+    } = this.props;
 
     return (
       <div className="open-button">
@@ -19,7 +21,8 @@ class ButtonWidget extends React.PureComponent {
         <div className="open-button__filters-container">
           {widgetsIds.map(id => (
             <div key={id} className="open-button__filters-cover">
-              <ActiveFilters
+              <DraggableFilters
+                onMount={onMount}
                 className="open-button__filters"
                 widgetId={id}
                 onCloseClick={onCloseClick}
@@ -35,6 +38,7 @@ class ButtonWidget extends React.PureComponent {
 ButtonWidget.propTypes = {
   onClick: PropTypes.func.isRequired,
   onCloseClick: PropTypes.func.isRequired,
+  onMount: PropTypes.func.isRequired,
   widgetsIds: PropTypes.instanceOf(Immutable.Seq),
 };
 
