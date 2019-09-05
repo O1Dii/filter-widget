@@ -1,23 +1,31 @@
 import React from 'react';
-import Draggable from 'react-draggable';
+import Immutable from 'immutable';
 import PropTypes from 'prop-types';
 
-import ActiveFilters from '../../containers/ActiveFilters';
+import DraggableFilters from '../../containers/DraggableFilters';
 
 import './ButtonWidget.scss';
 
 class ButtonWidget extends React.PureComponent {
   render() {
-    const { onClick } = this.props;
+    const { widgetsIds, onClick, onCloseClick } = this.props;
 
     return (
       <div className="open-button">
-        <button onClick={onClick} type="button" className="open-button__button">
-          Open/Close
+        <button onClick={() => onClick()} type="button" className="open-button__button">
+          Create new widget
         </button>
 
-        <div>
-          <ActiveFilters className="open-button__filters" />
+        <div className="open-button__filters-container">
+          {widgetsIds.map(id => (
+            <div key={id} className="open-button__filters-cover">
+              <DraggableFilters
+                className="open-button__filters"
+                widgetId={id}
+                onCloseClick={onCloseClick}
+              />
+            </div>
+          ))}
         </div>
       </div>
     );
@@ -26,6 +34,12 @@ class ButtonWidget extends React.PureComponent {
 
 ButtonWidget.propTypes = {
   onClick: PropTypes.func.isRequired,
+  onCloseClick: PropTypes.func.isRequired,
+  widgetsIds: PropTypes.instanceOf(Immutable.Seq),
+};
+
+ButtonWidget.defaultProps = {
+  widgetsIds: Immutable.Seq(),
 };
 
 export default ButtonWidget;

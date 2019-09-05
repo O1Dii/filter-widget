@@ -3,16 +3,16 @@ import { connect } from 'react-redux';
 import { checkContext, uncheckContextWithDimensions } from '../actions';
 import DropdownBlock from '../components/DropdownBlock/DropdownBlock';
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state, { widgetId }) => ({
   title: 'contexts',
-  items: state.get('contexts'),
-  selectedItems: state.get('selectedContexts'),
+  items: state.getIn([widgetId, 'contexts']),
+  selectedItems: state.getIn([widgetId, 'selectedContexts']),
 });
 
-const mapDispatchToProps = {
-  onCheck: checkContext,
-  onUncheck: uncheckContextWithDimensions,
-};
+const mapDispatchToProps = (dispatch, { widgetId }) => ({
+  onCheck: (...args) => dispatch(checkContext(widgetId, ...args)),
+  onUncheck: (...args) => dispatch(uncheckContextWithDimensions(widgetId, ...args)),
+});
 
 const ChangableContexts = connect(
   mapStateToProps,

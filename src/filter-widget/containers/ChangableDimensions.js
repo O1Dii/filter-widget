@@ -4,17 +4,17 @@ import { checkDimension, uncheckDimensionWithFilters } from '../actions';
 import DropdownBlock from '../components/DropdownBlock/DropdownBlock';
 import { getFilteredDimensions } from '../selectors';
 
-const mapStateToProps = state => ({
-  isDisabled: !state.get('selectedContexts').count(),
+const mapStateToProps = (state, { widgetId }) => ({
+  isDisabled: !state.getIn([widgetId, 'selectedContexts']).count(),
   title: 'dimensions',
-  items: getFilteredDimensions(state),
-  selectedItems: state.get('selectedDimensions'),
+  items: getFilteredDimensions(state, widgetId),
+  selectedItems: state.getIn([widgetId, 'selectedDimensions']),
 });
 
-const mapDispatchToProps = {
-  onCheck: checkDimension,
-  onUncheck: uncheckDimensionWithFilters,
-};
+const mapDispatchToProps = (dispatch, { widgetId }) => ({
+  onCheck: (...args) => dispatch(checkDimension(widgetId, ...args)),
+  onUncheck: (...args) => dispatch(uncheckDimensionWithFilters(widgetId, ...args)),
+});
 
 const ChangableDimensions = connect(
   mapStateToProps,

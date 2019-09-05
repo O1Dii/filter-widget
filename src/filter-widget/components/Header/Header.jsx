@@ -4,14 +4,25 @@ import PropTypes from 'prop-types';
 import './Header.scss';
 
 class Header extends React.PureComponent {
+  onCloseClick = () => {
+    const { onCloseClick, widgetId } = this.props;
+    onCloseClick(widgetId);
+  };
+
   render() {
-    const { onCloseClick } = this.props;
+    const { connectDragSource } = this.props;
+
+    const bars = connectDragSource ? (
+      connectDragSource(<i className="header__bars fas fa-bars" />)
+    ) : (
+      <i className="header__bars fas fa-bars" />
+    );
 
     return (
       <div className="header">
-        <i className="header__bars fas fa-bars" />
+        {bars}
         <h2 className="header__title">Filters</h2>
-        <button type="button" onClick={onCloseClick} className="header__exit fas fa-times" />
+        <button type="button" onClick={this.onCloseClick} className="header__exit fas fa-times" />
       </div>
     );
   }
@@ -19,6 +30,11 @@ class Header extends React.PureComponent {
 
 Header.propTypes = {
   onCloseClick: PropTypes.func.isRequired,
+  connectDragSource: PropTypes.func,
+};
+
+Header.propTypes = {
+  connectDragSource: null,
 };
 
 export default Header;

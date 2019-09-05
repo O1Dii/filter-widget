@@ -12,51 +12,75 @@ import {
   uncheckAllFilters,
   uncheckDimensions,
   uncheckFilters,
-  recieveContexts,
-  recieveDimensions,
-  recieveFilters,
+  receiveContexts,
+  receiveDimensions,
+  receiveFilters,
   changeSearchInput,
   matchChange,
   sortingChange,
+  createWidget,
+  closeWidget,
+  swapWidgets,
 } from '../actions';
 import { PARTIAL_MATCH, SORTING_ASC } from '../constants';
+import { getNextId } from '../utils';
+
+const initialWidgetState = {
+  contexts: Immutable.Map(),
+  dimensions: Immutable.Map(),
+  filters: Immutable.Map(),
+  selectedContexts: Immutable.List(),
+  selectedDimensions: Immutable.List(),
+  selectedFilters: Immutable.List(),
+  searchText: '',
+  searchMatch: PARTIAL_MATCH,
+  sortType: SORTING_ASC,
+};
 
 const main = handleActions(
   {
-    [checkContext]: (state, { payload }) => state.update('selectedContexts', oldItems => oldItems.push(payload)),
-    [uncheckContext]: (state, { payload }) => state.update('selectedContexts', oldItems => oldItems.delete(oldItems.indexOf(payload))),
+    [createWidget]: state => state.set(getNextId(), Immutable.Map(initialWidgetState)),
+    [closeWidget]: (state, { payload }) => state.delete(payload.id),
 
-    [checkDimension]: (state, { payload }) => state.update('selectedDimensions', oldItems => oldItems.push(payload)),
-    [uncheckDimension]: (state, { payload }) => state.update('selectedDimensions', oldItems => oldItems.delete(oldItems.indexOf(payload))),
+    [checkContext]: (state, { payload }) => state.updateIn([payload.id, 'selectedContexts'], oldItems => oldItems.push(payload.contextId)),
+    [uncheckContext]: (state, { payload }) => state.updateIn([payload.id, 'selectedContexts'], oldItems => oldItems.delete(oldItems.indexOf(payload.contextId))),
 
-    [checkFilter]: (state, { payload }) => state.update('selectedFilters', oldItems => oldItems.push(payload)),
-    [uncheckFilter]: (state, { payload }) => state.update('selectedFilters', oldItems => oldItems.delete(oldItems.indexOf(payload))),
+    [checkDimension]: (state, { payload }) => state.updateIn([payload.id, 'selectedDimensions'], oldItems => oldItems.push(payload.dimensionId)),
+    [uncheckDimension]: (state, { payload }) => state.updateIn([payload.id, 'selectedDimensions'], oldItems => oldItems.delete(oldItems.indexOf(payload.dimensionId))),
 
-    [replaceSelectedFilters]: (state, { payload }) => state.set('selectedFilters', payload),
-    [uncheckAllFilters]: state => state.set('selectedFilters', Immutable.List()),
+    [checkFilter]: (state, { payload }) => state.updateIn([payload.id, 'selectedFilters'], oldItems => oldItems.push(payload.filterId)),
+    [uncheckFilter]: (state, { payload }) => state.updateIn([payload.id, 'selectedFilters'], oldItems => oldItems.delete(oldItems.indexOf(payload.filterId))),
 
-    [uncheckFilters]: (state, { payload }) => state.update('selectedFilters', oldItems => oldItems.filterNot(item => payload.includes(item))),
-    [uncheckDimensions]: (state, { payload }) => state.update('selectedDimensions', oldItems => oldItems.filterNot(item => payload.includes(item))),
+    [replaceSelectedFilters]: (state, { payload }) => state.setIn([payload.id, 'selectedFilters'], payload.newFilters),
+    [uncheckAllFilters]: (state, { payload }) => state.setIn([payload.id, 'selectedFilters'], Immutable.List()),
 
-    [recieveContexts]: (state, { payload }) => state.set('contexts', Immutable.Map(payload.map(item => [item.get('id'), item]))),
-    [recieveDimensions]: (state, { payload }) => state.set('dimensions', Immutable.Map(payload.map(item => [item.get('id'), item]))),
-    [recieveFilters]: (state, { payload }) => state.set('filters', Immutable.Map(payload.map(item => [item.get('id'), item]))),
+    [uncheckFilters]: (state, { payload }) => state.updateIn([payload.id, 'selectedFilters'], oldItems => oldItems.filterNot(item => payload.filtersIds.includes(item))),
+    [uncheckDimensions]: (state, { payload }) => state.updateIn([payload.id, 'selectedDimensions'], oldItems => oldItems.filterNot(item => payload.dimensionsIds.includes(item))),
 
-    [changeSearchInput]: (state, { payload }) => state.set('searchText', payload),
-    [matchChange]: (state, { payload }) => state.set('searchMatch', payload),
-    [sortingChange]: (state, { payload }) => state.set('sortType', payload),
+    [receiveContexts]: (state, { payload }) => state.setIn(
+      [payload.id, 'contexts'],
+      Immutable.Map(payload.data.map(item => [item.get('id'), item])),
+    ),
+    [receiveDimensions]: (state, { payload }) => state.setIn(
+      [payload.id, 'dimensions'],
+      Immutable.Map(payload.data.map(item => [item.get('id'), item])),
+    ),
+    [receiveFilters]: (state, { payload }) => state.setIn(
+      [payload.id, 'filters'],
+      Immutable.Map(payload.data.map(item => [item.get('id'), item])),
+    ),
+
+    [changeSearchInput]: (state, { payload }) => state.setIn([payload.id, 'searchText'], payload.searchText),
+    [matchChange]: (state, { payload }) => state.setIn([payload.id, 'searchMatch'], payload.match),
+    [sortingChange]: (state, { payload }) => state.setIn([payload.id, 'sortType'], payload.sortType),
+
+    [swapWidgets]: (state, { payload }) => {
+      const temp = state.get(payload.id);
+
+      return state.set(payload.id, state.get(payload.swapId)).set(payload.swapId, temp);
+    },
   },
-  Immutable.Map({
-    contexts: Immutable.Map(),
-    dimensions: Immutable.Map(),
-    filters: Immutable.Map(),
-    selectedContexts: Immutable.List(),
-    selectedDimensions: Immutable.List(),
-    selectedFilters: Immutable.List(),
-    searchText: '',
-    searchMatch: PARTIAL_MATCH,
-    sortType: SORTING_ASC,
-  }),
+  Immutable.Map(),
 );
 
 export default main;

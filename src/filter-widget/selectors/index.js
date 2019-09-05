@@ -1,16 +1,15 @@
 import { createSelector } from 'reselect';
-import { is } from 'immutable';
 
 import { filters, sort } from '../utils';
 
-const getDimensions = state => state.get('dimensions');
-const getSelectedContexts = state => state.get('selectedContexts');
-const getFilters = state => state.get('filters');
-const getSelectedDimensions = state => state.get('selectedDimensions');
-const getSelectedFilters = state => state.get('selectedFilters');
-const getSearchText = state => state.get('searchText');
-const getSearchMatch = state => state.get('searchMatch');
-const getSortType = state => state.get('sortType');
+const getDimensions = (state, id) => state.getIn([id, 'dimensions']);
+const getSelectedContexts = (state, id) => state.getIn([id, 'selectedContexts']);
+const getFilters = (state, id) => state.getIn([id, 'filters']);
+const getSelectedDimensions = (state, id) => state.getIn([id, 'selectedDimensions']);
+const getSelectedFilters = (state, id) => state.getIn([id, 'selectedFilters']);
+const getSearchText = (state, id) => state.getIn([id, 'searchText']);
+const getSearchMatch = (state, id) => state.getIn([id, 'searchMatch']);
+const getSortType = (state, id) => state.getIn([id, 'sortType']);
 
 export const getFilteredDimensions = createSelector(
   [getDimensions, getSelectedContexts],

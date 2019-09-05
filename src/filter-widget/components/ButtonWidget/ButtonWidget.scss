@@ -1,5 +1,33 @@
+@import "../../variables.scss";
+
 .open-button {
+  &__button {
+    padding: 5px;
+
+    color: $main-text-color;
+    border: none;
+    border-top: 3px solid $accent-color;
+    outline: none;
+    background-color: $background-color;
+
+    font-size: 15px;
+  }
+
+  &__filters-cover {
+    display: flex;
+    flex-direction: column;
+  }
+
   &__filters {
     width: 300px;
+    margin: 15px;
+
+    flex-grow: 0;
+  }
+
+  &__filters-container {
+    display: flex;
+
+    flex-wrap: wrap;
   }
 }

@@ -7,18 +7,18 @@ import {
 } from '../actions';
 import { getSearchedSortedFilters, getAllChecked } from '../selectors';
 
-const mapStateToProps = state => ({
-  visibleFilters: getSearchedSortedFilters(state),
-  selectedFilters: state.get('selectedFilters'),
-  allChecked: getAllChecked(state),
+const mapStateToProps = (state, { widgetId }) => ({
+  visibleFilters: getSearchedSortedFilters(state, widgetId),
+  selectedFilters: state.getIn([widgetId, 'selectedFilters']),
+  allChecked: getAllChecked(state, widgetId),
 });
 
-const mapDispatchToProps = {
-  onCheck: checkFilter,
-  onUncheck: uncheckFilter,
-  onAllCheck: checkAllFilters,
-  onAllUncheck: uncheckAllFilters,
-};
+const mapDispatchToProps = (dispatch, props) => ({
+  onCheck: (...args) => dispatch(checkFilter(props.widgetId, ...args)),
+  onUncheck: (...args) => dispatch(uncheckFilter(props.widgetId, ...args)),
+  onAllCheck: (...args) => dispatch(checkAllFilters(props.widgetId, ...args)),
+  onAllUncheck: (...args) => dispatch(uncheckAllFilters(props.widgetId, ...args)),
+});
 
 const ActiveList = connect(
   mapStateToProps,

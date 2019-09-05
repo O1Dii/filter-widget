@@ -1,7 +1,7 @@
 .app {
-  &__filters {
-    width: 300px;
+  display: flex;
 
-    font-size: 15px;
-  }
+  padding-right: 500px;
+
+  justify-content: space-between;
 }

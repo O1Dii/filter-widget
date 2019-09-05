@@ -5,4 +5,8 @@
   background-color: $background-color;
 
   font-family: "Lato", sans-serif;
+
+  &_hidden {
+    opacity: 0;
+  }
 }
